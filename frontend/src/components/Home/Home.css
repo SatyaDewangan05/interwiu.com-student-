@@ -1,0 +1,51 @@
+
+.carousel-item img{
+    object-fit: cover;
+    height: 500px;
+}
+
+.get-started{
+    text-align: center;
+    padding-top: 20px;
+    background: linear-gradient(to right, #D3B5E5 50%, #FFD4DB 50%);
+}
+
+.get-started .left{
+    color: white;
+}
+
+.started-item{
+    padding: 10px 20px;
+}
+
+.started-item p{
+    font-size: 24px;
+}
+
+.create-account-btn{
+    border: 2px solid #00BBF0;
+    padding: 8px 12px;
+    font-size: 24px;
+}
+
+.create-account-btn:hover{
+    background-color: #00BBF0;
+    color: white;
+}
+
+
+@media only screen and (max-width: 900px) {
+    .carousel-item img {
+        height: 400px;
+    }
+
+}
+
+@media only screen and (max-width: 550px) {
+    .carousel-item img {
+        height: 300px;
+    }
+    .get-started{
+        flex-direction: column;
+    }
+}

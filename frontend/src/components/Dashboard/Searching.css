@@ -1,0 +1,121 @@
+.searching{
+    margin: 10px 10vw;
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    position: relative;
+}
+
+.searching-cont{
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+.search-pref{
+    padding: 10px;
+}
+
+.search-pref p{
+    margin-bottom: 5px;
+}
+.charge-limit{
+    margin-top: 20px;
+    /* border: 1px solid grey; */
+    border-radius: 8px;
+    padding: 5px 5px;
+    background-color: antiquewhite;
+}
+
+.searching select{
+    /* width: 50%; */
+    padding: 10px;
+    font-size: 18px;
+}
+
+.search-pref > input {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.preference{
+    margin: 10px 0;
+}
+
+.find-btn{
+    display: block;
+    margin: 20px auto;
+    border: 2px solid #2ecc71;
+    padding: 8px 16px;
+    background-color: #2ecc71;
+    color: white;
+}
+
+.find-btn:hover{
+    background-color: white;
+    color: #2ecc71;
+}
+
+.search-result{
+    margin-left: 20px;
+}
+
+.search-result-cont{
+    padding: 10px;
+}
+
+.search-result-item{
+    border: 2px solid orchid;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.search-result-item p{
+    margin: 0;
+}
+
+.search-result-item-profile{
+    width: 100%;
+}
+
+.search-result-item-profile img{
+    width: 80%; 
+    border-radius: 50%;
+    padding: 10px;
+    margin: 5px 10% 0;
+    border: 2px solid greenyellow;
+}  
+
+.request-btn{
+    display: block;
+    margin: 10px 0;
+    border: 1px solid #85c15d;
+    background-color: #85c15d;
+    color: white;
+    padding: 4px 8px;
+}
+
+.request-btn:hover{
+    background-color: white;
+    color: #85c15d;
+}
+
+.view-btn{
+    display: block;
+    margin: 10px auto;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    padding: 4px 8px;
+}
+
+.view-btn:hover{
+    background-color: white;
+    color: black;
+}

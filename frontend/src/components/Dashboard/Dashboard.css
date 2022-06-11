@@ -1,0 +1,108 @@
+.dashboard{
+    margin: 10px 10vw;
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    position: relative;
+}
+
+.edit-btn{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 18px;
+    color: blue;
+}
+
+.edit-btn:hover{
+    color: red;
+}
+
+.edit-btn:active{
+    color: blue;
+}
+
+.dashboard > h1{
+    text-align: center;
+    color: rgb(234, 0, 0);
+
+}
+
+
+.bio{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    margin-top: 20px;
+
+}
+
+.dashboard-info{
+    text-align: center;
+}
+
+.dashboard .profile-photo{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.dashboard .profile-photo img{
+    width: 60%;
+    padding: 10px;
+    border: 2px solid rgb(0, 225, 255);
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 20%;
+}
+
+.dashboard-info h2{
+    color: rgb(140, 174, 14);
+}
+
+.dashboard-info h5{
+    font-weight: 400;
+}
+
+.dashboard-desc{
+    padding: 20px;
+    border-left: 1px solid grey;
+}
+
+.desc-head{
+    margin: 0;
+    font-size: 18px;
+    color: rgb(126, 21, 224);
+}
+
+.desc-item{
+    margin-left: 30px;
+    text-align: justify;
+}
+
+.dashboard-btns{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 20px;
+    padding: 20px 20px 0;
+}
+
+.dashboard-btn{
+    display: block;
+    /* margin: 0 auto; */
+    border: 2px solid #1265a8;
+    background-color: #1265a8;
+    color: white;
+    padding: 8px 16px;
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.dashboard-btn:hover{
+    background-color: white;
+    color: #1265a8;
+}
+
+.dashboard-btns .cont{
+    height: 50px;
+    text-align: center;
+}

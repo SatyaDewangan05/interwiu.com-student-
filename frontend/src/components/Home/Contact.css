@@ -1,0 +1,64 @@
+.contact-cont .flex-50{
+    width: 50%;
+    height: 100%;
+    /* border: 1px solid black; */
+}
+
+.contact {
+    justify-content: center;
+}
+
+.contact-cont{
+    margin-top: 30px;
+    width: 90vw;
+    height: 80vh;
+    justify-content: center;
+    grid-gap: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.contact-cont img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.contact-form-cont{
+    padding: 10px;
+}
+
+.contact-details{
+    margin: 20px 0;
+}
+
+.contact-details p{
+    line-height: 16px;
+}
+
+.contact-form input, textarea{
+    outline: none;
+    padding: 8px;
+    font-size: 16px;
+    border: 1.8px solid rgba(0, 0, 0, 0.2);
+    width: 100%;
+    margin: 5px 0;
+}
+
+.contact-form textarea{
+    height: 200px;
+}
+
+
+.submit-btn{
+    border: 2px solid black;
+    color: black;
+    padding: 8px 16px;
+}
+
+.submit-btn:hover{
+    color: red;
+    border-color: red;
+}

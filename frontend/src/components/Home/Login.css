@@ -1,0 +1,231 @@
+.login-container{
+    position: absolute;
+    z-index: 10;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.login{
+    background-color: white;
+    position: relative;
+    border-radius: 8px;
+    max-width: 736px;
+
+}
+
+.cross{
+    position: absolute;
+    right: -20px;
+    top: -40px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.cross:hover{
+    color: rgb(255, 0, 0);
+}
+
+.login-head{
+    background-color: #EFFFF4;
+    color: #008A45;
+    width: 100%;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0px;
+    text-align: center;
+    padding: 17px 40px;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
+
+
+.login-system{
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.create-account h1{
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 31px;
+    letter-spacing: 0em;
+    text-align: left;
+    padding: 5px 0 20px;
+}
+
+.col{
+    margin: 10px;
+}
+
+.row-1{
+    width: 100%;
+    display: flex;
+
+}
+
+.form-input input{
+    width: 100%;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0px;
+    text-align: left;
+    padding: 15px 12px;
+    background-color: #F7F8FA;
+    border: 1px solid #D9D9DB;
+    outline: none;
+}
+
+.row-1 input{
+    width: 100%;
+
+}
+
+.login-container .create-btn{
+    width: 100%;
+    border: none;
+    background-color: #2F6CE5;
+    font-family: 'IBM Plex Sans',
+    sans-serif;
+    color: white;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 20px;
+    margin: 20px 0;
+}
+
+.login-container .create-btn:hover{
+    background-color: #0622f6;
+}
+
+.auth{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.auth-p{
+    display: none;
+    width: 100px;
+    margin-left: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0px;
+    text-align: center;
+    border-bottom: 1px solid black;
+    cursor: pointer;
+}
+
+.signup-btn{
+    width: 100%;
+    border: 1px solid #D9D9DB;
+    font-family: 'IBM Plex Sans',
+    sans-serif;
+    background-color: white;
+    color: black;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 5px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-btn:hover{
+    background-color: #dbdbdb;
+}
+
+.signup-btn img{
+    width: 14px;
+    margin-right: 10px;
+}
+
+
+.login-image{
+    text-align: right;
+}
+
+.login-image img{
+    height: auto;
+}
+
+.login-stat{
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.signin{
+    color: blue;
+    cursor: pointer;
+}
+
+
+
+@media only screen and (max-width: 992px){
+    .login-image{
+        display: none;
+    }
+    .login-head{
+        display: none;
+    }
+    .cross{
+        right: 10px;
+        top: 10px;
+        color: black;
+    }
+    .auth-p{
+        display: unset;
+    }
+}
+
+.login-container{
+    position: absolute;
+    z-index: 10;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.hide {
+    display: none;
+}
+
+.forget{
+    text-align: center;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: -0.008em;
+    cursor: pointer;
+}
