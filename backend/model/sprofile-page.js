@@ -1,38 +1,52 @@
 const mongoose=require('mongoose')
 
 const userSchema=new mongoose.Schema({
-    name:{
+    dId:{
+        type:String
+    },
+    dfname:{
         type:String,
-        required:true
+        default:""
+    },
+    dlname:{
+        type:String,
+        default:""
     },
     email:{
         type:String,
-        required:true
+        default:""
     },
     mobNumber:{
         type:Number,
-        required:true
+        default:-1
     },
     institute:{
-        type:String
+        type:String,
+        default:""
     },
     program:{
-        type:String
+        type:String,
+        default:""
     },
     Branch:{
-        type:String
+        type:String,
+        default:""
     },
     sessionRecord:{
-        type:String
+        type:String,
+        default:""
     },
     description:{
-        type:String
+        type:String,
+        default:""
     },
     profilePreference:{
-        type:String
+        type:String,
+        default:""
     },
     specialization:{
-        type:String
+        type:String,
+        default:""
     }
 
 });

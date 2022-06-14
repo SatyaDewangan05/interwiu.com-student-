@@ -1,17 +1,41 @@
 const SProfile=require('../model/sprofile-page')
 const Iprofile=require('../model/iprofile-page')
 
-//student's profile page post
-exports.profileForm=(req,res)=>{
-    const dbProfile=req.body
-    SProfile.create(dbProfile,(err,data)=>{
-        if(err){
+//student's profile page update
+exports.profileForm=async (req,res)=>{
+    try {
+        const updates=req.body
+        const obj=await SProfile.updateOne({dId:req.params.id},{$set:updates})
+        .then(result=>{
+            res.status(200).json(result)
+        })
+        .catch(err=>{
             res.status(500).send(err)
-        }else{
-            res.status(201).send(data)
+        })
+        
+    } catch (error) {
+        res.status(404).send(error)
+    }
+  }
+
+//student's profile with specific id
+exports.studentGetId= async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const dbhandShake = await SProfile.findOne({
+            dId: id
+        });
+
+        if(!dbhandShake) {
+            const error = new Error('Employee does not exist');
+            return next(error);
         }
-    })
-}
+
+    res.json(dbhandShake);
+    } catch(error) {
+        next(error);
+    }
+};
 
 //Interviewrs profile page post
 exports.Interviewrpost=(req,res)=>{

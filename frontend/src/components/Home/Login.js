@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
 import "./Login.css";
 
 const remove = () => {
@@ -16,6 +15,9 @@ const Login = () => {
     const loginFunc = document.querySelector(".login-container");
     loginFunc.classList.add("hide");
   };
+
+
+  
   return (
     <div className="login-container hide">
       <div className="login">
@@ -53,12 +55,10 @@ const Login = () => {
                 </button>
                 <p className="auth-p">or, Create Account</p>
               </div>
+              <form action="http://localhost:8585/auth/facebook">
               <button
                 className="signup-btn login"
-                onClick={(e) => {
-                  e.preventDefault();
-                  login();
-                }}
+                type="submit"
               >
                 <img
                   src={require("../../images/facebook.png")}
@@ -66,16 +66,18 @@ const Login = () => {
                 />{" "}
                 Sign In with Facebook
               </button>
+              </form>
+              
+              <form action="http://localhost:8585/auth/google">
               <button
                 className="signup-btn login"
-                onClick={(e) => {
-                  e.preventDefault();
-                  login();
-                }}
+                type="submit"
               >
                 <img src={require("../../images/google.png")} alt="Google" />
                 Sign In with Google
               </button>
+              </form>
+              
               <p className="forget">Forget Password?</p>
             </form>
           </div>

@@ -1,8 +1,10 @@
 const mongoose=require('mongoose')
 
 const userSchema=new mongoose.Schema({
-    name:String,
+    firstname:String,
+    lastname:String,
     email:String,
+    number:Number,
     message:String
 
 });

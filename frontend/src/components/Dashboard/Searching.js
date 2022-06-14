@@ -6,7 +6,8 @@ import "./Searching.css";
 
 import Navbar from "./Navbar";
 
-const Searching = () => {
+const Searching = (userDetails) => {
+  const user=userDetails.user
   const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
