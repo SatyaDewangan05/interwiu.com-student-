@@ -5,6 +5,8 @@ import Navbar from "./Navbar";
 
 import "./Contact_copy.css";
 
+import axios from 'axios'
+
 const changeLink = () => {
   const links = document.querySelectorAll(".nav-item a");
   links.forEach((link) => {
@@ -18,15 +20,48 @@ const changeLink = () => {
 };
 
 const Contact_copy = () => {
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [email, setEmail] = useState("");
-  const [number, setNumber] = useState("");
-  const [message, setMessage] = useState("");
+  const [data, setData] = useState({
+    firstname:"",
+    lastname:"",
+    email:"",
+    number:"",
+    message:""
+  });
 
   useEffect(() => {
     changeLink();
   }, []);
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setData({
+      ...data,
+      [e.target.name]: value
+    });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const userData = {
+      firstname: data.firstname,
+      lastname: data.lastname,
+      email:data.email,
+      number:data.number,
+      message:data.message
+    }
+  
+  axios.post("http://localhost:8585/send/contactus", userData).then((response) => {
+      console.log(response.status);
+      console.log(response.data);
+    });
+    setData({
+      firstname:"",
+      lastname:"",
+      email:"",
+      number:"",
+      message:""
+    })
+    window.alert("Are you sure?")
+  }
 
   return (
     <>
@@ -55,16 +90,7 @@ const Contact_copy = () => {
           </div>
           <div className="message">
             <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                console.log(e.target.value);
-                // console.log("Name: ", e.target[0].value);
-                // console.log("Email: ", e.target[1].value);
-                // console.log("Message: ", e.target[2].value);
-                // setFirstname("");
-                // setEmail("");
-                // setMessage("");
-              }}
+              onSubmit={handleSubmit} method="POST"
             >
               <h2>Send a Message</h2>
               <div className="name flex">
@@ -73,21 +99,19 @@ const Contact_copy = () => {
                   <input
                     type="text"
                     placeholder="First Name"
-                    value={firstname}
-                    onChange={(e) => {
-                      setFirstname(e.target.value);
-                    }}
+                    name="firstname"
+                    value={data.firstname}
+                    onChange={handleChange}
                   />
                 </div>
                 <div className="last-name">
                   <label htmlFor="last_name">Last Name</label>
                   <input
                     type="text"
+                    name="lastname"
                     placeholder="Last Name"
-                    value={lastname}
-                    onChange={(e) => {
-                      setLastname(e.target.value);
-                    }}
+                    value={data.lastname}
+                    onChange={handleChange}
                   />
                 </div>
               </div>
@@ -95,28 +119,24 @@ const Contact_copy = () => {
                 <input
                   type="email"
                   placeholder="Email"
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
+                  name="email"
+                  value={data.email}
+                  onChange={handleChange}
                 />
                 <input
                   type="number"
                   placeholder="Number"
-                  value={number}
-                  onChange={(e) => {
-                    setNumber(e.target.value);
-                  }}
+                  name="number"
+                  value={data.number}
+                  onChange={handleChange}
                 />
               </div>
               <textarea
                 name="message"
                 id="message"
                 placeholder="Write your message here..."
-                value={message}
-                onChange={(e) => {
-                  setMessage(e.target.value);
-                }}
+                value={data.message}
+                onChange={handleChange}
               ></textarea>
               <button className="cust-btn send-btn">Send</button>
             </form>
