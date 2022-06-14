@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import "./Navbar.css";
+import "./Navbarlogedin.css";
 
-const Navbar = () => {
-  // let navigate = useNavigate();
+const Navbarlogedin = () => {
+  let navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <div className="navbar flex">
@@ -29,14 +30,20 @@ const Navbar = () => {
         </li>
       </ul>
       <div className="sidebar flex">
-        <form action="http://localhost:8585/auth/logout">
+        {location.pathname === "/profile-form" ? null : (
+          <div className="notifier">
+            <i className="fa-solid fa-bell"></i>
+            <div className="dot">76</div>
+          </div>
+        )}
         <button
           className="cust-btn login-btn"
-          type="submit"
+          onClick={() => {
+            navigate("/dashboard");
+          }}
         >
-          Log Out
+          Dashboard
         </button>
-        </form>
         <i
           className="fa-solid fa-bars"
           onClick={() => {
@@ -61,10 +68,15 @@ const Navbar = () => {
             <Link to="/contact">Contact Us</Link>
           </li>
           <li>Help and Support</li>
+          <li>
+            <form action="http://localhost:8585/auth/logout">
+              <button type="submit">Log out</button>
+            </form>
+          </li>
         </ul>
       </div>
     </div>
   );
 };
 
-export default Navbar;
+export default Navbarlogedin;

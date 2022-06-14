@@ -1,23 +1,23 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./Login.css";
+
+import "./Signupstudent.css";
 
 const remove = () => {
-  const loginFunc = document.querySelector(".login-container");
+  const loginFunc = document.querySelector(".signup-student");
   loginFunc.classList.add("hide");
 };
 
-const Login = () => {
+const Signupstudent = () => {
   let navigate = useNavigate();
 
-  const login = () => {
-    navigate("/dashboard");
-    const loginFunc = document.querySelector(".login-container");
+  const signup = () => {
+    navigate("/profile-form");
+    const loginFunc = document.querySelector(".signup-student");
     loginFunc.classList.add("hide");
   };
-
   return (
-    <div className="login-container hide">
+    <div className="signup-student login-container hide">
       <div className="login">
         <div
           className="cross"
@@ -35,32 +35,36 @@ const Login = () => {
         </div>
         <div className="login-system">
           <div className="col">
-            <h1>Sign In</h1>
-            <form action="http://localhost:8585/auth/google">
-              <button className="signin-btn login" type="submit">
-                <img src={require("../../images/google.png")} alt="Google" />
-                Sign In with Google
-              </button>
-            </form>
-            <form action="http://localhost:8585/auth/facebook">
-              <button className="signin-btn login" type="submit">
-                <img
-                  src={require("../../images/facebook.png")}
-                  alt="Facebook"
-                />{" "}
-                Sign In with Facebook
-              </button>
-            </form>
-
+            <h1>Sign Up as Student</h1>
             <button
               className="signin-btn login"
               onClick={(e) => {
                 e.preventDefault();
-                login();
+                signup();
+              }}
+            >
+              <img src={require("../../images/google.png")} alt="Google" />
+              Sign Up with Google
+            </button>
+            <button
+              className="signin-btn login"
+              onClick={(e) => {
+                e.preventDefault();
+                signup();
+              }}
+            >
+              <img src={require("../../images/facebook.png")} alt="Facebook" />{" "}
+              Sign Up with Facebook
+            </button>
+            <button
+              className="signin-btn login"
+              onClick={(e) => {
+                e.preventDefault();
+                signup();
               }}
             >
               <img src={require("../../images/linkedin.png")} alt="Facebook" />{" "}
-              Sign In with Linkedin
+              Sign Up with Linkedin
             </button>
           </div>
           <div className="login-image col">
@@ -72,4 +76,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signupstudent;

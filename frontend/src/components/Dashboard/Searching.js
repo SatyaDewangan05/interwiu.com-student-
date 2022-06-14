@@ -4,17 +4,22 @@ import { useLocation } from "react-router";
 
 import "./Searching.css";
 
-import Navbar from "./Navbar";
+import Navbarlogedin from "./Navbarlogedin";
 
-const Searching = (userDetails) => {
-  const user=userDetails.user
+const Searching = () => {
+  // const user = userDetails.user;
   const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
+
+  const showResult = () => {
+    const searchResult = document.querySelector(".search-result-cont");
+    searchResult.classList.remove("hide");
+  };
   return (
     <>
-      <Navbar />
+      <Navbarlogedin />
       <div className="searching">
         <h1>
           Find an Interviewer of your choice for a Mock Interview and Feedback
@@ -94,7 +99,14 @@ const Searching = (userDetails) => {
                 </li>
               </ul>
             </div>
-            <button type="submit" className="cust-btn find-btn">
+            <button
+              type="submit"
+              className="cust-btn find-btn"
+              onClick={(e) => {
+                e.preventDefault();
+                showResult();
+              }}
+            >
               Find Interviewers
             </button>
           </div>
@@ -103,55 +115,28 @@ const Searching = (userDetails) => {
             <div className="search-result-cont">
               <div className="search-result-item">
                 <div className="search-result-item-info">
-                  <h4>John Doe</h4>
-                  <p>SDE, Google, California</p>
-                  <p>INR 900</p>
-                  <p>
-                    Mutually aligner time <br /> Slot: Sun(5-7 pm) <br /> Mon
-                    (3-4 pm)
-                  </p>
+                  <div className="interviewer-head">
+                    <h3>John Doe</h3>
+                    <p>SDE, Google, California</p>
+                  </div>
+                  <div className="time-preference">
+                    <p>Slots Available: </p>
+                    <ul>
+                      <li>Sun(5-7 pm)</li>
+                      <li>Mon (3-4 pm)</li>
+                      <li>Sun(5-7 pm)</li>
+                      <li>Mon (3-4 pm)</li>
+                      <li>Sun(5-7 pm)</li>
+                      <li>Mon (3-4 pm)</li>
+                    </ul>
+                  </div>
+                  <p className="price">INR 900</p>
                   <button className="cust-btn request-btn">
                     Request a Mock Interview and Feedback Session
                   </button>
                 </div>
                 <div className="search-result-item-profile">
-                  <img src={require("../../images/photo.png")} alt="photo" />
-                  <button className="cust-btn view-btn">View Profile</button>
-                </div>
-              </div>
-              <div className="search-result-item">
-                <div className="search-result-item-info">
-                  <h4>John Doe</h4>
-                  <p>SDE, Google, California</p>
-                  <p>INR 900</p>
-                  <p>
-                    Mutually aligner time <br /> Slot: Sun(5-7 pm) <br /> Mon
-                    (3-4 pm)
-                  </p>
-                  <button className="cust-btn request-btn">
-                    Request a Mock Interview and Feedback Session
-                  </button>
-                </div>
-                <div className="search-result-item-profile">
-                  <img src={require("../../images/photo.png")} alt="photo" />
-                  <button className="cust-btn view-btn">View Profile</button>
-                </div>
-              </div>
-              <div className="search-result-item">
-                <div className="search-result-item-info">
-                  <h4>John Doe</h4>
-                  <p>SDE, Google, California</p>
-                  <p>INR 900</p>
-                  <p>
-                    Mutually aligner time <br /> Slot: Sun(5-7 pm) <br /> Mon
-                    (3-4 pm)
-                  </p>
-                  <button className="cust-btn request-btn">
-                    Request a Mock Interview and Feedback Session
-                  </button>
-                </div>
-                <div className="search-result-item-profile">
-                  <img src={require("../../images/photo.png")} alt="photo" />
+                  <img src={require("../../images/photo.png")} alt="Profile" />
                   <button className="cust-btn view-btn">View Profile</button>
                 </div>
               </div>

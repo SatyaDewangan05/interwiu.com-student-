@@ -1,4 +1,4 @@
-.searching{
+.searching {
     margin: 10px 10vw;
     padding: 10px;
     background-color: white;
@@ -6,19 +6,20 @@
     position: relative;
 }
 
-.searching-cont{
+.searching-cont {
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 30% 70%;
 }
 
-.search-pref{
+.search-pref {
     padding: 10px;
 }
 
-.search-pref p{
+.search-pref p {
     margin-bottom: 5px;
 }
-.charge-limit{
+
+.charge-limit {
     margin-top: 20px;
     /* border: 1px solid grey; */
     border-radius: 8px;
@@ -26,24 +27,24 @@
     background-color: antiquewhite;
 }
 
-.searching select{
+.searching select {
     /* width: 50%; */
     padding: 10px;
     font-size: 18px;
 }
 
-.search-pref > input {
+.search-pref>input {
     width: 100%;
     padding: 10px;
     font-size: 18px;
     margin: 10px 0;
 }
 
-.preference{
+.preference {
     margin: 10px 0;
 }
 
-.find-btn{
+.find-btn {
     display: block;
     margin: 20px auto;
     border: 2px solid #2ecc71;
@@ -52,47 +53,64 @@
     color: white;
 }
 
-.find-btn:hover{
+.find-btn:hover {
     background-color: white;
     color: #2ecc71;
 }
 
-.search-result{
+.search-result {
     margin-left: 20px;
 }
 
-.search-result-cont{
+.search-result-cont {
     padding: 10px;
 }
 
-.search-result-item{
+.search-result-item {
     border: 2px solid orchid;
     border-radius: 8px;
     margin-bottom: 10px;
     width: 100%;
+    min-height: 200px;
     display: grid;
     grid-template-columns: 70% 30%;
     overflow: hidden;
     padding: 10px;
 }
 
-.search-result-item p{
+.interviewer-head {
+    margin-bottom: 10px;
+}
+
+.interviewer-head h3 {
     margin: 0;
 }
 
-.search-result-item-profile{
-    width: 100%;
+.search-result-item p {
+    margin: 0;
 }
 
-.search-result-item-profile img{
-    width: 80%; 
+.time-preference ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.time-preference ul li {}
+
+.search-result-item-profile {
+    /* width: 100%; */
+}
+
+.search-result-item-profile img {
+    display: block;
+    margin: 5px auto 10px;
+    width: 150px;
     border-radius: 50%;
     padding: 10px;
-    margin: 5px 10% 0;
     border: 2px solid greenyellow;
-}  
+}
 
-.request-btn{
+.request-btn {
     display: block;
     margin: 10px 0;
     border: 1px solid #85c15d;
@@ -101,12 +119,12 @@
     padding: 4px 8px;
 }
 
-.request-btn:hover{
+.request-btn:hover {
     background-color: white;
     color: #85c15d;
 }
 
-.view-btn{
+.view-btn {
     display: block;
     margin: 10px auto;
     border: 1px solid black;
@@ -115,7 +133,7 @@
     padding: 4px 8px;
 }
 
-.view-btn:hover{
+.view-btn:hover {
     background-color: white;
     color: black;
 }

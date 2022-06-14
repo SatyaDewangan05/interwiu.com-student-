@@ -1,9 +1,11 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+
+import Navbar from "./Navbar";
 
 import "./Contact.css";
 
-import Navbar from "./Navbar";
+import axios from "axios";
 
 const changeLink = () => {
   const links = document.querySelectorAll(".nav-item a");
@@ -17,75 +19,126 @@ const changeLink = () => {
   });
 };
 
-// const submit = (e) => {
-//   e.preventDefault();
-//   console.log("Name: ", e.target[0].value);
-//   console.log("Email: ", e.target[1].value);
-//   console.log("Message: ", e.target[2].value);
-// };
-
 const Contact = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [data, setData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    number: "",
+    message: "",
+  });
 
   useEffect(() => {
     changeLink();
   }, []);
 
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setData({
+      ...data,
+      [e.target.name]: value,
+    });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const userData = {
+      firstname: data.firstname,
+      lastname: data.lastname,
+      email: data.email,
+      number: data.number,
+      message: data.message,
+    };
+
+    axios
+      .post("http://localhost:8585/send/contactus", userData)
+      .then((response) => {
+        console.log(response.status);
+        console.log(response.data);
+      });
+    setData({
+      firstname: "",
+      lastname: "",
+      email: "",
+      number: "",
+      message: "",
+    });
+    window.alert("Are you sure?");
+  };
+
   return (
     <>
       <Navbar />
-      <div className="contact flex">
-        <div className="contact-cont flex">
-          <div className="flex-50">
-            <img src={require("../../images/map(1).png")} alt="Map" />
-          </div>
-          <div className="flex-50 contact-form-cont">
-            <h2>Contact Us</h2>
-            <div className="contact-details">
-              <p>Address: Fifth Avenue, New York</p>
-              <p>Phone: 999-123-6475</p>
-              <p>Email: contact@interwiu.com</p>
+      <div className="contact-copy flex">
+        <div className="contact-copy-cont">
+          <div className="info">
+            <h3>Contact info</h3>
+            <p>
+              <i class="fa-solid fa-location-dot"></i> Central Park, New York
+              City, New York, USA, 10019
+            </p>
+            <p>
+              <i class="fa-solid fa-envelope"></i> contact@interwiu.com
+            </p>
+            <p>
+              <i class="fa-solid fa-phone"></i> (9714)-422-792
+            </p>
+            <div className="info-socials">
+              <i class="fa-brands fa-facebook-f"></i>
+              <i class="fa-brands fa-twitter"></i>
+              <i class="fa-brands fa-instagram"></i>
+              <i class="fa-brands fa-pinterest-p"></i>
+              <i class="fa-brands fa-linkedin"></i>
             </div>
-            <form
-              className="contact-form"
-              onSubmit={(e) => {
-                e.preventDefault();
-                console.log("Name: ", e.target[0].value);
-                console.log("Email: ", e.target[1].value);
-                console.log("Message: ", e.target[2].value);
-                setName("");
-                setEmail("");
-                setMessage("");
-              }}
-            >
-              <input
-                type="text"
-                placeholder="Name"
-                value={name}
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              />
+          </div>
+          <div className="message">
+            <form onSubmit={handleSubmit} method="POST">
+              <h2>Send a Message</h2>
+              <div className="name flex">
+                <div className="first-name">
+                  <label htmlFor="first_name">First Name</label>
+                  <input
+                    type="text"
+                    placeholder="First Name"
+                    name="firstname"
+                    value={data.firstname}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="last-name">
+                  <label htmlFor="last_name">Last Name</label>
+                  <input
+                    type="text"
+                    name="lastname"
+                    placeholder="Last Name"
+                    value={data.lastname}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
+              <div className="email flex">
+                <input
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  value={data.email}
+                  onChange={handleChange}
+                />
+                <input
+                  type="number"
+                  placeholder="Number"
+                  name="number"
+                  value={data.number}
+                  onChange={handleChange}
+                />
+              </div>
               <textarea
-                placeholder="Message"
-                value={message}
-                onChange={(e) => {
-                  setMessage(e.target.value);
-                }}
+                name="message"
+                id="message"
+                placeholder="Write your message here..."
+                value={data.message}
+                onChange={handleChange}
               ></textarea>
-              <button type="submit" className="cust-btn submit-btn">
-                Submit
-              </button>
+              <button className="cust-btn send-btn">Send</button>
             </form>
           </div>
         </div>

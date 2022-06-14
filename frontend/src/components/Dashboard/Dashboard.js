@@ -4,12 +4,12 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router";
 
-import Navbar from "./Navbar";
+import Navbarlogedin from "./Navbarlogedin";
 
 import "./Dashboard.css";
 
 const Dashboard = (userDetails) => {
-  const user=userDetails.user
+  const user = userDetails.user;
   const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -17,7 +17,7 @@ const Dashboard = (userDetails) => {
   let navigate = useNavigate();
   return (
     <>
-      <Navbar />
+      <Navbarlogedin />
       <div className="dashboard">
         <h1>My Dashboard</h1>
         <button
@@ -81,12 +81,6 @@ const Dashboard = (userDetails) => {
                   If you are looking to appear for a Mock Interview of your
                   choice and receive Personalized Feedback
                 </p>
-                <button className="cust-btn dashboard-btn">
-                  Your Mock Interviews
-                </button>
-                <button className="cust-btn dashboard-btn">
-                  Mock Interview Offers
-                </button>
               </div>
               <div className="mentor">
                 <button className="cust-btn dashboard-btn">
@@ -95,12 +89,6 @@ const Dashboard = (userDetails) => {
                 <p className="cont">
                   If you are looking for a Mentor of your choice
                 </p>
-                <button className="cust-btn dashboard-btn">
-                  Your Mentorship Sessions
-                </button>
-                <button className="cust-btn dashboard-btn">
-                  Mentorship Offers
-                </button>
               </div>
             </div>
           </div>

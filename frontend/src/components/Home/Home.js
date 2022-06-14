@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import "./Home.css";
 
@@ -19,10 +19,14 @@ const changeLink = () => {
 };
 
 const Home = () => {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   useEffect(() => {
     changeLink();
   }, []);
-  let navigate = useNavigate();
 
   return (
     <>
@@ -90,7 +94,8 @@ const Home = () => {
             <button
               className="cust-btn create-account-btn"
               onClick={() => {
-                navigate("/profile-form");
+                const signupstd = document.querySelector(".signup-student");
+                signupstd.classList.remove("hide");
               }}
             >
               Create Account
@@ -104,7 +109,10 @@ const Home = () => {
             <button
               className="cust-btn create-account-btn"
               onClick={() => {
-                navigate("/profile-form");
+                const signuppro = document.querySelector(
+                  ".signup-professional"
+                );
+                signuppro.classList.remove("hide");
               }}
             >
               Create Account
