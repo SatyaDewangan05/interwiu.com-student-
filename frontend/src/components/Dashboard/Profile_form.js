@@ -7,7 +7,8 @@ import "./Profile_form.css";
 
 import Navbar from "./Navbar";
 
-const Profile_form = () => {
+const Profile_form = (userDetails) => {
+  const user=userDetails.user
   const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -23,7 +24,7 @@ const Profile_form = () => {
           <div className="profile-form-text">
             <form>
               <div className="name flex">
-                <input type="text" placeholder="First Name" />
+                <input type="text" placeholder="First Name" defaultValue={user.username} />
                 <input type="text" placeholder="Last Name" />
               </div>
               <div className="email flex">

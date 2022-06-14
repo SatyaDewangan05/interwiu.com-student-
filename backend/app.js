@@ -11,10 +11,17 @@ const session=require('express-session')
 const passport=require('passport')
 app.use(express.json());
 const misc =require('./routes/misc')
+const cors=require('cors')
 
 //port
 const port=process.env.PORT
 
+app.use(cors({
+    methods:"GET,POST,PATCH,PUT,DELETE",
+    origin:'http://localhost:3000',
+    credentials:true
+
+}))
 app.use(session({
     secret: 'somethingsecretgoeshere',
     resave: true,

@@ -3,6 +3,7 @@ const GoogleStrategy = require("passport-google-oauth20");
 const User = require("../model/user-model");
 const FacebookStrategy = require("passport-facebook").Strategy;
 const LinkedInStrategy=require("passport-linkedin-oauth2").Strategy
+const sprofile=require("../model/sprofile-page");
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -119,6 +120,8 @@ passport.use(
         } else {
           //create new entry
           // saving  a user in DB
+
+          
           new User({
             username: profile.displayName,
             Id: profile.id,
@@ -127,6 +130,18 @@ passport.use(
             .save()
             .then((newUser) => {
               console.log("new user created :", newUser);
+              new sprofile({
+                dId:profile.id ,
+                dfname: profile._json.given_name,
+                dlname: profile._json.family_name
+              }).save((err,result)=>{
+                if (err){
+                  console.log(err);
+              }
+              else{
+                  console.log(result)
+              }
+              })
               done(null, newUser);
             });
         }

@@ -1,40 +1,42 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 import "./Navbar.css";
 
 const Navbar = () => {
-  let navigate = useNavigate();
-
-  // console.log(window.location.pathname);
-
-  // if (window.location.pathname === "/dashboard") {
-  //   const navList = document.querySelector(".nav-list");
-  //   navList.style.display = "none";
-  //   const loginBtn = document.querySelector(".login-btn");
-  //   loginBtn.innerHTML = "Log Out";
-  //   console.log("dashboard");
-  // }
+  // let navigate = useNavigate();
 
   return (
     <div className="navbar flex">
       <div className="logo">
         <h1>interwiu.com</h1>
       </div>
+      <ul className="nav-list flex">
+        <li className="nav-item">
+          <Link to="/" className="active">
+            Interviewers
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/about">Pending Requests</Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/contact">Upcoming Interviews</Link>
+        </li>
+        <li className="nav-item">
+          <Link to={"/dashboard"}>Profile</Link>
+        </li>
+      </ul>
       <div className="sidebar flex">
-        <div className="notifier">
-          <i className="fa-solid fa-bell"></i>
-          <div className="dot">76</div>
-        </div>
+        <form action="http://localhost:8585/auth/logout">
         <button
           className="cust-btn login-btn"
-          onClick={() => {
-            navigate("/");
-          }}
+          type="submit"
         >
           Log Out
         </button>
+        </form>
         <i
           className="fa-solid fa-bars"
           onClick={() => {

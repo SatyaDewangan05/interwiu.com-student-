@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 import "./Navbar.css";
 
 const Navbar = () => {
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
 
   return (
     <div className="navbar flex">

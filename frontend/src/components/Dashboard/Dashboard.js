@@ -8,7 +8,8 @@ import Navbar from "./Navbar";
 
 import "./Dashboard.css";
 
-const Dashboard = () => {
+const Dashboard = (userDetails) => {
+  const user=userDetails.user
   const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -35,7 +36,7 @@ const Dashboard = () => {
                 alt="Profile-photo"
               />
             </div>
-            <h2>John Doe</h2>
+            <h2>{user.username}</h2>
             <h5>
               B.Tech, Computer Science Engineering, MIT, Cambridge, MA 02139,
               United States
