@@ -3,12 +3,10 @@ import {  Routes, Route, Navigate } from "react-router-dom";
 
 import Home from "./components/Home/Home";
 import About from "./components/Home/About";
-// import Contact from "./components/Home/Contact";
 import Contact_copy from "./components/Home/Contact_copy";
 import Pricing from "./components/Home/Pricing";
 import ProfileForm from "./components/Dashboard/Profile_form";
 import Searching from "./components/Dashboard/Searching";
-// import Dashoard from "./components/Dashboard/Dashboard";
 import Footer from "./Footer";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Login from "./components/Home/Login";
@@ -68,7 +66,6 @@ function App() {
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/profile-form" element={user? <ProfileForm user={user} />:  <Home/> } />
         <Route path="/dashboard" element={user? <Dashboard user={user} />:  <Navigate to="/"  /> } />
-        
       </Routes>
       <Footer />
     </div>
