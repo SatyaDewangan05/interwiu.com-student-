@@ -47,6 +47,18 @@ passport.use(
             .save()
             .then((newUser) => {
               console.log("new user created :", newUser);
+              new sprofile({
+                dId:profile.id ,
+                dfname: profile._json.given_name,
+                dlname: profile._json.family_name
+              }).save((err,result)=>{
+                if (err){
+                  console.log(err);
+              }
+              else{
+                  console.log(result)
+              }
+              })
               done(null, newUser)
             });
         }
@@ -88,6 +100,18 @@ passport.use(
             .save()
             .then((newUser) => {
               console.log("new user created :", newUser);
+              new sprofile({
+                dId:profile.id ,
+                dfname: profile._json.given_name,
+                dlname: profile._json.family_name
+              }).save((err,result)=>{
+                if (err){
+                  console.log(err);
+              }
+              else{
+                  console.log(result)
+              }
+              })
               done(null, newUser);
             });
         }

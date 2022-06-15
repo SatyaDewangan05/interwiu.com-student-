@@ -1,8 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router";
-
+import axios from "axios";
 import "./ProfileForm.css";
 
 import Navbarlogedin from "./Navbarlogedin";
@@ -14,15 +14,48 @@ const ProfileForm = (userDetails) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
 
-  const [inputs, setInputs] = useState({});
+  const [inputs, setInputs] = useState({
+    dfname:user.username,
+    dlname:"",
+    email:"",
+    mobNumber:"",
+    message:"",
+    institute:"",
+    program:"",
+    branch:"",
+    specialization:"",
+    profilePreference:""
+  });
   const [list, setList] = useState([]);
 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
+    setInputs({ ...inputs, [name]: value });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const userData = {
+      dfname: inputs.dfname,
+      dlname: inputs.dlname,
+      email: inputs.email,
+      mobNumber: inputs.mobNumber,
+      institute:inputs.institute,
+      program:inputs.program,
+      branch:inputs.branch,
+      profilePreference:inputs.profilePreference,
+      specialization: inputs.specialization,
+    };
+
+    axios
+      .patch(`http://localhost:8585/send/profile/${user.Id}`, userData)
+      .then((response) => {
+        console.log(response.status);
+        console.log(response.data);
+      });
+    window.alert("Are you sure?");
   };
 
   return (
@@ -31,12 +64,7 @@ const ProfileForm = (userDetails) => {
       <div className="profile-form">
         <h1>Create an Account as a Student</h1>
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            console.log(inputs);
-            console.log(list);
-            navigate("/dashboard");
-          }}
+          onSubmit={handleSubmit} 
         >
           <div className="profile-form-cont">
             <div className="profile-form-text">
@@ -45,19 +73,18 @@ const ProfileForm = (userDetails) => {
                   <label htmlFor="firstname">First Name</label>
                   <input
                     type="text"
-                    name="firstname"
-                    value={inputs.firstname || ""}
+                    name="dfname"
+                    value={inputs.dfname || user.username}
                     onChange={handleChange}
                     placeholder="First Name"
-                    defaultValue={user.username}
                   />
                 </div>
                 <div className="element">
                   <label htmlFor="lastname">Last Name</label>
                   <input
                     type="text"
-                    name="lastname"
-                    value={inputs.lastname || ""}
+                    name="dlname"
+                    value={inputs.dlname}
                     onChange={handleChange}
                     placeholder="Last Name"
                   />
@@ -69,7 +96,7 @@ const ProfileForm = (userDetails) => {
                   <input
                     type="email"
                     name="email"
-                    value={inputs.email || ""}
+                    value={inputs.email}
                     onChange={handleChange}
                     placeholder="Email"
                   />
@@ -78,8 +105,8 @@ const ProfileForm = (userDetails) => {
                   <label htmlFor="number">Mobile Number</label>
                   <input
                     type="number"
-                    name="number"
-                    value={inputs.number || ""}
+                    name="mobNumber"
+                    value={inputs.mobNumber}
                     onChange={handleChange}
                     placeholder="Mobile Number"
                   />
@@ -91,7 +118,7 @@ const ProfileForm = (userDetails) => {
                   <select
                     name="institute"
                     id="institute"
-                    value={inputs.institute || ""}
+                    value={inputs.institute}
                     onChange={handleChange}
                     placeholder="Institute"
                   >
@@ -109,7 +136,7 @@ const ProfileForm = (userDetails) => {
                   <label htmlFor="program">Program</label>
                   <select
                     name="program"
-                    value={inputs.program || ""}
+                    value={inputs.program}
                     onChange={handleChange}
                     id="program"
                   >
@@ -129,7 +156,7 @@ const ProfileForm = (userDetails) => {
                   <label htmlFor="branch">Branch</label>
                   <select
                     name="branch"
-                    value={inputs.branch || ""}
+                    value={inputs.branch}
                     onChange={handleChange}
                     id="branch"
                   >
@@ -187,6 +214,8 @@ const ProfileForm = (userDetails) => {
                     type="text"
                     name="specialization"
                     placeholder="Specialization"
+                    value={inputs.specialization}
+                    onChange={handleChange}
                   />
                 </div>
               </div>
@@ -249,7 +278,7 @@ const ProfileForm = (userDetails) => {
                 </div>
               </div>
               <button type="submit" className="cust-btn create-btn">
-                Create Account
+                Update Details
               </button>
             </div>
             <div className="profile-form-docs">

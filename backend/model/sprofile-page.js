@@ -28,15 +28,7 @@ const userSchema=new mongoose.Schema({
         type:String,
         default:""
     },
-    Branch:{
-        type:String,
-        default:""
-    },
-    sessionRecord:{
-        type:String,
-        default:""
-    },
-    description:{
+    branch:{
         type:String,
         default:""
     },

@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const remove = () => {
@@ -8,13 +7,6 @@ const remove = () => {
 };
 
 const Login = () => {
-  let navigate = useNavigate();
-
-  const login = () => {
-    navigate("/dashboard");
-    const loginFunc = document.querySelector(".login-container");
-    loginFunc.classList.add("hide");
-  };
 
   return (
     <div className="login-container hide">
@@ -47,21 +39,20 @@ const Login = () => {
                 <img
                   src={require("../../images/facebook.png")}
                   alt="Facebook"
-                />{" "}
+                />
                 Sign In with Facebook
               </button>
             </form>
 
+            <form action="http://localhost:8585/auth/linkedin">
             <button
               className="signin-btn login"
-              onClick={(e) => {
-                e.preventDefault();
-                login();
-              }}
+              type="submit"
             >
-              <img src={require("../../images/linkedin.png")} alt="Facebook" />{" "}
+              <img src={require("../../images/linkedin.png")} alt="Linkedin" />
               Sign In with Linkedin
             </button>
+            </form>
           </div>
           <div className="login-image col">
             <img src={require("../../images/group3.png")} alt="logo" />
