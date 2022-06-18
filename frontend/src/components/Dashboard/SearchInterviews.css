@@ -1,5 +1,5 @@
 .searching {
-    margin: 10px 10vw;
+    margin: 10px 15vw;
     padding: 10px;
     background-color: white;
     border-radius: 8px;
@@ -13,6 +13,8 @@
 
 .search-pref {
     padding: 10px;
+    padding-right: 20px;
+    border-right: 1px solid grey;
 }
 
 .search-pref p {
@@ -67,7 +69,7 @@
 }
 
 .search-result-item {
-    border: 2px solid orchid;
+    border: 2px solid #1265a8;
     border-radius: 8px;
     margin-bottom: 10px;
     width: 100%;
@@ -95,7 +97,17 @@
     flex-wrap: wrap;
 }
 
-.time-preference ul li {}
+.time-preference ul li {
+    display: inline-block;
+    /* width: 100%; */
+}
+
+.price{
+    background-color: bisque;
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
 
 .search-result-item-profile {
     /* width: 100%; */

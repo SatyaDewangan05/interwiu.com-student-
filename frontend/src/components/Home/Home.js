@@ -88,8 +88,9 @@ const Home = () => {
         <div className="get-started flex">
           <div className="started-item left">
             <p>
-              Are you a Student (looking for a Mock Interview (plus Feedback) or
-              a Mentor for Interview Guidance)?
+              <span style={{ fontSize: "30px" }}>Are you a Student</span> <br />{" "}
+              (looking for a Mock Interview (plus Feedback) or a Mentor for
+              Interview Guidance)?
             </p>
             <button
               className="cust-btn create-account-btn"
@@ -103,8 +104,11 @@ const Home = () => {
           </div>
           <div className="started-item right">
             <p>
-              Are you a Professional (offering a Mock Interview (plus Feedback)
-              or Mentorship for Interview Guidance)?
+              <span style={{ fontSize: "30px", color: "white" }}>
+                Are you a Professional
+              </span>{" "}
+              <br /> (offering a Mock Interview (plus Feedback) or Mentorship
+              for Interview Guidance)?
             </p>
             <button
               className="cust-btn create-account-btn"

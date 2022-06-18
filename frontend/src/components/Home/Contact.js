@@ -68,8 +68,8 @@ const Contact = () => {
   return (
     <>
       <Navbar />
-      <div className="contact-copy flex">
-        <div className="contact-copy-cont">
+      <div className="contact flex">
+        <div className="contact-cont">
           <div className="info">
             <h3>Contact info</h3>
             <p>

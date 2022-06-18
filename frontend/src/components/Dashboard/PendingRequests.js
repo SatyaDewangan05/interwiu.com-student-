@@ -1,10 +1,26 @@
 import React from "react";
+import { useEffect } from "react";
 
 import Navbarlogedin from "./Navbarlogedin";
 
-import "./Interview.css";
+import "./PendingRequests.css";
 
-const Interview = () => {
+const changeLink = () => {
+  const links = document.querySelectorAll(".nav-item a");
+  links.forEach((link) => {
+    if (link.classList.contains("active")) {
+      link.classList.remove("active");
+    }
+    if (link.innerHTML === "Pending Requests") {
+      link.classList.add("active");
+    }
+  });
+};
+
+const PendingRequests = () => {
+  useEffect(() => {
+    changeLink();
+  }, []);
   return (
     <>
       <Navbarlogedin />
@@ -68,4 +84,4 @@ const Interview = () => {
   );
 };
 
-export default Interview;
+export default PendingRequests;

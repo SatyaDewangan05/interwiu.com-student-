@@ -7,11 +7,11 @@
 .get-started{
     text-align: center;
     padding-top: 20px;
-    background: linear-gradient(to right, #D3B5E5 50%, #FFD4DB 50%);
+    background: linear-gradient(to right, #F5DA2E 50%, #00b0f0 50%);
 }
 
 .get-started .left{
-    color: white;
+    color: black;
 }
 
 .started-item{
@@ -22,16 +22,26 @@
     font-size: 24px;
 }
 
+.right{
+    color: white;
+}
+
 .create-account-btn{
-    border: 2px solid #00BBF0;
+    /* border: 2px solid #00BBF0; */
+    background-color: #3C6E71;
+    color: white;
     padding: 8px 12px;
     font-size: 24px;
+    margin-bottom: 30px;
 }
 
 .create-account-btn:hover{
-    background-color: #00BBF0;
+    background-color: #000;
     color: white;
 }
+
+
+/* .left */
 
 
 @media only screen and (max-width: 900px) {

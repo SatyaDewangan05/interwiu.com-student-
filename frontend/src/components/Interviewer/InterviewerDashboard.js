@@ -4,19 +4,18 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router";
 
-import Navbarlogedin from "./Navbarlogedin";
+import "./InterviewDashboard.css";
 
-import "./Dashboard.css";
-const Dashboard = (userDetails) => {
-  const user = userDetails.user;
+const InterviewerDashboard = () => {
   const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
   let navigate = useNavigate();
+
   return (
     <>
-      <Navbarlogedin />
+      {/* <Navbarlogedin /> */}
       <div className="dashboard">
         <h1>My Dashboard</h1>
         <button
@@ -35,20 +34,11 @@ const Dashboard = (userDetails) => {
                 alt="Profile-photo"
               />
             </div>
-            <h2>{user.username}</h2>
             <h5>
-              B.Tech, <br /> Computer Science Engineering, MIT, Cambridge, MA
-              02139, United States
+              B.Tech, Computer Science Engineering, MIT, Cambridge, MA 02139,
+              United States
             </h5>
-            <button className="cust-btn resume-btn">
-              <a
-                href={require("../../images/satyaprakash_generated_resume.pdf")}
-                target="_black"
-                className="resume-a"
-              >
-                <i class="fa-solid fa-link"></i> Resume
-              </a>
-            </button>
+            <Link to="#">Resume</Link>
             {/* <p>Session Recording Proference: Yes</p> */}
           </div>
           <div className="dashboard-desc">
@@ -74,30 +64,6 @@ const Dashboard = (userDetails) => {
               <li>Web(9 AM - 5PM)</li>
               <li>No Specific Preferences(Only when ticked)</li>
             </ul>
-            <div className="dashboard-btns">
-              <div className="interviewer">
-                <button
-                  className="cust-btn dashboard-btn"
-                  onClick={() => {
-                    navigate("/searching");
-                  }}
-                >
-                  Find an Interviewer
-                </button>
-                <p className="cont">
-                  If you are looking to appear for a Mock Interview of your
-                  choice and receive Personalized Feedback
-                </p>
-              </div>
-              {/* <div className="mentor">
-                <button className="cust-btn dashboard-btn">
-                  Find a Mentor
-                </button>
-                <p className="cont">
-                  If you are looking for a Mentor of your choice
-                </p>
-              </div> */}
-            </div>
           </div>
         </div>
       </div>
@@ -105,4 +71,4 @@ const Dashboard = (userDetails) => {
   );
 };
 
-export default Dashboard;
+export default InterviewerDashboard;

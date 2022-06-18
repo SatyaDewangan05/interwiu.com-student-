@@ -6,13 +6,15 @@ import About from "./components/Home/About";
 import Contact from "./components/Home/Contact";
 import Pricing from "./components/Home/Pricing";
 import ProfileForm from "./components/Dashboard/ProfileForm";
-import Searching from "./components/Dashboard/Searching";
+import SearchInterviews from "./components/Dashboard/SearchInterviews";
 import Footer from "./Footer";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Login from "./components/Home/Login";
 import Signupstudent from "./components/Home/Signupstudent";
 import Signupprofessional from "./components/Home/Signupprofessional";
-import Interview from "./components/Dashboard/Interview";
+import PendingRequests from "./components/Dashboard/PendingRequests";
+import UpcomingInterviews from "./components/Dashboard/UpcomingInterviews";
+import InterviewerProfileForm from "./components/Interviewer/InterviewerProfileForm";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -71,7 +73,10 @@ function App() {
       <Signupstudent />
       <Signupprofessional />
       <Routes>
-        <Route path="/" element={user ? <Searching user={user} /> : <Home />} />
+        <Route
+          path="/"
+          element={user ? <SearchInterviews user={user} /> : <Home />}
+        />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/pricing" element={<Pricing />} />
@@ -83,8 +88,13 @@ function App() {
           path="/dashboard"
           element={user ? <Dashboard user={user} /> : <Navigate to="/" />}
         />
-        <Route path="/searching" element={<Searching />} />
-        <Route path="/interview" element={<Interview />} />
+        <Route path="/searching" element={<SearchInterviews />} />
+        <Route path="/pending-requests" element={<PendingRequests />} />
+        <Route path="/upcoming-interviews" element={<UpcomingInterviews />} />
+        <Route
+          path="/interviewer-profile-form"
+          element={<InterviewerProfileForm />}
+        />
       </Routes>
       <Footer />
     </div>

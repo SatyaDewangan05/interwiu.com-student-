@@ -15,15 +15,15 @@ const Navbarlogedin = () => {
       </div>
       <ul className="nav-list flex">
         <li className="nav-item">
-          <Link to="/" className="active">
-            Interviewers
+          <Link to="/searching" className="active">
+            Search Interviews
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="/about">Pending Requests</Link>
+          <Link to="/pending-requests">Pending Requests</Link>
         </li>
         <li className="nav-item">
-          <Link to="/contact">Upcoming Interviews</Link>
+          <Link to="/upcoming-interviews">Upcoming Interviews</Link>
         </li>
         <li className="nav-item">
           <Link to={"/dashboard"}>Profile</Link>

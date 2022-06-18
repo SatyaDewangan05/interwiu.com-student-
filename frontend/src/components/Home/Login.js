@@ -7,7 +7,6 @@ const remove = () => {
 };
 
 const Login = () => {
-
   return (
     <div className="login-container hide">
       <div className="login">
@@ -45,13 +44,13 @@ const Login = () => {
             </form>
 
             <form action="http://localhost:8585/auth/linkedin">
-            <button
-              className="signin-btn login"
-              type="submit"
-            >
-              <img src={require("../../images/linkedin.png")} alt="Linkedin" />
-              Sign In with Linkedin
-            </button>
+              <button className="signin-btn login" type="submit">
+                <img
+                  src={require("../../images/linkedin.png")}
+                  alt="Linkedin"
+                />
+                Sign In with Linkedin
+              </button>
             </form>
           </div>
           <div className="login-image col">

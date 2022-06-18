@@ -2,16 +2,31 @@ import React from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router";
 
-import "./Searching.css";
+import "./SearchInterviews.css";
 
 import Navbarlogedin from "./Navbarlogedin";
 
-const Searching = () => {
+const changeLink = () => {
+  const links = document.querySelectorAll(".nav-item a");
+  links.forEach((link) => {
+    if (link.classList.contains("active")) {
+      link.classList.remove("active");
+    }
+    if (link.innerHTML === "Search Interviews") {
+      link.classList.add("active");
+    }
+  });
+};
+
+const SearchInterviews = () => {
   // const user = userDetails.user;
   const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
+  useEffect(() => {
+    changeLink();
+  }, []);
 
   const showResult = () => {
     const searchResult = document.querySelector(".search-result-cont");
@@ -124,10 +139,11 @@ const Searching = () => {
                     <ul>
                       <li>Sun(5-7 pm)</li>
                       <li>Mon (3-4 pm)</li>
-                      <li>Sun(5-7 pm)</li>
-                      <li>Mon (3-4 pm)</li>
-                      <li>Sun(5-7 pm)</li>
-                      <li>Mon (3-4 pm)</li>
+                      <li>Tues(5-7 pm)</li>
+                      <li>Wed (3-4 pm)</li>
+                      <li>Thur(5-7 pm)</li>
+                      <li>Fri (3-4 pm)</li>
+                      <li>Sat(5-7 pm)</li>
                     </ul>
                   </div>
                   <p className="price">INR 900</p>
@@ -148,4 +164,4 @@ const Searching = () => {
   );
 };
 
-export default Searching;
+export default SearchInterviews;
