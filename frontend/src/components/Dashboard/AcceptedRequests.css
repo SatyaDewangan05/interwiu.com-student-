@@ -1,0 +1,14 @@
+.request-accepted-btn{
+    display: block;
+    margin: 10px 0;
+    border: 1px solid #00baf2;
+    background-color: #00baf2;
+    color: white;
+    padding: 4px 8px;
+    margin-left: 10px;
+}
+
+.request-accepted-btn:hover{
+    color: #00baf2;
+    background-color: white;
+}

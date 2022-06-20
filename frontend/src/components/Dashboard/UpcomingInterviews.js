@@ -24,58 +24,118 @@ const UpcomingInterviews = () => {
   return (
     <>
       <Navbarlogedin />
-      <div className="interview">
+      <div className="upcoming-interview">
+        <div className="inteviews-container"></div>
         <h1>Your Mock Interviews and Feedback Sessions</h1>
         <div className="interview-cont">
-          <div className="interviews">
-            <div className="col-20">
-              <img src={require("../../images/photo.png")} alt="" />
+          <div className="interviews-list">
+            <div className="interview-item">
+              <div className="interview-item-profile">
+                <img src={require("../../images/photo.png")} alt="Profile" />
+                <button className="cust-btn view-btn">View Profile</button>
+              </div>
+              <div className="interview-item-info">
+                <div className="interviewer-head">
+                  <h2>John Doe</h2>
+                  <p>SDE, Google, California</p>
+                </div>
+                <div className="time-preference">
+                  <p>Interview Slot: 20 June, 2022 [Sun] [5:00PM - 5:45PM]</p>
+                </div>
+                <div className="time-preference">
+                  <p>Profile Preference: Data Science</p>
+                </div>
+                <div className="search-result-item-btns flex">
+                  <div className="flex">
+                    <button
+                      type="button"
+                      style={{ backgroundColor: "green" }}
+                      className="cust-btn request-sent-btn"
+                    >
+                      Confirmed
+                    </button>
+                    <button
+                      type="button"
+                      style={{ backgroundColor: "white" }}
+                      className="cust-btn join-meeting-btn"
+                    >
+                      Join Meeting
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="col-80">
-              <div>
-                <h3>John Doe</h3>
-                <p>Sr. Manager, Intel, Bangalore</p>
+            <div className="interview-item">
+              <div className="interview-item-profile">
+                <img src={require("../../images/photo.png")} alt="Profile" />
+                <button className="cust-btn view-btn">View Profile</button>
               </div>
-              <div>
-                <h4>Charges: INR 1200 ONLY</h4>
-                <p>Sun(5:00pm-5:30pm)</p>
+              <div className="interview-item-info">
+                <div className="interviewer-head">
+                  <h2>John Doe</h2>
+                  <p>SDE, Google, California</p>
+                </div>
+                <div className="time-preference">
+                  <p>Interview Slot: 20 June, 2022 [Sun] [5:00PM - 5:45PM]</p>
+                </div>
+                <div className="time-preference">
+                  <p>Profile Preference: Data Science</p>
+                </div>
+                <div className="search-result-item-btns flex">
+                  <div className="flex">
+                    <button
+                      type="button"
+                      style={{ backgroundColor: "green" }}
+                      className="cust-btn request-sent-btn"
+                    >
+                      Confirmed
+                    </button>
+                    <button
+                      type="button"
+                      style={{ backgroundColor: "white" }}
+                      className="cust-btn join-meeting-btn"
+                    >
+                      Join Meeting
+                    </button>
+                  </div>
+                </div>
               </div>
-              <h4>Profile: Data Science</h4>
-              <button className="cust-btn request-btn">Request Sent</button>
             </div>
-          </div>
-          <div className="interviews">
-            <div className="col-20">
-              <img src={require("../../images/photo.png")} alt="" />
-            </div>
-            <div className="col-80">
-              <div>
-                <h3>John Doe</h3>
-                <p>Sr. Manager, Intel, Bangalore</p>
+            <div className="interview-item">
+              <div className="interview-item-profile">
+                <img src={require("../../images/photo.png")} alt="Profile" />
+                <button className="cust-btn view-btn">View Profile</button>
               </div>
-              <div>
-                <h4>Charges: INR 1200 ONLY</h4>
-                <p>Sun(5:00pm-5:30pm)</p>
+              <div className="interview-item-info">
+                <div className="interviewer-head">
+                  <h2>John Doe</h2>
+                  <p>SDE, Google, California</p>
+                </div>
+                <div className="time-preference">
+                  <p>Interview Slot: 20 June, 2022 [Sun] [5:00PM - 5:45PM]</p>
+                </div>
+                <div className="time-preference">
+                  <p>Profile Preference: Data Science</p>
+                </div>
+                <div className="search-result-item-btns flex">
+                  <div className="flex">
+                    <button
+                      type="button"
+                      style={{ backgroundColor: "green" }}
+                      className="cust-btn request-sent-btn"
+                    >
+                      Confirmed
+                    </button>
+                    <button
+                      type="button"
+                      style={{ backgroundColor: "white" }}
+                      className="cust-btn join-meeting-btn"
+                    >
+                      Join Meeting
+                    </button>
+                  </div>
+                </div>
               </div>
-              <h4>Profile: Data Science</h4>
-              <button className="cust-btn request-btn">Request Sent</button>
-            </div>
-          </div>
-          <div className="interviews">
-            <div className="col-20">
-              <img src={require("../../images/photo.png")} alt="" />
-            </div>
-            <div className="col-80">
-              <div>
-                <h3>John Doe</h3>
-                <p>Sr. Manager, Intel, Bangalore</p>
-              </div>
-              <div>
-                <h4>Charges: INR 1200 ONLY</h4>
-                <p>Sun(5:00pm-5:30pm)</p>
-              </div>
-              <h4>Profile: Data Science</h4>
-              <button className="cust-btn request-btn">Request Sent</button>
             </div>
           </div>
         </div>

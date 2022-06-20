@@ -1,0 +1,33 @@
+.dashboard-info{
+    margin-top: 150px;
+}
+
+
+.dashboard-btns {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 20px;
+    padding: 20px 20px 0;
+}
+
+.dashboard-btn {
+    display: block;
+    /* margin: 0 auto; */
+    border: 2px solid #1265a8;
+    background-color: #1265a8;
+    color: white;
+    padding: 8px 16px;
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.dashboard-btn:hover {
+    background-color: white;
+    color: #1265a8;
+}
+
+.dashboard-btns .cont {
+    height: 50px;
+    text-align: center;
+}

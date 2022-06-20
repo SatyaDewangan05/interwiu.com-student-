@@ -18,7 +18,6 @@ const Dashboard = (userDetails) => {
     <>
       <Navbarlogedin />
       <div className="dashboard">
-        <h1>My Dashboard</h1>
         <button
           className="cust-btn edit-btn"
           onClick={() => {
@@ -52,6 +51,7 @@ const Dashboard = (userDetails) => {
             {/* <p>Session Recording Proference: Yes</p> */}
           </div>
           <div className="dashboard-desc">
+            <h1 className="head">My Dashboard</h1>
             <p className="desc-head">Description: </p>
             <p className="desc-item">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima

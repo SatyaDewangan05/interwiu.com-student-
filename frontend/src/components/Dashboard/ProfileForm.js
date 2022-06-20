@@ -30,14 +30,9 @@ const ProfileForm = (userDetails) => {
     }
   };
 
-  const [days, setDays] = useState({
-    dfname: "user.username",
-    dlname: "ger",
-    email: "ger",
-  });
-  // const [array, setArray] = useState ([])
-  const arrayDays = JSON.stringify(days);
-  console.log(arrayDays);
+  const [days, setDays] = useState({});
+  // const arrayDays = JSON.stringify(days);
+  // console.log(arrayDays);
 
   const handleDaysChange = (e) => {
     const day = e.target.id;
@@ -99,7 +94,7 @@ const ProfileForm = (userDetails) => {
     <>
       <Navbarlogedin />
       <div className="profile-form">
-        <h1>Create An Account As A Student</h1>
+        <h1>Create an Account as a Student</h1>
         <form onSubmit={handleSubmit}>
           {/* Profile Form Container */}
 
@@ -111,17 +106,22 @@ const ProfileForm = (userDetails) => {
 
               <div className="name cust-row flex">
                 <div className="element">
-                  <label htmlFor="firstname">First Name</label>
+                  <label htmlFor="firstname">
+                    First Name<span style={{ color: "red" }}>*</span>
+                  </label>
                   <input
                     type="text"
                     name="dfname"
+                    required
                     value={inputs.dfname || user.username}
                     onChange={handleChange}
                     placeholder="First Name"
                   />
                 </div>
                 <div className="element">
-                  <label htmlFor="lastname">Last Name</label>
+                  <label htmlFor="lastname">
+                    Last Name<span style={{ color: "red" }}>*</span>
+                  </label>
                   <input
                     type="text"
                     name="dlname"
@@ -136,7 +136,9 @@ const ProfileForm = (userDetails) => {
 
               <div className="email cust-row flex">
                 <div className="element">
-                  <label htmlFor="email">Email</label>
+                  <label htmlFor="email">
+                    Email<span style={{ color: "red" }}>*</span>
+                  </label>
                   <input
                     type="email"
                     name="email"
@@ -146,7 +148,9 @@ const ProfileForm = (userDetails) => {
                   />
                 </div>
                 <div className="element">
-                  <label htmlFor="number">Mobile Number</label>
+                  <label htmlFor="number">
+                    Mobile Number<span style={{ color: "red" }}>*</span>
+                  </label>
                   <input
                     type="number"
                     name="mobNumber"
