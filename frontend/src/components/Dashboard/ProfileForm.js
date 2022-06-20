@@ -30,6 +30,30 @@ const ProfileForm = (userDetails) => {
     }
   };
 
+  const [days, setDays] = useState({
+    dfname: "user.username",
+    dlname: "ger",
+    email: "ger",
+  });
+  // const [array, setArray] = useState ([])
+  const arrayDays = JSON.stringify(days);
+  console.log(arrayDays);
+
+  const handleDaysChange = (e) => {
+    const day = e.target.id;
+    const bolValue = e.target.checked;
+    setDays({ ...days, [day]: bolValue });
+  };
+
+  const [time, setTime] = useState({});
+
+  const handleTimeChange = (e) => {
+    const timing = e.target.id;
+    setTime({ ...time, [timing]: e.target.value });
+  };
+
+  const [list, setList] = useState([]);
+
   const [inputs, setInputs] = useState({
     dfname: user.username,
     dlname: "",
@@ -42,7 +66,6 @@ const ProfileForm = (userDetails) => {
     specialization: "",
     profilePreference: "",
   });
-  const [list, setList] = useState([]);
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -206,7 +229,7 @@ const ProfileForm = (userDetails) => {
                 </div>
                 <div className="element">
                   <label htmlFor="specialization">
-                    Specialization (If applicable)
+                    Specialization (if applicable)
                   </label>
                   <input
                     type="text"
@@ -256,7 +279,7 @@ const ProfileForm = (userDetails) => {
 
               <div className="profilepref cust-row flex">
                 <div className="element">
-                  <label htmlFor="profilepref">Profile Preference</label>
+                  <label htmlFor="profilepref">Profile Preferences</label>
                   <select
                     name="profilepref"
                     value={""}
@@ -267,7 +290,7 @@ const ProfileForm = (userDetails) => {
                     id="profile-pref"
                   >
                     <option value="" disabled hidden>
-                      Profile Preferences
+                      Select Profile Preferences
                     </option>
                     <option value="Data Science">Data Science</option>
                     <option value="Software">Software</option>
@@ -307,16 +330,55 @@ const ProfileForm = (userDetails) => {
 
               <div className="time-preference">
                 <div className="element">
-                  <p>General Day and Time preferences for sessions</p>
+                  <p>General Day and Time Preferences for Sessions</p>
                   <div className="element-item">
                     <input type="checkbox" name="preference" id="preference" />
-                    <label htmlFor="preference"> No specific Preferences</label>
-                    <button type="button" className="cust-btn add-time-btn">
-                      Add Time Preference
-                    </button>
+                    <label htmlFor="preference"> No Specific Preferences</label>
                   </div>
+                  <div className="pref-item">
+                    <ul>
+                      {/* {arrayDays !== []
+                        ? arrayDays.map((item) => {
+                            return <li>{item}</li>;
+                          })
+                        : null} */}
+                      <li>
+                        Monday - 12:00 to 13:00{" "}
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.target.parentElement.parentElement.remove();
+                          }}
+                          className="cust-btn trash-btn"
+                        >
+                          <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                  <button
+                    type="button"
+                    className="cust-btn add-time-btn"
+                    onClick={() => {
+                      const addPref = document.querySelector(".popup");
+                      addPref.classList.remove("hide");
+                    }}
+                  >
+                    Add Time Preference
+                  </button>
                 </div>
-                <div className="popup flex">
+                <div className="popup hide">
+                  <button
+                    type="button"
+                    className="cust-btn close-btn"
+                    onClick={() => {
+                      const addPref = document.querySelector(".popup");
+                      addPref.classList.add("hide");
+                    }}
+                  >
+                    <i className="fa-solid fa-circle-xmark"></i>
+                  </button>
+
                   {/* ------------------------- */}
                   <div className="select flex">
                     <div class="multiselect">
@@ -328,41 +390,81 @@ const ProfileForm = (userDetails) => {
                         }}
                       >
                         <select>
-                          <option>Select an option</option>
+                          <option>Select Days</option>
                         </select>
                         <div class="overSelect"></div>
                       </div>
                       <div id="checkboxes">
                         <label for="monday">
-                          <input type="checkbox" id="monday" />
+                          <input
+                            type="checkbox"
+                            checked={days["monday"] || false}
+                            onChange={handleDaysChange}
+                            id="monday"
+                          />
                           Monday
                         </label>
-                        <label for="tusday">
-                          <input type="checkbox" id="tusday" />
+                        <label for="tuesday">
+                          <input
+                            type="checkbox"
+                            checked={days["tuesday"] || false}
+                            onChange={handleDaysChange}
+                            id="tuesday"
+                          />
                           Tuesday
                         </label>
                         <label for="wednesday">
-                          <input type="checkbox" id="wednesday" />
+                          <input
+                            type="checkbox"
+                            checked={days["wednesday"] || false}
+                            onChange={handleDaysChange}
+                            id="wednesday"
+                          />
                           Wednesday
                         </label>
-                        <label for="thrusday">
-                          <input type="checkbox" id="thrusday" />
+                        <label for="thursday">
+                          <input
+                            type="checkbox"
+                            checked={days["thursday"] || false}
+                            onChange={handleDaysChange}
+                            id="thursday"
+                          />
                           Thrusday
                         </label>
                         <label for="friday">
-                          <input type="checkbox" id="friday" />
+                          <input
+                            type="checkbox"
+                            checked={days["friday"] || false}
+                            onChange={handleDaysChange}
+                            id="friday"
+                          />
                           Friday
                         </label>
                         <label for="saturday">
-                          <input type="checkbox" id="saturday" />
+                          <input
+                            type="checkbox"
+                            checked={days["saturday"] || false}
+                            onChange={handleDaysChange}
+                            id="saturday"
+                          />
                           Saturday
                         </label>
                         <label for="sunday">
-                          <input type="checkbox" id="sunday" />
+                          <input
+                            type="checkbox"
+                            checked={days["sunday"] || false}
+                            onChange={handleDaysChange}
+                            id="sunday"
+                          />
                           Sunday
                         </label>
-                        <label for="cust">
-                          <input type="checkbox" id="cust" />
+                        <label for="custom">
+                          <input
+                            type="checkbox"
+                            checked={days["custom"] || false}
+                            onChange={handleDaysChange}
+                            id="custom"
+                          />
                           Custom
                         </label>
                       </div>
@@ -370,14 +472,48 @@ const ProfileForm = (userDetails) => {
                     {/* -------------------- */}
                     <div className="time">
                       <h5>Choose Time</h5>
-                      <input type="time" name="time" id="time" />
+                      <div className="flex">
+                        <div>
+                          <label htmlFor="from">From</label>
+                          <input
+                            type="time"
+                            value={time["from"] || "00:00"}
+                            onChange={handleTimeChange}
+                            name="from"
+                            id="from"
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="to">To</label>
+                          <input
+                            type="time"
+                            name="to"
+                            value={time["to"] || "00:00"}
+                            onChange={handleTimeChange}
+                            id="to"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      console.log(
+                        "Days: " +
+                          JSON.stringify(days) +
+                          "Time: " +
+                          JSON.stringify(time)
+                      );
+                      const addPref = document.querySelector(".popup");
+                      addPref.classList.add("hide");
+                    }}
+                    className="cust-btn add-btn"
+                  >
+                    Add
+                  </button>
                 </div>
               </div>
-              <button type="submit" className="cust-btn create-btn">
-                Update Details
-              </button>
             </div>
 
             {/* Col-30 */}
@@ -409,13 +545,6 @@ const ProfileForm = (userDetails) => {
 
               <div className="profile-resume">
                 <h4>Resume</h4>
-                {/* <embed
-                  src=""
-                  height="300px"
-                  frameBorder="0"
-                  className="pro-resume"
-                  style={{ display: "none" }}
-                /> */}
                 <button className="cust-btn resume-btn">
                   <a
                     href="#"
@@ -430,7 +559,7 @@ const ProfileForm = (userDetails) => {
                   type="file"
                   name="resume"
                   id="resume"
-                  accept="text/docs, pdf"
+                  accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                   value={inputs.resume}
                   onChange={(e) => {
                     handleChange(e);
@@ -442,6 +571,9 @@ const ProfileForm = (userDetails) => {
               </div>
             </div>
           </div>
+          <button type="submit" className="cust-btn create-btn">
+            Update Details
+          </button>
         </form>
       </div>
     </>

@@ -20,14 +20,20 @@ const Navbarlogedin = () => {
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="/pending-requests">Pending Requests</Link>
+          <Link to="/pending-requests">Sent Requests</Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/pending-requests">Accepted Requests</Link>
         </li>
         <li className="nav-item">
           <Link to="/upcoming-interviews">Upcoming Interviews</Link>
         </li>
         <li className="nav-item">
-          <Link to={"/dashboard"}>Profile</Link>
+          <Link to="/pending-requests">Completed Interviews</Link>
         </li>
+        {/* <li className="nav-item">
+          <Link to={"/dashboard"}>Profile</Link>
+        </li> */}
       </ul>
       <div className="sidebar flex">
         {location.pathname === "/profile-form" ? null : (

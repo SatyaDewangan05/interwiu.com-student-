@@ -5,38 +5,25 @@
     text-align: left;
 }
 
-.about-head h1{
-    position: fixed;
-    top: 50%;
-    left: 15%;
-}
-
-
 .about-cont{
-    /* height: 80vh; */
     width: 90vw;
     border-radius: 8px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     background-color: rgb(248, 248, 248);
-    padding: 10px;
+    padding: 30px;
 }
 
 .about-cont h1{
-    font-size: 96px;
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 20px;
+    /* text-decoration: underline; */
 }
 
-.about-cont .flex-50{
-    width: 50%;
+.about-cont p{
+    margin-bottom: 20px;
 }
 
-.about-icon *{
-    padding: 0 10px;
-    font-size: 18px;
-}
-
-.about-icon *:hover{
-    color: rgb(0, 132, 255);
-}
 
 @media only screen and (max-width: 900px) {
     .about-cont h1{

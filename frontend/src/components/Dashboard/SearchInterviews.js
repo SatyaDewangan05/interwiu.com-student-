@@ -42,9 +42,16 @@ const SearchInterviews = () => {
         </h1>
         <div className="searching-cont">
           <div className="search-pref">
+            <div className="as-per flex">
+              <input type="checkbox" name="pref" id="pref" />
+              <label htmlFor="pref">
+                As per my <span style={{ color: "#1265a8" }}>Preference</span>{" "}
+              </label>
+            </div>
+            <label htmlFor="profile">Profile Preferences</label>
             <select name="profile" id="profile">
               <option value="" disabled selected hidden>
-                Profile Preferences
+                Select Profile Preferences
               </option>
               <option value="ds">Data Science</option>
               <option value="software">Software</option>
@@ -53,22 +60,30 @@ const SearchInterviews = () => {
               <option value="analytics">Analytics</option>
             </select>
             <div className="charge-limit">
-              <p>Charge Limits: </p>
-              <div className="below">
+              <h4>Charge Limits </h4>
+              <div className="below flex">
                 <input type="checkbox" name="charge" id="below" />
                 <label htmlFor="below">Below INR</label>
-                <input type="number" />
+                <input
+                  type="number"
+                  defaultValue={"500"}
+                  className="charge-limit-box"
+                />
               </div>
-              <div className="above">
+              <div className="above flex">
                 <input type="checkbox" name="charge" id="above" />
                 <label htmlFor="above">Above INR</label>
-                <input type="number" />
+                <input
+                  type="number"
+                  defaultValue={"2000"}
+                  className="charge-limit-box"
+                />
               </div>
             </div>
-            <input
-              type="text"
-              placeholder="Desired Organization of Interviewer"
-            />
+            <div className="org">
+              <label htmlFor="org">Desired Organization of Interviewer</label>
+              <input type="text" id="org" placeholder="Organization" />
+            </div>
             <div className="preference">
               <label htmlFor="preference">
                 Mock Interview Recording Preference:{" "}
@@ -122,38 +137,150 @@ const SearchInterviews = () => {
                 showResult();
               }}
             >
-              Find Interviewers
+              Apply Preference
             </button>
           </div>
           <div className="search-result">
-            <h3>Search result:</h3>
+            <h3>Search result</h3>
             <div className="search-result-cont">
               <div className="search-result-item">
-                <div className="search-result-item-info">
+                <div className="search-result-item-head flex">
                   <div className="interviewer-head">
                     <h3>John Doe</h3>
                     <p>SDE, Google, California</p>
                   </div>
+                  <div className="search-result-item-profile">
+                    <img
+                      src={require("../../images/photo.png")}
+                      alt="Profile"
+                    />
+                    <button className="cust-btn view-btn">View Profile</button>
+                  </div>
+                </div>
+                <div className="search-result-item-desc">
                   <div className="time-preference">
                     <p>Slots Available: </p>
-                    <ul>
-                      <li>Sun(5-7 pm)</li>
+                    <ul className="slot-list">
+                      <li>Sun (5-7 pm)</li>
                       <li>Mon (3-4 pm)</li>
-                      <li>Tues(5-7 pm)</li>
+                      <li>Tues (5-7 pm)</li>
                       <li>Wed (3-4 pm)</li>
                       <li>Thur(5-7 pm)</li>
                       <li>Fri (3-4 pm)</li>
-                      <li>Sat(5-7 pm)</li>
+                      <li>Sat (5-7 pm)</li>
                     </ul>
                   </div>
-                  <p className="price">INR 900</p>
-                  <button className="cust-btn request-btn">
-                    Request a Mock Interview and Feedback Session
-                  </button>
+                  <div className="search-result-item-btns flex">
+                    <button type="button" className="cust-btn request-btn">
+                      Request a Mock Interview and Feedback Session
+                    </button>
+                    <p className="price">INR 900</p>
+                  </div>
                 </div>
-                <div className="search-result-item-profile">
-                  <img src={require("../../images/photo.png")} alt="Profile" />
-                  <button className="cust-btn view-btn">View Profile</button>
+              </div>
+              <div className="search-result-item">
+                <div className="search-result-item-head flex">
+                  <div className="interviewer-head">
+                    <h3>John Doe</h3>
+                    <p>SDE, Google, California</p>
+                  </div>
+                  <div className="search-result-item-profile">
+                    <img
+                      src={require("../../images/photo.png")}
+                      alt="Profile"
+                    />
+                    <button className="cust-btn view-btn">View Profile</button>
+                  </div>
+                </div>
+                <div className="search-result-item-desc">
+                  <div className="time-preference">
+                    <p>Slots Available: </p>
+                    <ul className="slot-list">
+                      <li>Sun (5-7 pm)</li>
+                      <li>Mon (3-4 pm)</li>
+                      <li>Tues (5-7 pm)</li>
+                      <li>Wed (3-4 pm)</li>
+                      <li>Thur(5-7 pm)</li>
+                      <li>Fri (3-4 pm)</li>
+                      <li>Sat (5-7 pm)</li>
+                    </ul>
+                  </div>
+                  <div className="search-result-item-btns flex">
+                    <button type="button" className="cust-btn request-btn">
+                      Request a Mock Interview and Feedback Session
+                    </button>
+                    <p className="price">INR 900</p>
+                  </div>
+                </div>
+              </div>
+              <div className="search-result-item">
+                <div className="search-result-item-head flex">
+                  <div className="interviewer-head">
+                    <h3>John Doe</h3>
+                    <p>SDE, Google, California</p>
+                  </div>
+                  <div className="search-result-item-profile">
+                    <img
+                      src={require("../../images/photo.png")}
+                      alt="Profile"
+                    />
+                    <button className="cust-btn view-btn">View Profile</button>
+                  </div>
+                </div>
+                <div className="search-result-item-desc">
+                  <div className="time-preference">
+                    <p>Slots Available: </p>
+                    <ul className="slot-list">
+                      <li>Sun (5-7 pm)</li>
+                      <li>Mon (3-4 pm)</li>
+                      <li>Tues (5-7 pm)</li>
+                      <li>Wed (3-4 pm)</li>
+                      <li>Thur(5-7 pm)</li>
+                      <li>Fri (3-4 pm)</li>
+                      <li>Sat (5-7 pm)</li>
+                    </ul>
+                  </div>
+                  <div className="search-result-item-btns flex">
+                    <button type="button" className="cust-btn request-btn">
+                      Request a Mock Interview and Feedback Session
+                    </button>
+                    <p className="price">INR 900</p>
+                  </div>
+                </div>
+              </div>
+              <div className="search-result-item">
+                <div className="search-result-item-head flex">
+                  <div className="interviewer-head">
+                    <h3>John Doe</h3>
+                    <p>SDE, Google, California</p>
+                  </div>
+                  <div className="search-result-item-profile">
+                    <img
+                      src={require("../../images/photo.png")}
+                      alt="Profile"
+                    />
+                    <button className="cust-btn view-btn">View Profile</button>
+                  </div>
+                </div>
+                <div className="search-result-item-desc">
+                  <div className="time-preference">
+                    <p>Slots Available: </p>
+                    <ul className="slot-list">
+                      <li>Sun (5-7 pm)</li>
+                      <li>Mon (3-4 pm)</li>
+                      <li>Tues (5-7 pm)</li>
+                      <li>Wed (3-4 pm)</li>
+                      <li>Thur(5-7 pm)</li>
+                      <li>Fri (3-4 pm)</li>
+                      <li>Sat (5-7 pm)</li>
+                    </ul>
+                  </div>
+                  <div className="search-result-item-btns flex">
+                    <button type="button" className="cust-btn request-btn">
+                      Request a Mock Interview and Feedback Session
+                    </button>
+                    <p className="price">INR 900</p>
+                  </div>
                 </div>
               </div>
             </div>

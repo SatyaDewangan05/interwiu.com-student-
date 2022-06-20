@@ -37,8 +37,8 @@ const Dashboard = (userDetails) => {
             </div>
             <h2>{user.username}</h2>
             <h5>
-              B.Tech, <br /> Computer Science Engineering, MIT, Cambridge, MA
-              02139, United States
+              B.Tech <br /> Computer Science Engineering <br /> MIT, Cambridge,
+              MA 02139, United States
             </h5>
             <button className="cust-btn resume-btn">
               <a
@@ -69,10 +69,10 @@ const Dashboard = (userDetails) => {
               General Day/Time Preference for Sessions
             </p>
             <ul className="desc-item">
-              <li>Sat(3-5 PM)</li>
-              <li>Sun(3-5 PM)</li>
-              <li>Web(9 AM - 5PM)</li>
-              <li>No Specific Preferences(Only when ticked)</li>
+              <li>Sat (3-5 PM)</li>
+              <li>Sun (3-5 PM)</li>
+              <li>Wed (9 AM - 5PM)</li>
+              <li>No Specific Preferences (Only when ticked)</li>
             </ul>
             <div className="dashboard-btns">
               <div className="interviewer">
