@@ -4,7 +4,9 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router";
 
-import "./InterviewDashboard.css";
+import "./InterviewerDashboard.css";
+
+import Navbarlogedin from "../Dashboard/Navbarlogedin";
 
 const InterviewerDashboard = () => {
   const location = useLocation();
@@ -15,9 +17,8 @@ const InterviewerDashboard = () => {
 
   return (
     <>
-      {/* <Navbarlogedin /> */}
+      <Navbarlogedin />
       <div className="dashboard">
-        <h1>My Dashboard</h1>
         <button
           className="cust-btn edit-btn"
           onClick={() => {
@@ -34,14 +35,14 @@ const InterviewerDashboard = () => {
                 alt="Profile-photo"
               />
             </div>
+            <h2>John Doe</h2>
             <h5>
-              B.Tech, Computer Science Engineering, MIT, Cambridge, MA 02139,
-              United States
+              Software Development Engineer <br /> Google, California
             </h5>
-            <Link to="#">Resume</Link>
             {/* <p>Session Recording Proference: Yes</p> */}
           </div>
           <div className="dashboard-desc">
+            <h1 className="head">My Dashboard</h1>
             <p className="desc-head">Description: </p>
             <p className="desc-item">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
@@ -64,6 +65,59 @@ const InterviewerDashboard = () => {
               <li>Web(9 AM - 5PM)</li>
               <li>No Specific Preferences(Only when ticked)</li>
             </ul>
+            <p className="desc-head">Offers</p>
+            <div>
+              <div className="flex">
+                <p>
+                  Mock Interview with Feedback Session
+                  <span style={{ padding: "0 10px" }}>@</span>
+                </p>
+                <p>INR 900 only [per Session (30 min)]</p>
+              </div>
+              <div className="flex">
+                <p>
+                  Mentorship Session
+                  <span style={{ padding: "0 10px" }}>@</span>
+                </p>
+                <p>INR 1200 only [per Session (45 min)]</p>
+              </div>
+            </div>
+            <div className="dashboard-btns">
+              <div className="interviewer">
+                <button
+                  className="cust-btn dashboard-btn"
+                  onClick={() => {
+                    navigate("/searching");
+                  }}
+                >
+                  Mock Interview Requests
+                </button>
+                <button className="cust-btn dashboard-btn">
+                  Your Mock Interviews
+                </button>
+                <button className="cust-btn dashboard-btn">
+                  Find an Interviewee
+                </button>
+                <p className="cont">
+                  If you are looking to appear for a Mock Interview of your
+                  choice and receive Personalized Feedback
+                </p>
+              </div>
+              <div className="mentor">
+                <button className="cust-btn dashboard-btn">
+                  Mentorship Request
+                </button>
+                <button className="cust-btn dashboard-btn">
+                  Your Mentorship Session
+                </button>
+                <button className="cust-btn dashboard-btn">
+                  Find a Mentee
+                </button>
+                <p className="cont">
+                  If you are looking for a Mentor of your choice
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

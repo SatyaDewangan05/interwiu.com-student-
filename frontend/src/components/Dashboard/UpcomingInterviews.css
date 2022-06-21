@@ -1,0 +1,44 @@
+.upcoming-interview{
+    margin: 10px 15vw;
+    background-color: white;
+    border-radius: 8px;
+    position: relative;
+}
+
+.upcoming-interview h1{
+    margin: 0 10px 10px;
+}
+
+.upcoming-interview .view-btn {
+    display: inline-block;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    width: 100%;
+    margin: 0 auto;
+    padding: 8px 6px;
+    font-weight: 500;
+    text-align: center;
+    font-size: 16px;
+}
+
+.view-btn:hover {
+    background-color: white;
+    color: black;
+}
+
+.join-meeting-btn{
+    display: block;
+    margin: 10px 0;
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+    padding: 4px 8px;
+    margin-left: 10px;
+}
+
+
+.join-meeting-btn:hover{
+    color: #1265a8;
+    border-color: #1265a8;
+}

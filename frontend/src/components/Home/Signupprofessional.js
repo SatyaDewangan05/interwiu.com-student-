@@ -12,7 +12,7 @@ const Signupprofessional = () => {
   let navigate = useNavigate();
 
   const signup = () => {
-    navigate("/profile-form");
+    navigate("/interviewer-profile-form");
     const loginFunc = document.querySelector(".signup-professional");
     loginFunc.classList.add("hide");
   };

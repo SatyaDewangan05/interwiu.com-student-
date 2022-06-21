@@ -1,0 +1,97 @@
+.interviews{
+    margin: 10px 15vw;
+    background-color: white;
+    border-radius: 8px;
+    position: relative;
+}
+
+.interviews-container{
+    padding: 10px 0;
+}
+
+.interviews h1{
+    margin: 0 10px 10px;
+}
+
+.interviews-cont{
+    /* display: grid;
+    grid-template-columns: 70% 30%; */
+}
+
+.interviews-list{
+    /* border-right: 1px solid grey; */
+    padding: 10px 20px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.interview-item {
+    border: 2px solid #1265a8;
+    margin: 10px 0;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 25% 75%;
+    text-align: right;
+}
+
+.interviewer-head h2{
+    margin: 0;
+    font-size: 36px
+}
+
+.interviewer-head p{
+    font-size: 20px;
+}
+
+.interview-item-profile{
+    padding: 10px;
+}
+
+.interview-item .time-preference{
+    text-align: left;
+}
+
+
+.interview-item-profile img {
+    width: 100%;
+    border-radius: 50%;
+    margin: auto;
+    border: 2px solid black;
+    padding: 10px;
+}
+
+.interview-item-info{
+    padding: 10px;
+}
+
+.interviews .view-btn{
+    display: inline-block;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    width: 100%;
+    margin: 0 auto;
+    padding: 8px 6px;
+    font-weight: 500;
+    text-align: center;
+    font-size: 16px;
+}
+
+.view-btn:hover {
+    background-color: white;
+    color: black;
+}
+
+
+.request-sent-btn{
+    display: block;
+    margin: 10px 0;
+    border: 1px solid rgb(87, 87, 87);
+    background-color: rgb(87, 87, 87);
+    color: white;
+    padding: 4px 8px;
+}
+
+.interviews-else{
+    padding: 10px 20px;
+}

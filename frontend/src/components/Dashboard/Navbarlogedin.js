@@ -20,16 +20,16 @@ const Navbarlogedin = () => {
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="/pending-requests">Sent Requests</Link>
+          <Link to="/sent-requests">Sent Requests</Link>
         </li>
         <li className="nav-item">
-          <Link to="/pending-requests">Accepted Requests</Link>
+          <Link to="/accepted-requests">Accepted Requests</Link>
         </li>
         <li className="nav-item">
           <Link to="/upcoming-interviews">Upcoming Interviews</Link>
         </li>
         <li className="nav-item">
-          <Link to="/pending-requests">Completed Interviews</Link>
+          <Link to="/completed-interviews">Completed Interviews</Link>
         </li>
         {/* <li className="nav-item">
           <Link to={"/dashboard"}>Profile</Link>
