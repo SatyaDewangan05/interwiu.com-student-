@@ -1,12 +1,13 @@
 import React from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router";
-
+import axios from "axios"
 import "./SearchInterviews.css";
 
 import Navbarlogedin from "./Navbarlogedin";
 
 const changeLink = () => {
+  
   const links = document.querySelectorAll(".nav-item a");
   links.forEach((link) => {
     if (link.classList.contains("active")) {
@@ -20,6 +21,14 @@ const changeLink = () => {
 
 const SearchInterviews = () => {
   // const user = userDetails.user;
+  const [cards,setCards]=React.useState()
+  useEffect(() => {
+    async function fetchData() {
+      const req = await axios.get("http://localhost:8585/send/interviewersdemo");
+      setCards(req.data);
+    }
+    fetchData();
+  }, []);
   const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -143,11 +152,12 @@ const SearchInterviews = () => {
           <div className="search-result">
             <h3>Search result</h3>
             <div className="search-result-cont">
-              <div className="search-result-item">
+              {cards?.map( (result)=>(
+                <div className="search-result-item">
                 <div className="search-result-item-head flex">
                   <div className="interviewer-head">
-                    <h3>John Doe</h3>
-                    <p>SDE, Google, California</p>
+                    <h3>{result.name}</h3>
+                    <p>{result.desg}</p>
                   </div>
                   <div className="search-result-item-profile">
                     <img
@@ -162,8 +172,8 @@ const SearchInterviews = () => {
                     <p>Slots Available: </p>
                     <ul className="slot-list">
                       <li>Sun (5-7 pm)</li>
-                      <li>Mon (3-4 pm)</li>
-                      <li>Tues (5-7 pm)</li>
+                      <li>Mon (6-4 pm)</li>
+                      <li>Tues (2-8 pm)</li>
                       <li>Wed (3-4 pm)</li>
                       <li>Thur(5-7 pm)</li>
                       <li>Fri (3-4 pm)</li>
@@ -174,115 +184,11 @@ const SearchInterviews = () => {
                     <button type="button" className="cust-btn request-btn">
                       Request a Mock Interview and Feedback Session
                     </button>
-                    <p className="price">INR 900</p>
+                    <p className="price">INR {result.price}</p>
                   </div>
                 </div>
               </div>
-              <div className="search-result-item">
-                <div className="search-result-item-head flex">
-                  <div className="interviewer-head">
-                    <h3>John Doe</h3>
-                    <p>SDE, Google, California</p>
-                  </div>
-                  <div className="search-result-item-profile">
-                    <img
-                      src={require("../../images/photo.png")}
-                      alt="Profile"
-                    />
-                    <button className="cust-btn view-btn">View Profile</button>
-                  </div>
-                </div>
-                <div className="search-result-item-desc">
-                  <div className="time-preference">
-                    <p>Slots Available: </p>
-                    <ul className="slot-list">
-                      <li>Sun (5-7 pm)</li>
-                      <li>Mon (3-4 pm)</li>
-                      <li>Tues (5-7 pm)</li>
-                      <li>Wed (3-4 pm)</li>
-                      <li>Thur(5-7 pm)</li>
-                      <li>Fri (3-4 pm)</li>
-                      <li>Sat (5-7 pm)</li>
-                    </ul>
-                  </div>
-                  <div className="search-result-item-btns flex">
-                    <button type="button" className="cust-btn request-btn">
-                      Request a Mock Interview and Feedback Session
-                    </button>
-                    <p className="price">INR 900</p>
-                  </div>
-                </div>
-              </div>
-              <div className="search-result-item">
-                <div className="search-result-item-head flex">
-                  <div className="interviewer-head">
-                    <h3>John Doe</h3>
-                    <p>SDE, Google, California</p>
-                  </div>
-                  <div className="search-result-item-profile">
-                    <img
-                      src={require("../../images/photo.png")}
-                      alt="Profile"
-                    />
-                    <button className="cust-btn view-btn">View Profile</button>
-                  </div>
-                </div>
-                <div className="search-result-item-desc">
-                  <div className="time-preference">
-                    <p>Slots Available: </p>
-                    <ul className="slot-list">
-                      <li>Sun (5-7 pm)</li>
-                      <li>Mon (3-4 pm)</li>
-                      <li>Tues (5-7 pm)</li>
-                      <li>Wed (3-4 pm)</li>
-                      <li>Thur(5-7 pm)</li>
-                      <li>Fri (3-4 pm)</li>
-                      <li>Sat (5-7 pm)</li>
-                    </ul>
-                  </div>
-                  <div className="search-result-item-btns flex">
-                    <button type="button" className="cust-btn request-btn">
-                      Request a Mock Interview and Feedback Session
-                    </button>
-                    <p className="price">INR 900</p>
-                  </div>
-                </div>
-              </div>
-              <div className="search-result-item">
-                <div className="search-result-item-head flex">
-                  <div className="interviewer-head">
-                    <h3>John Doe</h3>
-                    <p>SDE, Google, California</p>
-                  </div>
-                  <div className="search-result-item-profile">
-                    <img
-                      src={require("../../images/photo.png")}
-                      alt="Profile"
-                    />
-                    <button className="cust-btn view-btn">View Profile</button>
-                  </div>
-                </div>
-                <div className="search-result-item-desc">
-                  <div className="time-preference">
-                    <p>Slots Available: </p>
-                    <ul className="slot-list">
-                      <li>Sun (5-7 pm)</li>
-                      <li>Mon (3-4 pm)</li>
-                      <li>Tues (5-7 pm)</li>
-                      <li>Wed (3-4 pm)</li>
-                      <li>Thur(5-7 pm)</li>
-                      <li>Fri (3-4 pm)</li>
-                      <li>Sat (5-7 pm)</li>
-                    </ul>
-                  </div>
-                  <div className="search-result-item-btns flex">
-                    <button type="button" className="cust-btn request-btn">
-                      Request a Mock Interview and Feedback Session
-                    </button>
-                    <p className="price">INR 900</p>
-                  </div>
-                </div>
-              </div>
+              ) )}
             </div>
           </div>
         </div>

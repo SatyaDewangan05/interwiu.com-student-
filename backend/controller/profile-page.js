@@ -1,5 +1,6 @@
 const SProfile=require('../model/sprofile-page')
 const Iprofile=require('../model/iprofile-page')
+const DemoIp=require('../model/demoInterPro')
 
 //student's profile page update
 exports.profileForm=async (req,res)=>{
@@ -48,6 +49,16 @@ exports.Interviewrpost=(req,res)=>{
         }
     })
 }
+exports.InterviewrpostDemo=(req,res)=>{
+    const dbInterPost=req.body
+    DemoIp.create(dbInterPost,(err,data)=>{
+        if(err){
+            res.status(500).send(err)
+        }else{
+            res.status(201).send(data)
+        }
+    })
+}
 
 //Interviewers Profile page get
 exports.Interviewrget=async(req,res,next)=>{
@@ -58,7 +69,14 @@ exports.Interviewrget=async(req,res,next)=>{
         next(error)
     }
 }
-
+exports.InterviewrgetDemo=async(req,res,next)=>{
+    try {
+        const dbInterGet=await DemoIp.find({});
+        res.json(dbInterGet)
+    } catch (error) {
+        next(error)
+    }
+}
 //Individual intervewr detailed page
 exports.InterviewerGetId= async (req, res, next) => {
     try {

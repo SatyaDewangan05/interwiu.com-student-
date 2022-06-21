@@ -14,4 +14,8 @@ router.get('/get/:id', setup.getid);
   //update
 router.patch("/edit/:id",setup.update)
 
+router.get('/snotifs/',setup.sNotifs)
+
+router.get('/snotifs/:id',setup.sNotifsId)
+
 module.exports = router;
