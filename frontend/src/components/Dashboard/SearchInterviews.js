@@ -331,52 +331,6 @@ const SearchInterviews = () => {
               {cards?.map((result) => (
                 <div className="search-result-item">
                   <div className="search-result-item-head flex">
-                    <div className="interviewer-head">
-                      <h3>{result.name}</h3>
-                      <p>{result.desg}</p>
-                    </div>
-                    <div className="search-result-item-profile">
-                      <img
-                        src={require("../../images/photo.png")}
-                        alt="Profile"
-                      />
-                      <button className="cust-btn view-btn">
-                        View Profile
-                      </button>
-                    </div>
-                  </div>
-                  <div className="search-result-item-desc">
-                    <div className="time-preference">
-                      <p>Slots Available: </p>
-                      <ul className="slot-list">
-                        <li>Sun (5-7 pm)</li>
-                        <li>Mon (6-4 pm)</li>
-                        <li>Tues (2-8 pm)</li>
-                        <li>Wed (3-4 pm)</li>
-                        <li>Thur(5-7 pm)</li>
-                        <li>Fri (3-4 pm)</li>
-                        <li>Sat (5-7 pm)</li>
-                      </ul>
-                    </div>
-                    <div className="time-preference">
-                      <p>Profile Preference: </p>
-                      <ul className="slot-list">
-                        <li>Data Science</li>
-                      </ul>
-                    </div>
-                    <div className="search-result-item-btns flex">
-                      <button type="button" className="cust-btn request-btn">
-                        Request a Mock Interview and Feedback Session
-                      </button>
-                      <p className="price">INR {result.price}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-
-              {cards?.map((result) => (
-                <div className="search-result-item">
-                  <div className="search-result-item-head flex">
                     <div>
                       <div className="interviewer-head">
                         <h3>{result.name}</h3>
