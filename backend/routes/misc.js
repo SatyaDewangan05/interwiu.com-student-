@@ -11,6 +11,11 @@ router.post('/iprofile',profileSetup.Interviewrpost)
 
 router.get('/interviewers',profileSetup.Interviewrget)
 
+
+router.post('/iprofiledemo',profileSetup.InterviewrpostDemo)
+
+router.get('/interviewersdemo',profileSetup.InterviewrgetDemo)
+
 router.get('/interviewrs/:id',profileSetup.InterviewerGetId)
 
 router.get('/student/:id',profileSetup.studentGetId)

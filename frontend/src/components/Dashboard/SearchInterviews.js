@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router";
-
+import axios from "axios";
 import "./SearchInterviews.css";
 
 import Navbarlogedin from "./Navbarlogedin";
@@ -21,9 +21,18 @@ const changeLink = () => {
 
 const SearchInterviews = () => {
   // const user = userDetails.user;
-
-  let navigate = useNavigate();
+  const [cards, setCards] = React.useState();
+  useEffect(() => {
+    async function fetchData() {
+      const req = await axios.get(
+        "http://localhost:8585/send/interviewersdemo"
+      );
+      setCards(req.data);
+    }
+    fetchData();
+  }, []);
   const location = useLocation();
+  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
@@ -69,8 +78,8 @@ const SearchInterviews = () => {
       <MockRequest />
       <div className="searching">
         <h1>
-          Find an Interviewer of your choice for a <br /> Mock Interview with
-          Feedback Session
+          Find an Interviewer of your choice for a Mock Interview with Feedback
+          Session
         </h1>
         <div className="searching-cont">
           <div className="search-pref">
@@ -120,15 +129,6 @@ const SearchInterviews = () => {
                 placeholder="Name of the Organization"
               />
             </div>
-            {/* <div className="preference">
-              <label htmlFor="preference">
-                Mock Interview Recording Preference:{" "}
-              </label>
-              <input type="radio" name="preference" id="yes" value={"yes"} />
-              <label htmlFor="yes">Yes</label>
-              <input type="radio" name="preference" id="no" value={"no"} />
-              <label htmlFor="no">No</label>
-            </div> */}
             <div className="time-preference">
               <div className="element">
                 <p style={{ textAlign: "justify" }}>
@@ -141,11 +141,6 @@ const SearchInterviews = () => {
                 </div>
                 <div className="pref-item">
                   <ul>
-                    {/* {arrayDays !== []
-                        ? arrayDays.map((item) => {
-                            return <li>{item}</li>;
-                          })
-                        : null} */}
                     <li>
                       Monday - 12:00 to 13:00{" "}
                       <button
@@ -333,72 +328,120 @@ const SearchInterviews = () => {
           <div className="search-result">
             <h3>Search result</h3>
             <div className="search-result-cont">
-              <div className="search-result-item">
-                <div className="search-result-item-head flex">
-                  <div>
+              {cards?.map((result) => (
+                <div className="search-result-item">
+                  <div className="search-result-item-head flex">
                     <div className="interviewer-head">
-                      <h3>John Doe</h3>
-                      <p>SDE, Google, California</p>
+                      <h3>{result.name}</h3>
+                      <p>{result.desg}</p>
                     </div>
-                    <div className="details flex">
-                      <div className="detail">
-                        <p className="detail-head">Profile</p>
-                        <p className="detail-body">Data Science</p>
-                      </div>
-                      <div className="detail">
-                        <p className="detail-head">Price</p>
-                        <p className="detail-body">INR 900</p>
-                      </div>
-                      <div className="detail">
-                        <p className="detail-head">Session Duration</p>
-                        <p className="detail-body">30 Min</p>
-                      </div>
+                    <div className="search-result-item-profile">
+                      <img
+                        src={require("../../images/photo.png")}
+                        alt="Profile"
+                      />
+                      <button className="cust-btn view-btn">
+                        View Profile
+                      </button>
                     </div>
                   </div>
-                  <div className="search-result-item-profile">
-                    <img
-                      src={require("../../images/photo.png")}
-                      alt="Profile"
-                    />
-                    <button
-                      className="cust-btn view-btn"
-                      onClick={() => {
-                        navigate("/interviewer-dashboard");
-                      }}
-                    >
-                      View Profile
-                    </button>
+                  <div className="search-result-item-desc">
+                    <div className="time-preference">
+                      <p>Slots Available: </p>
+                      <ul className="slot-list">
+                        <li>Sun (5-7 pm)</li>
+                        <li>Mon (6-4 pm)</li>
+                        <li>Tues (2-8 pm)</li>
+                        <li>Wed (3-4 pm)</li>
+                        <li>Thur(5-7 pm)</li>
+                        <li>Fri (3-4 pm)</li>
+                        <li>Sat (5-7 pm)</li>
+                      </ul>
+                    </div>
+                    <div className="time-preference">
+                      <p>Profile Preference: </p>
+                      <ul className="slot-list">
+                        <li>Data Science</li>
+                      </ul>
+                    </div>
+                    <div className="search-result-item-btns flex">
+                      <button type="button" className="cust-btn request-btn">
+                        Request a Mock Interview and Feedback Session
+                      </button>
+                      <p className="price">INR {result.price}</p>
+                    </div>
                   </div>
                 </div>
-                <div className="search-result-item-desc">
-                  <div className="time-preference">
-                    <p>Slots Available </p>
-                    <ul className="slot-list">
-                      <li>Sun (5-7 pm)</li>
-                      <li>Mon (3-4 pm)</li>
-                      <li>Tue (5-7 pm)</li>
-                      <li>Wed (3-4 pm)</li>
-                      <li>Thur(5-7 pm)</li>
-                      <li>Fri (3-4 pm)</li>
-                      <li>Sat (5-7 pm)</li>
-                    </ul>
+              ))}
+
+              {cards?.map((result) => (
+                <div className="search-result-item">
+                  <div className="search-result-item-head flex">
+                    <div>
+                      <div className="interviewer-head">
+                        <h3>{result.name}</h3>
+                        <p>{result.desg}</p>
+                      </div>
+                      <div className="details flex">
+                        <div className="detail">
+                          <p className="detail-head">Profile</p>
+                          <p className="detail-body">Data Science</p>
+                        </div>
+                        <div className="detail">
+                          <p className="detail-head">Price</p>
+                          <p className="detail-body">INR {result.price}</p>
+                        </div>
+                        <div className="detail">
+                          <p className="detail-head">Session Duration</p>
+                          <p className="detail-body">30 Min</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="search-result-item-profile">
+                      <img
+                        src={require("../../images/photo.png")}
+                        alt="Profile"
+                      />
+                      <button
+                        className="cust-btn view-btn"
+                        onClick={() => {
+                          navigate("/interviewer-dashboard");
+                        }}
+                      >
+                        View Profile
+                      </button>
+                    </div>
                   </div>
-                  <div className="search-result-item-btns flex">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        const requestPopup = document.querySelector(
-                          ".mock-request-popup-container"
-                        );
-                        requestPopup.classList.remove("hide");
-                      }}
-                      className="cust-btn request-btn"
-                    >
-                      Request a Mock Interview with Feedback Session
-                    </button>
+                  <div className="search-result-item-desc">
+                    <div className="time-preference">
+                      <p>Slots Available </p>
+                      <ul className="slot-list">
+                        <li>Sun (5-7 pm)</li>
+                        <li>Mon (3-4 pm)</li>
+                        <li>Tue (5-7 pm)</li>
+                        <li>Wed (3-4 pm)</li>
+                        <li>Thur(5-7 pm)</li>
+                        <li>Fri (3-4 pm)</li>
+                        <li>Sat (5-7 pm)</li>
+                      </ul>
+                    </div>
+                    <div className="search-result-item-btns flex">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const requestPopup = document.querySelector(
+                            ".mock-request-popup-container"
+                          );
+                          requestPopup.classList.remove("hide");
+                        }}
+                        className="cust-btn request-btn"
+                      >
+                        Request a Mock Interview with Feedback Session
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
