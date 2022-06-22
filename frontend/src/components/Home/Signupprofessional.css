@@ -1,4 +1,4 @@
-.login-container {
+.signup-professional  {
     position: fixed;
     z-index: 15;
     height: 100vh;
@@ -10,11 +10,11 @@
     background-color: rgba(0, 0, 0, 0.6);
 }
 
-.hide {
+ .hide {
     display: none;
 }
 
-.login {
+.signup-professional .login {
     background-color: white;
     position: relative;
     border-radius: 8px;
@@ -22,7 +22,7 @@
 
 }
 
-.cross {
+.signup-professional .cross {
     position: absolute;
     right: -20px;
     top: -40px;
@@ -31,11 +31,11 @@
     cursor: pointer;
 }
 
-.cross:hover {
+.signup-professional .cross:hover {
     color: rgb(255, 0, 0);
 }
 
-.login-head {
+.signup-professional .login-head {
     background-color: #EFFFF4;
     color: #008A45;
     width: 100%;
@@ -51,7 +51,7 @@
 }
 
 
-.login-system {
+.signup-professional .login-system {
     padding: 20px;
     display: flex;
     flex-direction: row;
@@ -60,18 +60,19 @@
 
 }
 
-.col {
+.signup-professional .col {
     margin: 10px;
+    padding: 0;
 }
 
-.login-system h1 {
+.signup-professional .login-system h1 {
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 700;
     padding: 5px 0 20px;
     margin-bottom: 40px;
 }
 
-.signin-btn {
+.signup-professional .signin-btn {
     width: 100%;
     border: 1px solid #D9D9DB;
     font-family: 'IBM Plex Sans',
@@ -92,35 +93,35 @@
     align-items: center;
 }
 
-.signin-btn:hover {
+.signup-professional .signin-btn:hover {
     background-color: #dbdbdb;
 }
 
-.signin-btn img {
+.signup-professional .signin-btn img {
     width: 14px;
     margin-right: 10px;
 }
 
 
-.login-image {
+.signup-professional .login-image {
     text-align: right;
 }
 
-.login-image img {
+.signup-professional .login-image img {
     height: auto;
 }
 
 
 @media only screen and (max-width: 992px) {
-    .login-image {
+    .signup-professional .login-image {
         display: none;
     }
 
-    .login-head {
+    .signup-professional .login-head {
         display: none;
     }
 
-    .cross {
+    .signup-professional .cross {
         right: 10px;
         top: 10px;
         color: black;

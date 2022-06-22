@@ -25,7 +25,7 @@ const Login = () => {
           </p>
         </div>
         <div className="login-system">
-          <div className="col">
+          <div className="col vertical-line">
             <h1>Sign In as a Student</h1>
             <form action="http://localhost:8585/auth/google">
               <button className="signin-btn login" type="submit">

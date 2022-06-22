@@ -17,7 +17,7 @@ const Signupstudent = () => {
     loginFunc.classList.add("hide");
   };
   return (
-    <div className="signup-student login-container hide">
+    <div className="signup-student hide">
       <div className="login">
         <div
           className="cross"
@@ -29,8 +29,8 @@ const Signupstudent = () => {
         </div>
         <div className="login-head">
           <p>
-            Let's learn, share & inspire each other with our passion for
-            computer engineering. Sign up now 🤘🏼
+            Let’s appear for a Mock Interview and obtain Feedback on your
+            performance in realtime!. Sign up now
           </p>
         </div>
         <div className="login-system">

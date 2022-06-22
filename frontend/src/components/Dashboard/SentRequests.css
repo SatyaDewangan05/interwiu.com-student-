@@ -11,6 +11,7 @@
 
 .interviews h1{
     margin: 0 10px 10px;
+    text-align: center;
 }
 
 .interviews-cont{
@@ -21,7 +22,7 @@
 .interviews-list{
     /* border-right: 1px solid grey; */
     padding: 10px 20px;
-    width: 70%;
+    width: 80%;
     margin: 0 auto;
 }
 
@@ -82,6 +83,14 @@
     color: black;
 }
 
+
+.details{
+    align-items: flex-start;
+}
+
+.details p{
+    text-align: center;
+}
 
 .request-sent-btn{
     display: block;

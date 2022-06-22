@@ -39,11 +39,6 @@
     z-index: 10;
 }
 
-.sidebar>* {
-    padding: 0 16px;
-    font-size: 30px;
-}
-
 .notifier {
     position: relative;
 }
@@ -69,6 +64,7 @@
     background-color: rgb(0, 0, 0);
     color: white;
     font-size: 18px;
+    margin-right: 16px;
 }
 
 .login-btn:hover {
@@ -79,6 +75,7 @@
 
 .fa-bars {
     transition: 0.5s linear;
+    font-size: 30px;
 }
 
 .fa-bars:hover {

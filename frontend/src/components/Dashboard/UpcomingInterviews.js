@@ -26,7 +26,7 @@ const UpcomingInterviews = () => {
       <Navbarlogedin />
       <div className="upcoming-interview">
         <div className="inteviews-container"></div>
-        <h1>Your Mock Interviews and Feedback Sessions</h1>
+        <h1>Upcoming Interviews</h1>
         <div className="interview-cont">
           <div className="interviews-list">
             <div className="interview-item">
@@ -39,12 +39,28 @@ const UpcomingInterviews = () => {
                   <h2>John Doe</h2>
                   <p>SDE, Google, California</p>
                 </div>
-                <div className="time-preference">
+                <div className="details flex">
+                  <div className="detail">
+                    <p className="detail-head">Profile</p>
+                    <p className="detail-body">Data Science</p>
+                  </div>
+                  <div className="detail">
+                    <p className="detail-head">Price</p>
+                    <p className="detail-body">INR 900</p>
+                  </div>
+                  <div className="detail">
+                    <p className="detail-head">Session Duration</p>
+                    <p className="detail-body">30 Min</p>
+                  </div>
+                  <div className="detail">
+                    <p className="detail-head">Interview Slot</p>
+                    <p className="detail-body">[5:00PM - 5:45PM]</p>
+                    <p className="detail-body">20 June, 2022</p>
+                  </div>
+                </div>
+                {/* <div className="time-preference">
                   <p>Interview Slot: 20 June, 2022 [Sun] [5:00PM - 5:45PM]</p>
-                </div>
-                <div className="time-preference">
-                  <p>Profile Preference: Data Science</p>
-                </div>
+                </div> */}
                 <div className="search-result-item-btns flex">
                   <div className="flex">
                     <button type="button" className="cust-btn join-meeting-btn">

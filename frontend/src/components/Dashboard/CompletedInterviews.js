@@ -10,7 +10,7 @@ const CompletedInterviews = () => {
       <Navbarlogedin />
       <div className="upcoming-interview">
         <div className="inteviews-container"></div>
-        <h1>Your Mock Interviews and Feedback Sessions</h1>
+        <h1>Completed Interviews</h1>
         <div className="interview-cont">
           <div className="interviews-list">
             <div className="interview-item">

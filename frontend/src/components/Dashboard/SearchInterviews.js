@@ -83,12 +83,6 @@ const SearchInterviews = () => {
         </h1>
         <div className="searching-cont">
           <div className="search-pref">
-            {/* <div className="as-per flex">
-              <input type="checkbox" name="pref" id="pref" />
-              <label htmlFor="pref">
-                As per my <span style={{ color: "#1265a8" }}>Preference</span>{" "}
-              </label>
-            </div> */}
             <label htmlFor="profile">Profile Preference</label>
             <select name="profile" id="profile">
               <option value="" disabled selected hidden>
@@ -328,52 +322,6 @@ const SearchInterviews = () => {
           <div className="search-result">
             <h3>Search result</h3>
             <div className="search-result-cont">
-              {cards?.map((result) => (
-                <div className="search-result-item">
-                  <div className="search-result-item-head flex">
-                    <div className="interviewer-head">
-                      <h3>{result.name}</h3>
-                      <p>{result.desg}</p>
-                    </div>
-                    <div className="search-result-item-profile">
-                      <img
-                        src={require("../../images/photo.png")}
-                        alt="Profile"
-                      />
-                      <button className="cust-btn view-btn">
-                        View Profile
-                      </button>
-                    </div>
-                  </div>
-                  <div className="search-result-item-desc">
-                    <div className="time-preference">
-                      <p>Slots Available: </p>
-                      <ul className="slot-list">
-                        <li>Sun (5-7 pm)</li>
-                        <li>Mon (6-4 pm)</li>
-                        <li>Tues (2-8 pm)</li>
-                        <li>Wed (3-4 pm)</li>
-                        <li>Thur(5-7 pm)</li>
-                        <li>Fri (3-4 pm)</li>
-                        <li>Sat (5-7 pm)</li>
-                      </ul>
-                    </div>
-                    <div className="time-preference">
-                      <p>Profile Preference: </p>
-                      <ul className="slot-list">
-                        <li>Data Science</li>
-                      </ul>
-                    </div>
-                    <div className="search-result-item-btns flex">
-                      <button type="button" className="cust-btn request-btn">
-                        Request a Mock Interview and Feedback Session
-                      </button>
-                      <p className="price">INR {result.price}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-
               {cards?.map((result) => (
                 <div className="search-result-item">
                   <div className="search-result-item-head flex">

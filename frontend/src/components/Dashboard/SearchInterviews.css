@@ -177,7 +177,7 @@
     height: 35px;
     text-align: center;
     font-size: 10px;
-    z-index: 20;
+    z-index: 1;
 }
 
 .view-btn:hover {

@@ -26,7 +26,7 @@ const SentRequests = () => {
       <Navbarlogedin />
       <div className="interviews">
         <div className="interviews-container">
-          <h1>Your Sent Requests List</h1>
+          <h1>Sent Requests</h1>
           <div className="interviews-cont">
             <div className="interviews-list">
               <div className="interview-item">
@@ -39,14 +39,29 @@ const SentRequests = () => {
                     <h2>John Doe</h2>
                     <p>SDE, Google, California</p>
                   </div>
-                  <div className="time-preference">
+                  <div className="details flex">
+                    <div className="detail">
+                      <p className="detail-head">Profile</p>
+                      <p className="detail-body">Data Science</p>
+                    </div>
+                    <div className="detail">
+                      <p className="detail-head">Price</p>
+                      <p className="detail-body">INR 900</p>
+                    </div>
+                    <div className="detail">
+                      <p className="detail-head">Session Duration</p>
+                      <p className="detail-body">30 Min</p>
+                    </div>
+                    <div className="detail">
+                      <p className="detail-head">Interview Slot</p>
+                      <p className="detail-body">[5:00PM - 5:45PM]</p>
+                      <p className="detail-body">20 June, 2022</p>
+                    </div>
+                  </div>
+                  {/* <div className="time-preference">
                     <p>Interview Slot: 20 June, 2022 [Sun] [5:00PM - 5:45PM]</p>
-                  </div>
-                  <div className="time-preference">
-                    <p>Profile: Data Science</p>
-                  </div>
+                  </div> */}
                   <div className="search-result-item-btns flex">
-                    <p className="price">INR 900</p>
                     <button type="button" className="cust-btn request-sent-btn">
                       Request Sent
                     </button>
