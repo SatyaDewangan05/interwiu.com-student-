@@ -92,30 +92,6 @@ const InterviewerDashboard = () => {
                 >
                   Mock Interview Requests
                 </button>
-                <button className="cust-btn dashboard-btn">
-                  Your Mock Interviews
-                </button>
-                <button className="cust-btn dashboard-btn">
-                  Find an Interviewee
-                </button>
-                <p className="cont">
-                  If you are looking to appear for a Mock Interview of your
-                  choice and receive Personalized Feedback
-                </p>
-              </div>
-              <div className="mentor">
-                <button className="cust-btn dashboard-btn">
-                  Mentorship Request
-                </button>
-                <button className="cust-btn dashboard-btn">
-                  Your Mentorship Session
-                </button>
-                <button className="cust-btn dashboard-btn">
-                  Find a Mentee
-                </button>
-                <p className="cont">
-                  If you are looking for a Mentor of your choice
-                </p>
               </div>
             </div>
           </div>

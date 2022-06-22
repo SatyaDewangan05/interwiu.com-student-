@@ -33,17 +33,10 @@ const CompletedInterviews = () => {
                   <div className="flex">
                     <button
                       type="button"
-                      style={{ backgroundColor: "green" }}
+                      style={{ backgroundColor: "red" }}
                       className="cust-btn request-sent-btn"
                     >
-                      Confirmed
-                    </button>
-                    <button
-                      type="button"
-                      style={{ backgroundColor: "white" }}
-                      className="cust-btn join-meeting-btn"
-                    >
-                      Join Meeting
+                      Rate and Review
                     </button>
                   </div>
                 </div>

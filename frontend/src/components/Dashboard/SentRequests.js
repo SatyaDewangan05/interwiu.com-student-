@@ -40,19 +40,10 @@ const SentRequests = () => {
                     <p>SDE, Google, California</p>
                   </div>
                   <div className="time-preference">
-                    <p>Slots Available</p>
-                    <ul className="slot-list">
-                      <li>Sun (5-7 pm)</li>
-                      <li>Mon (3-4 pm)</li>
-                      <li>Tues (5-7 pm)</li>
-                      <li>Wed (3-4 pm)</li>
-                      <li>Thur(5-7 pm)</li>
-                      <li>Fri (3-4 pm)</li>
-                      <li>Sat (5-7 pm)</li>
-                    </ul>
+                    <p>Interview Slot: 20 June, 2022 [Sun] [5:00PM - 5:45PM]</p>
                   </div>
                   <div className="time-preference">
-                    <p>Profile Preference: Data Science</p>
+                    <p>Profile: Data Science</p>
                   </div>
                   <div className="search-result-item-btns flex">
                     <p className="price">INR 900</p>

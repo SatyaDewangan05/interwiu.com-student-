@@ -16,40 +16,65 @@ const Navbarlogedin = () => {
       <ul className="nav-list flex">
         <li className="nav-item">
           <Link to="/searching" className="active">
-            Search Interviews
+            <p>
+              Find an <br /> Interviewer
+            </p>
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="/sent-requests">Sent Requests</Link>
+          <Link to="/sent-requests">
+            <p>
+              Sent <br /> Requests
+            </p>
+          </Link>
         </li>
         <li className="nav-item">
-          <Link to="/accepted-requests">Accepted Requests</Link>
+          <Link to="/accepted-requests">
+            <p>
+              Accepted <br /> Requests
+            </p>
+          </Link>
         </li>
         <li className="nav-item">
-          <Link to="/upcoming-interviews">Upcoming Interviews</Link>
+          <Link to="/upcoming-interviews">
+            <p>
+              Upcoming <br /> Interviews
+            </p>
+          </Link>
         </li>
         <li className="nav-item">
-          <Link to="/completed-interviews">Completed Interviews</Link>
+          <Link to="/completed-interviews">
+            <p>
+              Completed <br /> Interviews
+            </p>
+          </Link>
         </li>
         {/* <li className="nav-item">
           <Link to={"/dashboard"}>Profile</Link>
         </li> */}
       </ul>
       <div className="sidebar flex">
+        <div className="flex">
+          <p style={{ margin: "0px" }}>Hi! John</p>
+          <button
+            className="cust-btn login-btn"
+            onClick={() => {
+              navigate("/dashboard");
+            }}
+          >
+            <img
+              src={require("../../images/photo.png")}
+              alt=""
+              height={"40px"}
+            />
+          </button>
+        </div>
         {location.pathname === "/profile-form" ? null : (
           <div className="notifier">
             <i className="fa-solid fa-bell"></i>
             <div className="dot">76</div>
           </div>
         )}
-        <button
-          className="cust-btn login-btn"
-          onClick={() => {
-            navigate("/dashboard");
-          }}
-        >
-          Dashboard
-        </button>
         <i
           className="fa-solid fa-bars"
           onClick={() => {

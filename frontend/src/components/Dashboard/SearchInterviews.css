@@ -8,6 +8,7 @@
 
 .searching > h1{
     padding: 10px 20px 20px;
+    text-align: center;
 }
 
 .searching-cont {
@@ -124,6 +125,8 @@
 
 .search-result-item-head{
     justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .interviewer-head {
@@ -189,7 +192,20 @@
     padding: 0px 10px;
 }
 
+.details{
+    justify-content: space-evenly;
+    /* text-align: center; */
+    grid-gap: 30px;
+}
 
+.detail-head{
+    color: grey;
+    font-size: 16px;
+}
+
+.detail-body{
+    font-size: 18px;
+}
 
 .price {
     background-color: green;
@@ -204,7 +220,7 @@
 
 
 .search-result-item-btns{
-    justify-content: space-between;
+    justify-content: center;
     padding: 0 10px;
 }
 
@@ -222,3 +238,4 @@
     background-color: white;
     color: #1265a8;
 }
+

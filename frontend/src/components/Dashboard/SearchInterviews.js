@@ -1,10 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 
 import "./SearchInterviews.css";
 
 import Navbarlogedin from "./Navbarlogedin";
+import MockRequest from "./MockRequest";
 
 const changeLink = () => {
   const links = document.querySelectorAll(".nav-item a");
@@ -20,6 +21,8 @@ const changeLink = () => {
 
 const SearchInterviews = () => {
   // const user = userDetails.user;
+
+  let navigate = useNavigate();
   const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -63,10 +66,11 @@ const SearchInterviews = () => {
   return (
     <>
       <Navbarlogedin />
+      <MockRequest />
       <div className="searching">
         <h1>
-          Find an Interviewer of your choice for a Mock Interview with Feedback
-          Session
+          Find an Interviewer of your choice for a <br /> Mock Interview with
+          Feedback Session
         </h1>
         <div className="searching-cont">
           <div className="search-pref">
@@ -331,166 +335,67 @@ const SearchInterviews = () => {
             <div className="search-result-cont">
               <div className="search-result-item">
                 <div className="search-result-item-head flex">
-                  <div className="interviewer-head">
-                    <h3>John Doe</h3>
-                    <p>SDE, Google, California</p>
+                  <div>
+                    <div className="interviewer-head">
+                      <h3>John Doe</h3>
+                      <p>SDE, Google, California</p>
+                    </div>
+                    <div className="details flex">
+                      <div className="detail">
+                        <p className="detail-head">Profile</p>
+                        <p className="detail-body">Data Science</p>
+                      </div>
+                      <div className="detail">
+                        <p className="detail-head">Price</p>
+                        <p className="detail-body">INR 900</p>
+                      </div>
+                      <div className="detail">
+                        <p className="detail-head">Session Duration</p>
+                        <p className="detail-body">30 Min</p>
+                      </div>
+                    </div>
                   </div>
                   <div className="search-result-item-profile">
                     <img
                       src={require("../../images/photo.png")}
                       alt="Profile"
                     />
-                    <button className="cust-btn view-btn">View Profile</button>
+                    <button
+                      className="cust-btn view-btn"
+                      onClick={() => {
+                        navigate("/interviewer-dashboard");
+                      }}
+                    >
+                      View Profile
+                    </button>
                   </div>
                 </div>
                 <div className="search-result-item-desc">
                   <div className="time-preference">
-                    <p>Slots Available: </p>
+                    <p>Slots Available </p>
                     <ul className="slot-list">
                       <li>Sun (5-7 pm)</li>
                       <li>Mon (3-4 pm)</li>
-                      <li>Tues (5-7 pm)</li>
+                      <li>Tue (5-7 pm)</li>
                       <li>Wed (3-4 pm)</li>
                       <li>Thur(5-7 pm)</li>
                       <li>Fri (3-4 pm)</li>
                       <li>Sat (5-7 pm)</li>
                     </ul>
                   </div>
-                  <div className="time-preference">
-                    <p>Profile Preference: </p>
-                    <ul className="slot-list">
-                      <li>Data Science</li>
-                    </ul>
-                  </div>
                   <div className="search-result-item-btns flex">
-                    <button type="button" className="cust-btn request-btn">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const requestPopup = document.querySelector(
+                          ".mock-request-popup-container"
+                        );
+                        requestPopup.classList.remove("hide");
+                      }}
+                      className="cust-btn request-btn"
+                    >
                       Request a Mock Interview with Feedback Session
                     </button>
-                    <p className="price">INR 900</p>
-                    <p className="price">30 Min Session</p>
-                  </div>
-                </div>
-              </div>
-              <div className="search-result-item">
-                <div className="search-result-item-head flex">
-                  <div className="interviewer-head">
-                    <h3>John Doe</h3>
-                    <p>SDE, Google, California</p>
-                  </div>
-                  <div className="search-result-item-profile">
-                    <img
-                      src={require("../../images/photo.png")}
-                      alt="Profile"
-                    />
-                    <button className="cust-btn view-btn">View Profile</button>
-                  </div>
-                </div>
-                <div className="search-result-item-desc">
-                  <div className="time-preference">
-                    <p>Slots Available: </p>
-                    <ul className="slot-list">
-                      <li>Sun (5-7 pm)</li>
-                      <li>Mon (3-4 pm)</li>
-                      <li>Tues (5-7 pm)</li>
-                      <li>Wed (3-4 pm)</li>
-                      <li>Thur(5-7 pm)</li>
-                      <li>Fri (3-4 pm)</li>
-                      <li>Sat (5-7 pm)</li>
-                    </ul>
-                  </div>
-                  <div className="time-preference">
-                    <p>Profile Preference: </p>
-                    <ul className="slot-list">
-                      <li>Data Science</li>
-                    </ul>
-                  </div>
-                  <div className="search-result-item-btns flex">
-                    <button type="button" className="cust-btn request-btn">
-                      Request a Mock Interview and Feedback Session
-                    </button>
-                    <p className="price">INR 900</p>
-                  </div>
-                </div>
-              </div>
-              <div className="search-result-item">
-                <div className="search-result-item-head flex">
-                  <div className="interviewer-head">
-                    <h3>John Doe</h3>
-                    <p>SDE, Google, California</p>
-                  </div>
-                  <div className="search-result-item-profile">
-                    <img
-                      src={require("../../images/photo.png")}
-                      alt="Profile"
-                    />
-                    <button className="cust-btn view-btn">View Profile</button>
-                  </div>
-                </div>
-                <div className="search-result-item-desc">
-                  <div className="time-preference">
-                    <p>Slots Available: </p>
-                    <ul className="slot-list">
-                      <li>Sun (5-7 pm)</li>
-                      <li>Mon (3-4 pm)</li>
-                      <li>Tues (5-7 pm)</li>
-                      <li>Wed (3-4 pm)</li>
-                      <li>Thur(5-7 pm)</li>
-                      <li>Fri (3-4 pm)</li>
-                      <li>Sat (5-7 pm)</li>
-                    </ul>
-                  </div>
-                  <div className="time-preference">
-                    <p>Profile Preference: </p>
-                    <ul className="slot-list">
-                      <li>Data Science</li>
-                    </ul>
-                  </div>
-                  <div className="search-result-item-btns flex">
-                    <button type="button" className="cust-btn request-btn">
-                      Request a Mock Interview and Feedback Session
-                    </button>
-                    <p className="price">INR 900</p>
-                  </div>
-                </div>
-              </div>
-              <div className="search-result-item">
-                <div className="search-result-item-head flex">
-                  <div className="interviewer-head">
-                    <h3>John Doe</h3>
-                    <p>SDE, Google, California</p>
-                  </div>
-                  <div className="search-result-item-profile">
-                    <img
-                      src={require("../../images/photo.png")}
-                      alt="Profile"
-                    />
-                    <button className="cust-btn view-btn">View Profile</button>
-                  </div>
-                </div>
-                <div className="search-result-item-desc">
-                  <div className="time-preference">
-                    <p>Slots Available: </p>
-                    <ul className="slot-list">
-                      <li>Sun (5-7 pm)</li>
-                      <li>Mon (3-4 pm)</li>
-                      <li>Tues (5-7 pm)</li>
-                      <li>Wed (3-4 pm)</li>
-                      <li>Thur(5-7 pm)</li>
-                      <li>Fri (3-4 pm)</li>
-                      <li>Sat (5-7 pm)</li>
-                    </ul>
-                  </div>
-                  <div className="time-preference">
-                    <p>Profile Preference: </p>
-                    <ul className="slot-list">
-                      <li>Data Science</li>
-                    </ul>
-                  </div>
-                  <div className="search-result-item-btns flex">
-                    <button type="button" className="cust-btn request-btn">
-                      Request a Mock Interview and Feedback Session
-                    </button>
-                    <p className="price">INR 900</p>
                   </div>
                 </div>
               </div>

@@ -1,26 +1,9 @@
 import React from "react";
-import { useEffect } from "react";
 
-import Navbarlogedin from "./Navbarlogedin";
+import "./InterviewerUpcoming.css";
+import Navbarlogedin from "../Dashboard/Navbarlogedin";
 
-import "./UpcomingInterviews.css";
-
-const changeLink = () => {
-  const links = document.querySelectorAll(".nav-item a");
-  links.forEach((link) => {
-    if (link.classList.contains("active")) {
-      link.classList.remove("active");
-    }
-    if (link.innerHTML === "Upcoming Interviews") {
-      link.classList.add("active");
-    }
-  });
-};
-
-const UpcomingInterviews = () => {
-  useEffect(() => {
-    changeLink();
-  }, []);
+const InterviewerUpcoming = () => {
   return (
     <>
       <Navbarlogedin />
@@ -37,7 +20,9 @@ const UpcomingInterviews = () => {
               <div className="interview-item-info">
                 <div className="interviewer-head">
                   <h2>John Doe</h2>
-                  <p>SDE, Google, California</p>
+                  <p>B.Tech</p>
+                  <p>Computer Science Engineering</p>
+                  <p>MIT, Cambrige, USA</p>
                 </div>
                 <div className="time-preference">
                   <p>Interview Slot: 20 June, 2022 [Sun] [5:00PM - 5:45PM]</p>
@@ -62,7 +47,9 @@ const UpcomingInterviews = () => {
               <div className="interview-item-info">
                 <div className="interviewer-head">
                   <h2>John Doe</h2>
-                  <p>SDE, Google, California</p>
+                  <p>B.Tech</p>
+                  <p>Computer Science Engineering</p>
+                  <p>MIT, Cambrige, USA</p>
                 </div>
                 <div className="time-preference">
                   <p>Interview Slot: 20 June, 2022 [Sun] [5:00PM - 5:45PM]</p>
@@ -87,7 +74,9 @@ const UpcomingInterviews = () => {
               <div className="interview-item-info">
                 <div className="interviewer-head">
                   <h2>John Doe</h2>
-                  <p>SDE, Google, California</p>
+                  <p>B.Tech</p>
+                  <p>Computer Science Engineering</p>
+                  <p>MIT, Cambrige, USA</p>
                 </div>
                 <div className="time-preference">
                   <p>Interview Slot: 20 June, 2022 [Sun] [5:00PM - 5:45PM]</p>
@@ -111,4 +100,4 @@ const UpcomingInterviews = () => {
   );
 };
 
-export default UpcomingInterviews;
+export default InterviewerUpcoming;

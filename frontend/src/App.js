@@ -18,6 +18,8 @@ import InterviewerProfileForm from "./components/Interviewer/InterviewerProfileF
 import InterviewerDashboard from "./components/Interviewer/InterviewerDashboard";
 import AcceptedRequests from "./components/Dashboard/AcceptedRequests";
 import CompletedInterviews from "./components/Dashboard/CompletedInterviews";
+import InterviewerRequest from "./components/Interviewer/InterviewerRequest";
+import InterviewerUpcoming from "./components/Interviewer/InterviewerUpcoming";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -104,6 +106,8 @@ function App() {
           path="/interviewer-dashboard"
           element={<InterviewerDashboard />}
         />
+        <Route path="/interviewer-request" element={<InterviewerRequest />} />
+        <Route path="/interviewer-upcoming" element={<InterviewerUpcoming />} />
       </Routes>
       <Footer />
     </div>

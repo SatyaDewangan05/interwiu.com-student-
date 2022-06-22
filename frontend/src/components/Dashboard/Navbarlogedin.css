@@ -33,8 +33,13 @@
     text-decoration: none;
 }
 
-.nav-item *:hover {
+.nav-item:hover {
     color: rgb(224, 36, 36);
+}
+
+.nav-item  p{
+    margin: 0;
+    text-align: center;
 }
 
 .sidebar {
@@ -67,8 +72,8 @@
 
 .login-btn {
     border: 1px solid black;
-    padding: 6px 12px;
-    border-radius: 18px;
+    padding: 2px;
+    border-radius: 50%;
     background-color: rgb(0, 0, 0);
     color: white;
     font-size: 18px;
@@ -79,6 +84,9 @@
     background-color: white;
 }
 
+.login-btn img{
+    border-radius: 50%;
+}
 
 .fa-bars {
     transition: 0.5s linear;
