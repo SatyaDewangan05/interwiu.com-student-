@@ -3,9 +3,37 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router";
 import axios from "axios";
 import "./SearchInterviews.css";
+import { Box, Grid } from "@mui/material";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { CalendarPicker } from "@mui/x-date-pickers/CalendarPicker";
+import CloseIcon from "@mui/icons-material/Close";
+import IconButton from "@material-ui/core/IconButton";
+
+import {
+  Sunday,
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
+} from "./days";
 
 import Navbarlogedin from "./Navbarlogedin";
-import MockRequest from "./MockRequest";
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  bgcolor: "background.paper",
+  borderRadius: 2,
+  boxShadow: 24,
+  p: 4,
+};
 
 const changeLink = () => {
   const links = document.querySelectorAll(".nav-item a");
@@ -21,6 +49,31 @@ const changeLink = () => {
 
 const SearchInterviews = () => {
   // const user = userDetails.user;
+  const display = (day) => {
+    const date=day.toLocaleDateString();
+    day=day.getDay();
+    if (day === 0) {
+      return <Sunday date={date}/>;
+    } else if (day === 1) {
+      return <Monday date={date}/>;
+    } else if (day === 2) {
+      return <Tuesday date={date}/>;
+    } else if (day === 3) {
+      return <Wednesday date={date}/>;
+    } else if (day === 4) {
+      return <Thursday date={date}/>;
+    } else if (day === 5) {
+      return <Friday date={date}/>;
+    } else {
+      return <Saturday date={date}/>;
+    }
+  };
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const [date, setDate] = useState(new Date());
+
   const [cards, setCards] = React.useState();
   useEffect(() => {
     async function fetchData() {
@@ -75,7 +128,6 @@ const SearchInterviews = () => {
   return (
     <>
       <Navbarlogedin />
-      <MockRequest />
       <div className="searching">
         <h1>
           Find an Interviewer of your choice for a Mock Interview with Feedback
@@ -374,18 +426,69 @@ const SearchInterviews = () => {
                       </ul>
                     </div>
                     <div className="search-result-item-btns flex">
-                      <button
-                        type="button"
-                        onClick={() => {
-                          const requestPopup = document.querySelector(
-                            ".mock-request-popup-container"
-                          );
-                          requestPopup.classList.remove("hide");
-                        }}
-                        className="cust-btn request-btn"
-                      >
+                      <Button variant="contained" onClick={handleOpen}>
                         Request a Mock Interview with Feedback Session
-                      </button>
+                      </Button>
+                      <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                      >
+                        <Box sx={style}>
+
+                         
+                        <Box
+                          sx={{
+                            position: "absolute",
+                            right: 0,
+                            top: 0,
+                          }}
+                        >
+                          <IconButton onClick={handleClose}>
+                            <CloseIcon />
+                          </IconButton>
+                        </Box>
+                          <Typography
+                            id="modal-modal-title"
+                            variant="h5"
+                            sx={{
+                              fontWeight: "bold",
+                              textAlign: "center",
+                            }}
+                          >
+                            Request a Mock Interview with Mr. John Doe
+                          </Typography>
+
+                          <Grid container spacing={2}>
+                            <Grid xs={6}>
+                              <LocalizationProvider
+                                dateAdapter={AdapterDateFns}
+                              >
+                                <CalendarPicker
+                                  date={date}
+                                  format="dd/MM/yyyy"
+                                  onChange={(newDate) => setDate(newDate)}
+                                  views={["day"]}
+                                  disablePast={true}
+                                />
+                              </LocalizationProvider>
+                            </Grid>
+
+                            <Grid
+                              xs={6}
+                              sx={{
+                                mt: 2,
+                              }}
+                            >
+                              {display(date)}
+                            </Grid>
+                            <Grid xs={12} sx={{ textAlign: "center" }}>
+                              <Button variant="contained">Confirm Slot</Button>
+                            </Grid>
+                          </Grid>
+                        </Box>
+                      </Modal>
                     </div>
                   </div>
                 </div>
