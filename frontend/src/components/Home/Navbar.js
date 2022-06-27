@@ -1,5 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link, Navigate } from "react-router-dom";
+import {Link} from 'react-scroll'
+
 // import { useNavigate } from "react-router-dom";
 
 import "./Navbar.css";
@@ -10,22 +12,20 @@ const Navbar = () => {
   return (
     <div className="navbar flex">
       <div className="logo">
-        <h1>interwiu.com</h1>
+        <a href="/" className="alogo"><h1>interwiu.com</h1></a>
       </div>
       <ul className="nav-list flex">
         <li className="nav-item">
-          <Link to="/" className="active">
+          {/* <Link to="/" className="active">
             Home
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/about">About Us</Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/contact">Contact Us</Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/pricing">Pricing</Link>
+          </Link> */}
+          <Link  to="home" spy={true} smooth={true} className="tabs hover-underline-animation">Home</Link>
+          <Link  to="getStarted" spy={true} smooth={true} className="tabs hover-underline-animation">Get Started</Link>
+          <Link  to="howItWorks" spy={true} smooth={true} className="tabs hover-underline-animation">How it Works</Link>
+          <Link  to="features" spy={true} smooth={true} className="tabs hover-underline-animation">Features</Link>
+          <Link  to="profiles" spy={true} smooth={true} className="tabs hover-underline-animation">Profiles</Link>
+          <Link  to="testimonials" spy={true} smooth={true} className="tabs hover-underline-animation">Success Stories</Link>
+          <Link  to="faqs" spy={true} smooth={true}className="tabs hover-underline-animation">FAQs</Link>
         </li>
       </ul>
       <div className="sidebar flex">
@@ -46,20 +46,12 @@ const Navbar = () => {
           }}
         ></i>
         <ul className="dropdown hide">
-          <li className="nav-item">
-            <Link to="/" className="active">
-              Home
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/pricing">Pricing</Link>
-          </li>
           <li>Settings</li>
-          <li className="nav-item">
-            <Link to="/about">About Us</Link>
+          <li>
+            <a href="/about" className="tags">About Us </a>
           </li>
-          <li className="nav-item">
-            <Link to="/contact">Contact Us</Link>
+          <li>
+            <a href="/contact" className="tags">Contact Us</a>
           </li>
           <li>Help and Support</li>
         </ul>

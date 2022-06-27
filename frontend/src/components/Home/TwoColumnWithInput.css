@@ -1,0 +1,36 @@
+.uvp-list ul {
+    display: inline-block;
+    padding: 1rem 2rem;
+  }
+  
+  .uvp-list ul {
+    list-style: none;
+  }
+  .uvp-list ul > li {
+    clear: left;
+    padding: .5rem 0;
+  }
+   
+  .uvp-list ul > li:before {
+    content: "";
+    height: 1.5rem;
+    width: 1.5rem;
+    display: block;
+    float: left;
+    margin-left: -1.5rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  
+  .uvp-list ul > li:before { 
+    background: url("https://info.openpath.com/hubfs/checkmark-round-orange.svg");
+    background-size: cover;
+    background-position: center;
+    padding: .15rem;
+  }
+  
+  .listFont{
+    font-size: 17.5px;
+  }
+  

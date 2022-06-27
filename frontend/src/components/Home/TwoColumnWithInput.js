@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
+import "./TwoColumnWithInput.css";
 //eslint-disable-next-line
 // import { css } from "styled-components/macro";
-
 
 import { ReactComponent as SvgDecoratorBlob1 } from "./../../images/svg-decorator-blob-1.svg";
 
@@ -12,7 +12,7 @@ const TwoColumn = tw.div`flex flex-col lg:flex-row lg:items-center max-w-screen-
 const LeftColumn = tw.div`relative lg:w-5/12 text-center max-w-lg mx-auto lg:max-w-none lg:text-left`;
 const RightColumn = tw.div`relative mt-12 lg:mt-0 flex-1 flex flex-col justify-center lg:self-end`;
 
-const Heading = tw.h1`font-bold text-3xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-900 leading-tight`;
+const Heading = tw.h1`font-bold text-3xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-900 leading-tight mb-8`;
 const Paragraph = tw.p`my-5 lg:my-8 text-base xl:text-lg`;
 
 const Actions = styled.div`
@@ -32,20 +32,26 @@ const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
   ${tw`pointer-events-none opacity-5 absolute left-0 bottom-0 h-64 w-64 transform -translate-x-2/3 -z-10`}
 `;
 
-
-
-const Hero= () => {
+const Hero = () => {
   return (
     <>
       <Container>
         <TwoColumn>
           <LeftColumn>
             <Heading>
-            Maximus Vulputate urna, <span tw="text-changed-100">Nunc at tempus massa!!.</span>
+              Connecting Students with Interviewers from Top MNCs
             </Heading>
-            <Paragraph>
+            {/* <Paragraph>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam finibus maximus luctus. Aliquam mauris ante, consectetur in facilisis eget, scelerisque nec tortor. Fusce efficitur metus in nunc faucibus, at placerat nisl pretium. Curabitur nec elit mi. Sed laoreet eros ac urna pellentesque rutrum. Curabitur ex tortor, aliquet at mauris ac, maximus vulputate urna.
-            </Paragraph>
+            </Paragraph> */}
+            <h4>Appearing for Campus Placements?</h4>
+            <div class="uvp-list">
+              <ul>
+                <li className="listFont">Appear for Online Mock Interviews with Experts, and <br/> Get Real Time Feedback!</li>
+                <li className="listFont">Practise Pressure-Handling and Gain Confidence!</li>
+                <li className="listFont">Improve your Performance and Get Placed with Flying Colours!</li>
+              </ul>
+            </div>
             <Actions>
               <input type="text" placeholder="Your E-mail Address" />
               <button>Get Started</button>
@@ -57,7 +63,10 @@ const Hero= () => {
           </LeftColumn>
           <RightColumn>
             <IllustrationContainer>
-              <img src="https://img.freepik.com/free-vector/save-planet-concept-with-people-taking-care-earth_23-2148522570.jpg?w=740&t=st=1653536296~exp=1653536896~hmac=4630eef54d5995bc1f4ee54ec0c2d97feb56712afe54bf93b7c06092acbecd67" alt="Design Illustration" />
+              <img
+                src="https://img.freepik.com/free-vector/save-planet-concept-with-people-taking-care-earth_23-2148522570.jpg?w=740&t=st=1653536296~exp=1653536896~hmac=4630eef54d5995bc1f4ee54ec0c2d97feb56712afe54bf93b7c06092acbecd67"
+                alt="Design Illustration"
+              />
             </IllustrationContainer>
           </RightColumn>
         </TwoColumn>
@@ -66,4 +75,4 @@ const Hero= () => {
     </>
   );
 };
-export default Hero
+export default Hero;

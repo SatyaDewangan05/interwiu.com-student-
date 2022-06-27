@@ -29,13 +29,13 @@ const Signupprofessional = () => {
         </div>
         <div className="login-head">
           <p>
-            Let’s appear for a Mock Interview and obtain Feedback on your
-            performance in realtime!. Sign up now
+            Let’s take Mock Interviews of Students and provide Feedback on their
+            performance in realtime!<br/> Sign up now
           </p>
         </div>
         <div className="login-system">
           <div className="col">
-            <h1>Sign Up as Professional</h1>
+            <h1>Sign Up as a Professional</h1>
             <button
               className="signin-btn login"
               onClick={(e) => {

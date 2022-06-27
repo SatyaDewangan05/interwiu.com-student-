@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router";
 import axios from "axios";
 import "./SearchInterviews.css";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Divider } from "@mui/material";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
@@ -11,7 +11,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { CalendarPicker } from "@mui/x-date-pickers/CalendarPicker";
 import CloseIcon from "@mui/icons-material/Close";
-import IconButton from "@material-ui/core/IconButton";
+// import IconButton from "@material-ui/core/IconButton";
 
 import {
   Sunday,
@@ -50,22 +50,22 @@ const changeLink = () => {
 const SearchInterviews = () => {
   // const user = userDetails.user;
   const display = (day) => {
-    const date=day.toLocaleDateString();
-    day=day.getDay();
+    const date = day.toLocaleDateString();
+    day = day.getDay();
     if (day === 0) {
-      return <Sunday date={date}/>;
+      return <Sunday date={date} />;
     } else if (day === 1) {
-      return <Monday date={date}/>;
+      return <Monday date={date} />;
     } else if (day === 2) {
-      return <Tuesday date={date}/>;
+      return <Tuesday date={date} />;
     } else if (day === 3) {
-      return <Wednesday date={date}/>;
+      return <Wednesday date={date} />;
     } else if (day === 4) {
-      return <Thursday date={date}/>;
+      return <Thursday date={date} />;
     } else if (day === 5) {
-      return <Friday date={date}/>;
+      return <Friday date={date} />;
     } else {
-      return <Saturday date={date}/>;
+      return <Saturday date={date} />;
     }
   };
 
@@ -436,25 +436,22 @@ const SearchInterviews = () => {
                         aria-describedby="modal-modal-description"
                       >
                         <Box sx={style}>
-
-                         
-                        <Box
-                          sx={{
-                            position: "absolute",
-                            right: 0,
-                            top: 0,
-                          }}
-                        >
-                          <IconButton onClick={handleClose}>
-                            <CloseIcon />
-                          </IconButton>
-                        </Box>
+                          <Box
+                            sx={{
+                              position: "absolute",
+                              right: 0,
+                              top: 0,
+                            }}
+                          >
+                            <CloseIcon onClick={handleClose} />
+                          </Box>
                           <Typography
                             id="modal-modal-title"
                             variant="h5"
                             sx={{
                               fontWeight: "bold",
                               textAlign: "center",
+                              mb:2
                             }}
                           >
                             Request a Mock Interview with Mr. John Doe

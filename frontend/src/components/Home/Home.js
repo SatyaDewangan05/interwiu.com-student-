@@ -1,16 +1,16 @@
 import React from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Testimonial from "./Testimonials"
+import Testimonial from "./Testimonials";
 import "./Home.css";
-import Features from './Features'
+import Features from "./Features";
 import Navbar from "./Navbar";
-import Professional from "./TwoColWithButton"
-import Hero from "./TwoColumnWithInput"
-import Footer from './MiniCenteredFooter'
-import FAQS from './SingleCol'
-import Partners from './Partner/index.jsx'
-import Working from './HowitWorks'
+import Professional from "./TwoColWithButton";
+import Hero from "./TwoColumnWithInput";
+import Footer from "./MiniCenteredFooter";
+import FAQS from "./SingleCol";
+import Partners from "./Partner/index.jsx";
+import Working from "./HowitWorks";
 
 const changeLink = () => {
   const links = document.querySelectorAll(".nav-item a");
@@ -130,52 +130,64 @@ const Home = () => {
           </div>
         </div>
       </div> */}
-      <Hero/>
-      <div className="get-started flex">
-          <div className="started-item left">
-            <p>
-              <span style={{ fontSize: "30px" }}>Are you a Student</span> <br />{" "}
-              (looking for a Mock Interview (plus Feedback) or a Mentor for
-              Interview Guidance)?
-            </p>
-            <button
-              className="cust-btn create-account-btn"
-              onClick={() => {
-                const signupstd = document.querySelector(".signup-student");
-                signupstd.classList.remove("hide");
-              }}
-            >
-              Create Account
-            </button>
-          </div>
-          <div className="started-item right">
-            <p>
-              <span style={{ fontSize: "30px", color: "white" }}>
-                Are you a Professional
-              </span>{" "}
-              <br /> (offering a Mock Interview (plus Feedback) or Mentorship
-              for Interview Guidance)?
-            </p>
-            <button
-              className="cust-btn create-account-btn"
-              onClick={() => {
-                const signuppro = document.querySelector(
-                  ".signup-professional"
-                );
-                signuppro.classList.remove("hide");
-              }}
-            >
-              Create Account
-            </button>
-          </div>
+      <div id="home">
+        <Hero />
+      </div>
+      <div className="get-started flex" id="getStarted">
+        <div className="started-item left">
+          <p>
+            <span style={{ fontSize: "30px" }}>Are you a Student</span> <br />{" "}
+            (looking for a Mock Interview (plus Feedback) or a Mentor for
+            Interview Guidance)?
+          </p>
+          <button
+            className="cust-btn create-account-btn"
+            onClick={() => {
+              const signupstd = document.querySelector(".signup-student");
+              signupstd.classList.remove("hide");
+            }}
+          >
+            Create Account
+          </button>
         </div>
-      <Working/>
-      <Features/>
-      <Partners/>
-      <Professional/>
-      <Testimonial/>
-      <FAQS/>
-      <Footer/>
+        <div className="started-item right">
+          <p>
+            <span style={{ fontSize: "30px", color: "white" }}>
+              Are you a Professional
+            </span>{" "}
+            <br /> (offering a Mock Interview (plus Feedback) or Mentorship for
+            Interview Guidance)?
+          </p>
+          <button
+            className="cust-btn create-account-btn"
+            onClick={() => {
+              const signuppro = document.querySelector(".signup-professional");
+              signuppro.classList.remove("hide");
+            }}
+          >
+            Create Account
+          </button>
+        </div>
+      </div>
+      <div id="howItWorks">
+        <Working />
+      </div>
+      <div id="features">
+        <Features />
+      </div>
+      <div id="profiles">
+        <Professional />
+      </div>
+      <div id="partners">
+        <Partners />
+      </div>
+      <div id="testimonials">
+        <Testimonial />
+      </div>
+      <div id="faqs">
+        <FAQS />
+      </div>
+      <Footer />
     </>
   );
 };
