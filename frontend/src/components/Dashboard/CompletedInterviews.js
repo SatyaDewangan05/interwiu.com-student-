@@ -25,7 +25,7 @@ const ReadMore = ({ children }) => {
     </p>
   );
 };
-const labels: { [index: string]: string } = {
+const labels = {
   0.5: "Useless",
   1: "Useless+",
   1.5: "Poor",
@@ -38,7 +38,7 @@ const labels: { [index: string]: string } = {
   5: "Excellent+",
 };
 
-function getLabelText(value: number) {
+function getLabelText(value) {
   return `${value} Star${value !== 1 ? "s" : ""}, ${labels[value]}`;
 }
 const style = {

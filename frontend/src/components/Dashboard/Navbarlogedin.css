@@ -5,15 +5,16 @@
     background-color: white;
     color: blaCK;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    position: sticky;
+    position: relative;
     top: 0px;
     z-index: 10;
+    transition: 0.4s linear top;
 }
 
 
 .logo h1 {
     color: #4bbcc7;
-    font-size: 32px;
+    font-size: 2rem;
 }
 
 .nav-list {
@@ -22,24 +23,51 @@
     margin: 0;
 }
 
+.navbarlogedin .active {
+    color: black;
+    background-color: #62ff62;
+}
 
+.navbarlogedin .active:hover {
+    color: rgb(18, 154, 18);
+}
 
-.nav-item {
-    font-size: 18px;
+.navbarlogedin .nav-item {
+    font-size: 1rem;
+    transition: 0.2s ease-out font-size;
+    /* border: 1px solid black; */
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.5rem;
 }
 
 .nav-item * {
     color: black;
     text-decoration: none;
+    /* padding: 10px;
+    border-radius: 8px; */
 }
 
-.nav-item:hover {
-    color: rgb(224, 36, 36);
+.navbarlogedin .nav-item:hover {
+    color: #1265a8;
+    font-size: 1.3rem;
+    font-weight: 500;
 }
 
-.nav-item  p{
+.nav-item p {
     margin: 0;
     text-align: center;
+}
+
+.nav-item p:hover {
+    color: #1265a8;
+}
+
+.notify {
+    background-color: red;
+    text-align: center;
+    color: white;
+    padding: 2px 7px;
+    border-radius: 50%;
 }
 
 .sidebar {
@@ -48,7 +76,7 @@
 }
 
 
-.notification-dropdown{
+.notification-dropdown {
     position: absolute;
     top: 60px;
     right: 60px;
@@ -60,48 +88,48 @@
     z-index: 30;
 }
 
-.notification-dropdown h4{
+.notification-dropdown h4 {
     text-align: center;
 }
 
-.notification-dropdown hr{
+.notification-dropdown hr {
     margin: 0 10px;
 }
 
-.notification-item{
+.notification-item {
     font-size: 14px;
     padding: 5px 10px;
     cursor: pointer;
 }
 
-.notification-item h6{
+.notification-item h6 {
     margin-bottom: 4px;
 }
 
-.notification-item:hover{
+.notification-item:hover {
     background-color: rgba(0, 0, 0, 0.03);
 }
 
 
 
-.sidebar-profile-img{
+.sidebar-profile-img {
     padding: 3px;
     border-radius: 50%;
     border: 2px solid black;
     cursor: pointer;
 }
 
-.sidebar-profile-img:hover{
+.sidebar-profile-img:hover {
     opacity: 0.5;
 }
 
-.sidebar-profile-img img{
+.sidebar-profile-img img {
     height: 40px;
     width: 40px;
     border-radius: 50%;
 }
 
-.profile-dropdown{
+.profile-dropdown {
     position: absolute;
     top: 60px;
     right: 0;
@@ -117,21 +145,21 @@
     grid-gap: 10px;
 }
 
-.profile-dropdown-head h5{
+.profile-dropdown-head h5 {
     margin: 0;
 }
 
-.profile-dropdown img{
+.profile-dropdown img {
     height: 60px;
     width: 60px;
     border-radius: 50%;
 }
 
-.profile-dropdown p{
+.profile-dropdown p {
     font-size: 16px;
 }
 
-.view-profile-btn{
+.view-profile-btn {
     display: block;
     font-size: 16px;
     border: 2px solid #1265a8;
@@ -140,37 +168,37 @@
     color: #1265a8;
 }
 
-.view-profile-btn:hover{
+.view-profile-btn:hover {
     background-color: #1265a8;
     color: white;
 }
 
-.dropdown-btn{
+.dropdown-btn {
     cursor: pointer;
     padding: 4px 16px;
     border-radius: 8px;
 }
 
-.dropdown-btn:hover{
+.dropdown-btn:hover {
     background-color: #1265a8;
     color: white;
 }
 
-.dropdown-logout-btn{
+.dropdown-logout-btn {
     cursor: pointer;
     border-radius: 8px;
 }
 
-.logout-btn{
+.logout-btn {
     padding: 4px 16px;
     width: 100%;
     font-size: 16px;
 }
 
-.logout-btn:hover{
+.logout-btn:hover {
     background-color: red;
     color: white;
-    
+
 }
 
 .notifier {
@@ -192,13 +220,6 @@
     background-color: red;
 }
 
-.active {
-    color: rgb(18, 154, 18);
-}
-
-.active:hover {
-    color: rgb(18, 154, 18);
-}
 
 
 .hide {

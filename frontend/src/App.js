@@ -109,7 +109,7 @@ function App() {
         <Route path="/interviewer-request" element={<InterviewerRequest />} />
         <Route path="/interviewer-upcoming" element={<InterviewerUpcoming />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

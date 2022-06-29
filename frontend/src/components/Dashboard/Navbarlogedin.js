@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import "./Navbarlogedin.css";
@@ -8,6 +9,80 @@ const Navbarlogedin = () => {
   let navigate = useNavigate();
   const location = useLocation();
 
+  // useEffect(() => {
+  //   console.log(window.location.pathname);
+  // }, []);
+
+  const pathname = window.location.pathname.toLowerCase();
+  const navItem = document.querySelectorAll(".nav-item a");
+  if (pathname === "/searching") {
+    console.log(pathname);
+    navItem.forEach((item) => {
+      if (item.classList.contains("active")) {
+        item.classList.remove("active");
+      }
+      if (item.href.includes("searching")) {
+        item.firstChild.classList.add("active");
+      }
+    });
+  }
+  if (pathname === "/sent-requests") {
+    console.log(pathname);
+    navItem.forEach((item) => {
+      if (item.classList.contains("active")) {
+        item.classList.remove("active");
+      }
+      if (item.href.includes("sent-requests")) {
+        item.firstChild.classList.add("active");
+      }
+    });
+  }
+  if (pathname === "/accepted-requests") {
+    console.log(pathname);
+    navItem.forEach((item) => {
+      if (item.classList.contains("active")) {
+        item.classList.remove("active");
+      }
+      if (item.href.includes("accepted-requests")) {
+        item.firstChild.classList.add("active");
+        console.log(item.firstChild);
+      }
+    });
+  }
+  if (pathname === "/upcoming-interviews") {
+    console.log(pathname);
+    navItem.forEach((item) => {
+      if (item.classList.contains("active")) {
+        item.classList.remove("active");
+      }
+      if (item.href.includes("upcoming-interviews")) {
+        item.firstChild.classList.add("active");
+      }
+    });
+  }
+  if (pathname === "/completed-interviews") {
+    console.log(pathname);
+    navItem.forEach((item) => {
+      if (item.classList.contains("active")) {
+        item.classList.remove("active");
+      }
+      if (item.href.includes("completed-interviews")) {
+        item.firstChild.classList.add("active");
+      }
+    });
+  }
+
+  // var prevScrollpos = window.pageYOffset;
+  // window.onscroll = function () {
+  //   var currentScrollPos = window.pageYOffset;
+  //   // console.log(currentScrollPos);
+  //   if (prevScrollpos === currentScrollPos) {
+  //     document.querySelector(".navbarlogedin").style.top = "0";
+  //   } else {
+  //     document.querySelector(".navbarlogedin").style.top = "-100px";
+  //   }
+  //   // prevScrollpos = currentScrollPos;
+  // };
   return (
     <div className="navbarlogedin flex">
       <div className="logo">
@@ -26,7 +101,9 @@ const Navbarlogedin = () => {
         </li>
         <li className="nav-item">
           <Link to="/accepted-requests">
-            <p>Accepted Requests</p>
+            <p>
+              Accepted Requests <span className="notify">4</span>
+            </p>
           </Link>
         </li>
         <li className="nav-item">
@@ -36,7 +113,15 @@ const Navbarlogedin = () => {
         </li>
         <li className="nav-item">
           <Link to="/completed-interviews">
-            <p>Completed Interviews</p>
+            <p>
+              Completed Interviews{" "}
+              <span
+                style={{ backgroundColor: "yellow", color: "black" }}
+                className="notify"
+              >
+                2
+              </span>
+            </p>
           </Link>
         </li>
       </ul>
@@ -97,7 +182,7 @@ const Navbarlogedin = () => {
               </div>
               <div>
                 <h5>John Doe</h5>
-                <p>B.Tech</p>
+                <p>B.Tech, IIT Kharagpur</p>
               </div>
             </div>
             <div>
@@ -115,12 +200,21 @@ const Navbarlogedin = () => {
           <hr />
           <div className="profile-dropdown-sec">
             <div className="dropdown-btn">
-              <p>Report an Issue</p>
+              <p>
+                <i class="fa-solid fa-triangle-exclamation"></i> Report an Issue
+              </p>
             </div>
             <div className="dropdown-btn">
-              <p>Account Settings</p>
+              <p>
+                <i className="fa-solid fa-gear"></i> Account Settings
+              </p>
             </div>
-            <div
+            <div className="dropdown-btn">
+              <p>
+                <i className="fa-solid fa-bookmark"></i> Bookmark
+              </p>
+            </div>
+            {/* <div
               className="dropdown-btn"
               onClick={() => {
                 navigate("/contact");
@@ -135,14 +229,14 @@ const Navbarlogedin = () => {
               }}
             >
               <p>About Us</p>
-            </div>
+            </div> */}
           </div>
           <hr />
           <div className="profile-dropdown-sec">
             <div className="dropdown-logout-btn">
               <form action="http://localhost:8585/auth/logout">
                 <button type="submit" className="cust-btn logout-btn">
-                  Log Out
+                  <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out
                 </button>
               </form>
             </div>

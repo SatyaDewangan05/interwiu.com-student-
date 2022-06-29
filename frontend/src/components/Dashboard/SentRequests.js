@@ -6,12 +6,13 @@ import Navbarlogedin from "./Navbarlogedin";
 import "./SentRequests.css";
 
 const changeLink = () => {
-  const links = document.querySelectorAll(".nav-item a");
+  const links = document.querySelectorAll(".nav-item a p");
   links.forEach((link) => {
     if (link.classList.contains("active")) {
       link.classList.remove("active");
     }
-    if (link.innerHTML === "Pending Requests") {
+    if (link.innerHTML === "Sent Requests") {
+      console.log(link);
       link.classList.add("active");
     }
   });
@@ -24,46 +25,100 @@ const SentRequests = () => {
   return (
     <>
       <Navbarlogedin />
-      <div className="interviews">
+      <div className="sent-request interviews">
         <div className="interviews-container">
           <h1>Sent Requests</h1>
           <div className="interviews-cont">
             <div className="interviews-list">
+              {/* <div className="interview-item-container">
+                <div className="interview-item">
+                  <div className="interview-item-profile">
+                    <img
+                      src={require("../../images/photo.png")}
+                      alt="Profile"
+                    />
+                  </div>
+                  <div className="interview-item-info">
+                    <div className="interviewer-head">
+                      <h2>John Doe</h2>
+                      <p>SDE, Google, California</p>
+                    </div>
+                    <div className="details flex">
+                      <div className="detail">
+                        <p className="detail-head">Profile</p>
+                        <p className="detail-body">Data Science</p>
+                      </div>
+                      <div className="detail">
+                        <p className="detail-head">Price</p>
+                        <p className="detail-body">INR 900</p>
+                      </div>
+                      <div className="detail">
+                        <p className="detail-head">Session Duration</p>
+                        <p className="detail-body">30 Min</p>
+                      </div>
+                      <div className="detail">
+                        <p className="detail-head">Interview Slot</p>
+                        <p className="detail-body">[5:00PM - 5:45PM]</p>
+                        <p className="detail-body">20 June, 2022</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="interview-item-btns flex">
+                  <button className="cust-btn view-btn">View Profile</button>
+                  <button
+                    type="button"
+                    className="cust-btn request-sent-btn"
+                  ></button>
+                </div>
+              </div> */}
               <div className="interview-item">
                 <div className="interview-item-profile">
                   <img src={require("../../images/photo.png")} alt="Profile" />
                   <button className="cust-btn view-btn">View Profile</button>
                 </div>
                 <div className="interview-item-info">
-                  <div className="interviewer-head">
-                    <h2>John Doe</h2>
-                    <p>SDE, Google, California</p>
+                  <div>
+                    <div className="interviewer-head">
+                      <h2>John Doe</h2>
+                      <p>SDE, Google, California</p>
+                    </div>
+                    <div className="details flex">
+                      <div className="detail">
+                        <p className="detail-head">Profile</p>
+                        <p className="detail-body">Data Science</p>
+                      </div>
+                      <div className="detail">
+                        <p className="detail-head">Price</p>
+                        <p className="detail-body">INR 900</p>
+                      </div>
+                      <div className="detail">
+                        <p className="detail-head">Session Duration</p>
+                        <p className="detail-body">30 Min</p>
+                      </div>
+                      <div className="detail">
+                        <p className="detail-head">Interview Slot</p>
+                        <p className="detail-body">[5:00PM - 5:45PM]</p>
+                        <p className="detail-body">20 June, 2022</p>
+                      </div>
+                    </div>
                   </div>
-                  <div className="details flex">
-                    <div className="detail">
-                      <p className="detail-head">Profile</p>
-                      <p className="detail-body">Data Science</p>
-                    </div>
-                    <div className="detail">
-                      <p className="detail-head">Price</p>
-                      <p className="detail-body">INR 900</p>
-                    </div>
-                    <div className="detail">
-                      <p className="detail-head">Session Duration</p>
-                      <p className="detail-body">30 Min</p>
-                    </div>
-                    <div className="detail">
-                      <p className="detail-head">Interview Slot</p>
-                      <p className="detail-body">[5:00PM - 5:45PM]</p>
-                      <p className="detail-body">20 June, 2022</p>
-                    </div>
-                  </div>
-                  {/* <div className="time-preference">
-                    <p>Interview Slot: 20 June, 2022 [Sun] [5:00PM - 5:45PM]</p>
-                  </div> */}
                   <div className="search-result-item-btns flex">
                     <button type="button" className="cust-btn request-sent-btn">
                       Request Sent
+                    </button>
+                    <div
+                      className="cancel-dropdown"
+                      onClick={() => {
+                        document
+                          .querySelector(".cancel-btn")
+                          .classList.toggle("hide");
+                      }}
+                    >
+                      <i className="fa-solid fa-caret-down"></i>
+                    </div>
+                    <button className="cust-btn cancel-btn hide">
+                      Cancel Request
                     </button>
                   </div>
                 </div>

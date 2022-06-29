@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./SearchInterviews.css";
 import { Box, Grid, Divider } from "@mui/material";
@@ -35,20 +36,35 @@ const style = {
   p: 4,
 };
 
-const changeLink = () => {
-  const links = document.querySelectorAll(".nav-item a");
-  links.forEach((link) => {
-    if (link.classList.contains("active")) {
-      link.classList.remove("active");
-    }
-    if (link.innerHTML === "Search Interviews") {
-      link.classList.add("active");
-    }
-  });
-};
+// const changeLink = () => {
+//   const links = document.querySelectorAll(".nav-item a");
+//   links.forEach((link) => {
+//     if (link.classList.contains("active")) {
+//       link.classList.remove("active");
+//     }
+//     if (link.innerHTML === "Search Interviews") {
+//       link.classList.add("active");
+//     }
+//   });
+// };
 
 const SearchInterviews = () => {
   // const user = userDetails.user;
+
+  var prevScrollpos = window.pageYOffset;
+  window.onscroll = function () {
+    var currentScrollPos = window.pageYOffset;
+    // console.log(currentScrollPos);
+    if (currentScrollPos > 208) {
+      console.log(document.querySelector(".search-pref").classList);
+      document.querySelector(".search-pref").classList.add("static");
+    } else {
+      console.log("not");
+      document.querySelector(".search-pref").classList.remove("static");
+    }
+    prevScrollpos = currentScrollPos;
+  };
+
   const display = (day) => {
     const date = day.toLocaleDateString();
     day = day.getDay();
@@ -89,9 +105,9 @@ const SearchInterviews = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
-  useEffect(() => {
-    changeLink();
-  }, []);
+  // useEffect(() => {
+  //   changeLink();
+  // }, []);
 
   const [expanded, setExpanded] = useState(true);
 
@@ -129,25 +145,29 @@ const SearchInterviews = () => {
     <>
       <Navbarlogedin />
       <div className="searching">
-        <h1>
+        <h2>
           Find an Interviewer of your choice for a Mock Interview with Feedback
           Session
-        </h1>
-        <div className="searching-cont">
+        </h2>
+        <div className="searching-cont clearfix">
           <div className="search-pref">
-            <label htmlFor="profile">Profile Preference</label>
-            <select name="profile" id="profile">
-              <option value="" disabled selected hidden>
-                Select Profile
-              </option>
-              <option value="ds">Data Science</option>
-              <option value="software">Software</option>
-              <option value="banking">Banking and Finance</option>
-              <option value="consulting">Consulting</option>
-              <option value="analytics">Analytics</option>
-            </select>
+            <h4>Preference</h4>
+            <div>
+              <label htmlFor="profile">Profile Preference</label>
+              <select name="profile" id="profile">
+                <option value="" disabled selected hidden>
+                  Select Profile
+                </option>
+                <option value="ds">Data Science</option>
+                <option value="software">Software</option>
+                <option value="banking">Banking and Finance</option>
+                <option value="consulting">Consulting</option>
+                <option value="analytics">Analytics</option>
+              </select>
+            </div>
             <div className="charge-limit">
-              <h4>Charge Limits </h4>
+              {/* <h4>Charge Limits </h4> */}
+              <label htmlFor="charge">Charge Limits</label>
               <div className="below flex">
                 <input type="checkbox" name="charge" id="below" />
                 <label htmlFor="below">Below INR</label>
@@ -187,6 +207,102 @@ const SearchInterviews = () => {
                 </div>
                 <div className="pref-item">
                   <ul>
+                    <li>
+                      Monday - 12:00 to 13:00{" "}
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.target.parentElement.parentElement.remove();
+                        }}
+                        className="cust-btn trash-btn"
+                      >
+                        <i class="fa-solid fa-trash-can"></i>
+                      </button>
+                    </li>
+                    <li>
+                      Monday - 12:00 to 13:00{" "}
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.target.parentElement.parentElement.remove();
+                        }}
+                        className="cust-btn trash-btn"
+                      >
+                        <i class="fa-solid fa-trash-can"></i>
+                      </button>
+                    </li>
+                    <li>
+                      Monday - 12:00 to 13:00{" "}
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.target.parentElement.parentElement.remove();
+                        }}
+                        className="cust-btn trash-btn"
+                      >
+                        <i class="fa-solid fa-trash-can"></i>
+                      </button>
+                    </li>
+                    <li>
+                      Monday - 12:00 to 13:00{" "}
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.target.parentElement.parentElement.remove();
+                        }}
+                        className="cust-btn trash-btn"
+                      >
+                        <i class="fa-solid fa-trash-can"></i>
+                      </button>
+                    </li>
+                    <li>
+                      Monday - 12:00 to 13:00{" "}
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.target.parentElement.parentElement.remove();
+                        }}
+                        className="cust-btn trash-btn"
+                      >
+                        <i class="fa-solid fa-trash-can"></i>
+                      </button>
+                    </li>
+                    <li>
+                      Monday - 12:00 to 13:00{" "}
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.target.parentElement.parentElement.remove();
+                        }}
+                        className="cust-btn trash-btn"
+                      >
+                        <i class="fa-solid fa-trash-can"></i>
+                      </button>
+                    </li>
+                    <li>
+                      Monday - 12:00 to 13:00{" "}
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.target.parentElement.parentElement.remove();
+                        }}
+                        className="cust-btn trash-btn"
+                      >
+                        <i class="fa-solid fa-trash-can"></i>
+                      </button>
+                    </li>
+                    <li>
+                      Monday - 12:00 to 13:00{" "}
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.target.parentElement.parentElement.remove();
+                        }}
+                        className="cust-btn trash-btn"
+                      >
+                        <i class="fa-solid fa-trash-can"></i>
+                      </button>
+                    </li>
                     <li>
                       Monday - 12:00 to 13:00{" "}
                       <button
@@ -372,7 +488,7 @@ const SearchInterviews = () => {
             </button>
           </div>
           <div className="search-result">
-            <h3>Search result</h3>
+            <h3>48 Search result</h3>
             <div className="search-result-cont">
               {cards?.map((result) => (
                 <div className="search-result-item">
@@ -402,14 +518,7 @@ const SearchInterviews = () => {
                         src={require("../../images/photo.png")}
                         alt="Profile"
                       />
-                      <button
-                        className="cust-btn view-btn"
-                        onClick={() => {
-                          navigate("/interviewer-dashboard");
-                        }}
-                      >
-                        View Profile
-                      </button>
+                      <Link to="/interviewer-dashboard">View Profile</Link>
                     </div>
                   </div>
                   <div className="search-result-item-desc">
@@ -451,7 +560,7 @@ const SearchInterviews = () => {
                             sx={{
                               fontWeight: "bold",
                               textAlign: "center",
-                              mb:2
+                              mb: 2,
                             }}
                           >
                             Request a Mock Interview with Mr. John Doe
@@ -490,6 +599,270 @@ const SearchInterviews = () => {
                   </div>
                 </div>
               ))}
+              <div className="search-result-item">
+                <div className="search-result-item-head">
+                  <div>
+                    <div className="interviewer-head">
+                      <h4>John Doe</h4>
+                      <p>SDE, Amazon, San Francisco</p>
+                    </div>
+                    <div className="details flex">
+                      <div className="detail">
+                        <p className="detail-head">Profile</p>
+                        <p className="detail-body">Data Science</p>
+                      </div>
+                      <div className="detail">
+                        <p className="detail-head">Price</p>
+                        <p className="detail-body">INR 1200</p>
+                      </div>
+                      <div className="detail">
+                        <p className="detail-head">Session Duration</p>
+                        <p className="detail-body">45 Min</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="search-result-item-profile">
+                    <img
+                      src={require("../../images/photo.png")}
+                      alt="Profile"
+                    />
+                    <button
+                      className="cust-btn view-btn"
+                      onClick={() => {
+                        navigate("/interviewer-dashboard");
+                      }}
+                    >
+                      View Profile
+                    </button>
+                  </div>
+                </div>
+                <div className="search-result-item-desc">
+                  <div className="time-preference">
+                    <p>Slots Available </p>
+                    <ul className="slot-list">
+                      <li>Sun (5-7 pm)</li>
+                      <li>Mon (3-4 pm)</li>
+                      <li>Tue (5-7 pm)</li>
+                      <li>Wed (3-4 pm)</li>
+                      <li>Thur(5-7 pm)</li>
+                      <li>Fri (3-4 pm)</li>
+                      <li>Sat (5-7 pm)</li>
+                    </ul>
+                  </div>
+                  <div className="search-result-item-btns flex">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const requestPopup = document.querySelector(
+                          ".mock-request-popup-container"
+                        );
+                        requestPopup.classList.remove("hide");
+                      }}
+                      className="cust-btn request-btn"
+                    >
+                      Request a Mock Interview with Feedback Session
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="search-result-item">
+                <div className="search-result-item-head">
+                  <div>
+                    <div className="interviewer-head">
+                      <h4>John Doe</h4>
+                      <p>SDE, Amazon, San Francisco</p>
+                    </div>
+                    <div className="details flex">
+                      <div className="detail">
+                        <p className="detail-head">Profile</p>
+                        <p className="detail-body">Data Science</p>
+                      </div>
+                      <div className="detail">
+                        <p className="detail-head">Price</p>
+                        <p className="detail-body">INR 1200</p>
+                      </div>
+                      <div className="detail">
+                        <p className="detail-head">Session Duration</p>
+                        <p className="detail-body">45 Min</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="search-result-item-profile">
+                    <img
+                      src={require("../../images/photo.png")}
+                      alt="Profile"
+                    />
+                    <button
+                      className="cust-btn view-btn"
+                      onClick={() => {
+                        navigate("/interviewer-dashboard");
+                      }}
+                    >
+                      View Profile
+                    </button>
+                  </div>
+                </div>
+                <div className="search-result-item-desc">
+                  <div className="time-preference">
+                    <p>Slots Available </p>
+                    <ul className="slot-list">
+                      <li>Sun (5-7 pm)</li>
+                      <li>Mon (3-4 pm)</li>
+                      <li>Tue (5-7 pm)</li>
+                      <li>Wed (3-4 pm)</li>
+                      <li>Thur(5-7 pm)</li>
+                      <li>Fri (3-4 pm)</li>
+                      <li>Sat (5-7 pm)</li>
+                    </ul>
+                  </div>
+                  <div className="search-result-item-btns flex">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const requestPopup = document.querySelector(
+                          ".mock-request-popup-container"
+                        );
+                        requestPopup.classList.remove("hide");
+                      }}
+                      className="cust-btn request-btn"
+                    >
+                      Request a Mock Interview with Feedback Session
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="search-result-item">
+                <div className="search-result-item-head">
+                  <div>
+                    <div className="interviewer-head">
+                      <h4>John Doe</h4>
+                      <p>SDE, Amazon, San Francisco</p>
+                    </div>
+                    <div className="details flex">
+                      <div className="detail">
+                        <p className="detail-head">Profile</p>
+                        <p className="detail-body">Data Science</p>
+                      </div>
+                      <div className="detail">
+                        <p className="detail-head">Price</p>
+                        <p className="detail-body">INR 1200</p>
+                      </div>
+                      <div className="detail">
+                        <p className="detail-head">Session Duration</p>
+                        <p className="detail-body">45 Min</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="search-result-item-profile">
+                    <img
+                      src={require("../../images/photo.png")}
+                      alt="Profile"
+                    />
+                    <button
+                      className="cust-btn view-btn"
+                      onClick={() => {
+                        navigate("/interviewer-dashboard");
+                      }}
+                    >
+                      View Profile
+                    </button>
+                  </div>
+                </div>
+                <div className="search-result-item-desc">
+                  <div className="time-preference">
+                    <p>Slots Available </p>
+                    <ul className="slot-list">
+                      <li>Sun (5-7 pm)</li>
+                      <li>Mon (3-4 pm)</li>
+                      <li>Tue (5-7 pm)</li>
+                      <li>Wed (3-4 pm)</li>
+                      <li>Thur(5-7 pm)</li>
+                      <li>Fri (3-4 pm)</li>
+                      <li>Sat (5-7 pm)</li>
+                    </ul>
+                  </div>
+                  <div className="search-result-item-btns flex">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const requestPopup = document.querySelector(
+                          ".mock-request-popup-container"
+                        );
+                        requestPopup.classList.remove("hide");
+                      }}
+                      className="cust-btn request-btn"
+                    >
+                      Request a Mock Interview with Feedback Session
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="search-result-item">
+                <div className="search-result-item-head">
+                  <div>
+                    <div className="interviewer-head">
+                      <h4>John Doe</h4>
+                      <p>SDE, Amazon, San Francisco</p>
+                    </div>
+                    <div className="details flex">
+                      <div className="detail">
+                        <p className="detail-head">Profile</p>
+                        <p className="detail-body">Data Science</p>
+                      </div>
+                      <div className="detail">
+                        <p className="detail-head">Price</p>
+                        <p className="detail-body">INR 1200</p>
+                      </div>
+                      <div className="detail">
+                        <p className="detail-head">Session Duration</p>
+                        <p className="detail-body">45 Min</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="search-result-item-profile">
+                    <img
+                      src={require("../../images/photo.png")}
+                      alt="Profile"
+                    />
+                    <button
+                      className="cust-btn view-btn"
+                      onClick={() => {
+                        navigate("/interviewer-dashboard");
+                      }}
+                    >
+                      View Profile
+                    </button>
+                  </div>
+                </div>
+                <div className="search-result-item-desc">
+                  <div className="time-preference">
+                    <p>Slots Available </p>
+                    <ul className="slot-list">
+                      <li>Mon (3-4 pm)</li>
+                      <li>Tue (5-7 pm)</li>
+                      <li>Wed (3-4 pm)</li>
+                      <li>Thur(5-7 pm)</li>
+                      <li>Fri (3-4 pm)</li>
+                      <li>Sat (5-7 pm)</li>
+                      <li>Sun (5-7 pm)</li>
+                    </ul>
+                  </div>
+                  <div className="search-result-item-btns flex">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const requestPopup = document.querySelector(
+                          ".mock-request-popup-container"
+                        );
+                        requestPopup.classList.remove("hide");
+                      }}
+                      className="cust-btn request-btn"
+                    >
+                      Request a Mock Interview with Feedback Session
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

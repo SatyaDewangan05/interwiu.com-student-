@@ -197,9 +197,12 @@ const ProfileForm = (userDetails) => {
                     {}
                     <option value="btech">B.Tech</option>
                     <option value="dual">Dual Degree (B.Tech + M.Tech)</option>
+                    <option value="dualbsms">Dual Degree (BS + MS)</option>
                     <option value="mtech">M.Tech</option>
-                    <option value="ms">MS(by Research)</option>
-                    <option value="msc">M.sc or Intergrated MS/MA</option>
+                    <option value="ms">MS (by Research)</option>
+                    <option value="mba">MBA</option>
+                    <option value="msc">M.Sc</option>
+                    <option value="ima">Intergrated MA</option>
                     <option value="phd">PhD</option>
                   </select>
                 </div>
