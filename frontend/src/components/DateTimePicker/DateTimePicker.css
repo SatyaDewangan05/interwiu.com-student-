@@ -1,0 +1,51 @@
+/* @import url("https://cdn.syncfusion.com/ej2/material.css");
+@import '~rc-time-picker/assets/index.css'; */
+
+.datetime {
+  width: 250px;
+  height: 850px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.date {
+  display: flex;
+}
+.time {
+  display: flex;
+}
+.from {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.to {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.fromto {
+  display: flex;
+  justify-content: space-between;
+}
+.today {
+  display: flex;
+  padding: -10px;
+}
+.tomorrow {
+  display: flex;
+  padding: -10px;
+}
+.week {
+  display: flex;
+  padding: -10px;
+}
+.month {
+  display: flex;
+
+  padding: -10px;
+}
+/* .rc-time-picker-input {
+  height: 50px;
+} */

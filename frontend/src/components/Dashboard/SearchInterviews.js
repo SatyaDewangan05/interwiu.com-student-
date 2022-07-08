@@ -12,6 +12,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 // import IconButton from "@material-ui/core/IconButton";
 import Interview from "./cards/Interview";
+import DateTimePicker from "../DateTimePicker/DateTimePicker";
 
 import {
   Sunday,
@@ -473,6 +474,18 @@ const SearchInterviews = () => {
                 Add Time Preference
               </button>
             </div>
+
+            <DateTimePicker />
+            <button
+              type="submit"
+              className="cust-btn find-btn"
+              onClick={(e) => {
+                e.preventDefault();
+                showResult();
+              }}
+            >
+              Apply Preference
+            </button>
           </div>
           <div className="search-result">
             <h3 className="text-xl font-[500]">Search results (48)</h3>

@@ -3,20 +3,47 @@ import React from "react";
 import "./InterviewerRequest.css";
 
 import Navbarlogedin from "../Dashboard/Navbarlogedin";
+import InterviewerRequestNavbar from "./InterviewerRequestNavbar";
 
 const InterviewerRequest = () => {
   return (
     <>
-      <Navbarlogedin />
+      <InterviewerRequestNavbar />
       <div className="interviews">
         <div className="interviews-container">
           <h1>Mock Interview Request from Students</h1>
           <div className="interviews-cont">
             <div className="interviews-list">
               <div className="interview-item">
-                <div className="interview-item-profile">
+                <div
+                  className="interview-item-profile"
+                  style={{ display: "flex", flexDirection: "column" }}
+                >
                   <img src={require("../../images/photo.png")} alt="Profile" />
-                  <button className="cust-btn view-btn">View Profile</button>
+                  <a
+                    src="#"
+                    style={{
+                      textDecorationLine: "blink",
+                      cursor: "pointer",
+                      marginTop: "-30px",
+                      marginRight: "50px",
+                    }}
+                    className="hover-animation"
+                  >
+                    View Profile
+                  </a>
+                  <a
+                    src="#"
+                    style={{
+                      textDecorationLine: "blink",
+                      cursor: "pointer",
+                      marginTop: "0px",
+                      marginRight: "65px",
+                    }}
+                    className="hover-animation"
+                  >
+                    Resume
+                  </a>
                 </div>
                 <div className="interview-item-info">
                   <div className="interviewer-head">
@@ -25,11 +52,20 @@ const InterviewerRequest = () => {
                     <p>Computer Science Engineering</p>
                     <p>MIT, Cambrige, USA</p>
                   </div>
-                  <div className="time-preference">
-                    <p>Interview Slot: 20 June, 2022 [Sun] [5:00PM - 5:45PM]</p>
-                  </div>
-                  <div className="time-preference">
-                    <p>Profile: Data Science</p>
+                  <div className="details flex">
+                    <div className="detail">
+                      <p className="detail-head">Profile</p>
+                      <p className="detail-body">Data Science</p>
+                    </div>
+                    <div className="detail">
+                      <p className="detail-head">Session Duration</p>
+                      <p className="detail-body">45 Min</p>
+                    </div>
+                    <div className="detail">
+                      <p className="detail-head">Interview Slot</p>
+                      <p className="detail-body">[5:00PM - 5:45PM]</p>
+                      <p className="detail-body">20 June, 2022</p>
+                    </div>
                   </div>
                   <div className="search-result-item-btns flex">
                     <div className="flex">

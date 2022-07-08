@@ -1,5 +1,16 @@
-p {
-  margin: 0;
+.request-accepted-btn {
+  display: block;
+  margin: 10px 0;
+  border: 1px solid violet;
+  background-color: violet;
+  color: white;
+  padding: 4px 8px;
+  margin-left: 10px;
+}
+
+.request-accepted-btn:hover {
+  color: violet;
+  background-color: white;
 }
 .hover-animation {
   display: inline-block;

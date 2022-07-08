@@ -20,8 +20,10 @@ import AcceptedRequests from "./components/Dashboard/AcceptedRequests";
 import CompletedInterviews from "./components/Dashboard/CompletedInterviews";
 import InterviewerRequest from "./components/Interviewer/InterviewerRequest";
 import InterviewerUpcoming from "./components/Interviewer/InterviewerUpcoming";
+import InterviewerAccepted from "./components/Interviewer/InterviewerAccepted";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import InterviewerCompleted from "./components/Interviewer/InterviewerCompleted";
 
 // Color Code is
 // Hex: #00b0f0
@@ -108,6 +110,11 @@ function App() {
         />
         <Route path="/interviewer-request" element={<InterviewerRequest />} />
         <Route path="/interviewer-upcoming" element={<InterviewerUpcoming />} />
+        <Route path="/interviewer-accepted" element={<InterviewerAccepted />} />
+        <Route
+          path="/interviewer-completed"
+          element={<InterviewerCompleted />}
+        />
       </Routes>
       <Footer />
     </div>
