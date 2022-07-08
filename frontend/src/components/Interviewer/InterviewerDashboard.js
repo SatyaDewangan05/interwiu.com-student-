@@ -18,7 +18,7 @@ const InterviewerDashboard = () => {
   return (
     <>
       <Navbarlogedin />
-      <div className="dashboard">
+      <div className="interviewer-dashboard dashboard">
         <button
           className="cust-btn edit-btn"
           onClick={() => {

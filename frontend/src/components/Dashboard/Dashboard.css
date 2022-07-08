@@ -1,12 +1,62 @@
 .dashboard {
-    margin: 10px 10vw;
+    margin: 10px auto;
+    max-width: 1100px;
     padding: 10px;
     background-color: white;
     border-radius: 8px;
     position: relative;
 }
 
-.edit-btn {
+#profile-picture{
+    position: relative;
+    height: 200px;
+    width: 200px;
+    margin: 0 auto;
+    z-index: 20;
+}
+
+#profile-picture img{
+    padding: 6px;
+    border: 3px solid #1c2e4a;
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+}
+
+#profile-cover{
+    position: absolute;
+    top: 25px;
+    z-index: 0;
+    height: 150px;
+    width: 100%;
+    background-image: url('../../images/cover2.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
+    opacity: 0.8;
+}
+
+#profile-cover img{
+    object-fit: cover;
+}
+
+#social-links{
+    height: 50px;
+}
+
+.fa-brands{
+    transition: 0.1s linear font-size;
+}
+
+#profile-pref{
+    width: 200px;
+}
+
+#profile-pref ul{
+    list-style: disc;
+}
+
+.update-btn {
     position: absolute;
     right: 20px;
     top: 20px;
@@ -14,13 +64,32 @@
     color: blue;
 }
 
-.edit-btn:hover {
+.update-btn:hover {
     color: red;
 }
 
-.edit-btn:active {
+.update-btn:active {
     color: blue;
 }
+
+.desc-pref{
+    position: relative;
+}
+
+.edit-btn{
+    margin-left: 10px;
+    font-size: 18px;
+    color: blue;
+}
+
+.edit-btn:hover{
+    color: red;
+}
+
+.edit-btn:active{
+    color: blue;
+}
+
 
 .dashboard .head {
     text-align: center;
@@ -128,4 +197,33 @@
     /* height: 50px; */
     text-align: center;
     margin: 0;
+}
+
+
+.profile-pref-search{
+    width: 200px;
+}
+
+
+.desc-pref-edit{
+    display: none;
+    position: absolute;
+    background-color: white;
+    z-index: 10;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+}
+
+.desc-cross{
+    position: absolute;
+    top: 4px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.desc-cross:hover{
+    color: red;
 }

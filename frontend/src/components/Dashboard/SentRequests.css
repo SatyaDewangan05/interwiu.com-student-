@@ -6,20 +6,16 @@
 }
 
 .interviews-container{
-    padding: 10px 0;
 }
 
-.interviews h1{
-    margin: 0 10px 10px;
+.interview-head{
     text-align: center;
-}
-
-.sent-request h1{
-    position: fixed;
-    top: 80px;
     background-color: white;
-    text-align: center;
-    
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 8px;
+    z-index: 20;
+    border: 1px solid black;
 }
 
 .interviews-cont{
@@ -29,7 +25,7 @@
 
 .interviews-list{
     /* border-right: 1px solid grey; */
-    padding: 10px 20px;
+    padding: 0 20px;
     width: 80%;
     margin: 0 auto;
 }
@@ -51,9 +47,9 @@
     border-radius: 8px;
 }
 
-.interviewer-head h2{
+.interviewer-head h3{
     margin: 0;
-    font-size: 36px
+    /* font-size: 36px */
 }
 
 .interviewer-head p{
@@ -62,6 +58,8 @@
 
 .interview-item-profile{
     padding: 10px;
+    height: 150px;
+    width: 150px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -74,6 +72,7 @@
 
 .interview-item-profile img {
     width: 100%;
+    height: 100%;
     border-radius: 50%;
     margin: auto;
     border: 2px solid black;
@@ -123,7 +122,7 @@
 
 .request-sent-btn{
     display: block;
-    margin: 10px 0;
+    margin: 0;
     margin-left: auto;
     border: 1px solid rgb(87, 87, 87);
     background-color: rgb(87, 87, 87);
@@ -131,10 +130,10 @@
     padding: 4px 8px;
 }
 
-.request-sent-btn:hover{
+/* .request-sent-btn:hover{
     background-color: white;
     color: black;
-}
+} */
 
 /* .request-sent-btn:after{
     content: "Request Sent";
@@ -162,20 +161,101 @@
     display: none;
 }
 
+.cancel-dropdown-cont{
+    width: 10px;
+    display: block;
+}
+
 .cancel-dropdown{
     width: 20px;
     height: 34px;
     border-radius: 8px;
     border: 1px solid black;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 2px;
+    /* margin-right: 10px; */
+}
+.cancel-dropdown:hover{
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .cancel-btn{
-    position: relative;
-    bottom: 0;
-    right: 0;
-    border: 2px solid black;
+    display: none;
+    position: absolute;
+    bottom: 2px;
+    right: 70px;
+    border: 2px solid red;
     padding: 4px 8px;
     border-radius: 8px;
     z-index: 5;
-    background-color: white;
+    background-color: red;
+    color: white;
+}
+.cancel-btn:hover{
+    display: block;
+    border-color: rgb(216, 0, 0);
+    background-color: rgb(216, 0, 0);
+}
+
+.cancel-dropdown-cont:hover > .cancel-btn{
+    display: block;
+}
+
+
+
+/* Sent Request Item Card */
+
+.sent-item{
+    border: 2px solid #1265a8;
+    display: grid;
+    grid-template-columns: 25% 75%;
+    border-radius: 8px;
+    /* padding: 10px; */
+}
+
+.sent-item-profile{
+    /* height: 200px; */
+    border-right: 1px solid rgb(175, 175, 175);
+    /* padding: 10px; */
+}
+
+.sent-item-profile img{
+    height: 130px;
+    border-radius: 50%;
+    border: 2px solid black;
+    padding: 3px;
+    display: block;
+    margin: 0 auto;
+}
+
+.sent-view-btn{
+    display: block;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    margin: 10px auto 0;
+    padding: 8px 6px;
+    font-weight: 500;
+    text-align: center;
+    font-size: 16px;
+    width: 80%;
+}
+
+.sent-item-head{
+    text-align: Center;
+    /* padding: 10px; */
+}
+
+.sent-item .details{
+    margin-top: 10px;
+}
+
+.sent-item-name{
+    width: 100%;
+    /* justify-content: flex-end; */
+}
+
+.sent-item-btns{
+    position: relative;
 }

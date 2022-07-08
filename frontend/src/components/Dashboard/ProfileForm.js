@@ -5,9 +5,26 @@ import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./ProfileForm.css";
+import { useTheme } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import Chip from "@mui/material/Chip";
 
 import Navbarlogedin from "./Navbarlogedin";
 import data from "./data.js";
+
+function getStyles(name, personName, theme) {
+  return {
+    fontWeight:
+      personName.indexOf(name) === -1
+        ? theme.typography.fontWeightRegular
+        : theme.typography.fontWeightMedium,
+  };
+}
 
 const ProfileForm = (userDetails) => {
   const user = userDetails.user;
@@ -16,6 +33,30 @@ const ProfileForm = (userDetails) => {
     window.scrollTo(0, 0);
   }, [location]);
   // let navigate = useNavigate();
+
+  const ITEM_HEIGHT = 48;
+  const ITEM_PADDING_TOP = 8;
+  const MenuProps = {
+    PaperProps: {
+      style: {
+        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+        width: 250,
+      },
+    },
+  };
+
+  const theme = useTheme();
+  const [personName, setPersonName] = React.useState([]);
+
+  const handlePrefChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setPersonName(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
+  };
 
   const [expanded, setExpanded] = useState(true);
 
@@ -81,20 +122,22 @@ const ProfileForm = (userDetails) => {
       specialization: inputs.specialization,
     };
 
-    axios
-      .patch(`http://localhost:8585/send/profile/${user.Id}`, userData)
-      .then((response) => {
-        console.log(response.status);
-        console.log(response.data);
-      });
-    window.alert("Are you sure?");
+    console.log(inputs);
+
+    // axios
+    //   .patch(`http://localhost:8585/send/profile/${user.Id}`, userData)
+    //   .then((response) => {
+    //     console.log(response.status);
+    //     console.log(response.data);
+    //   });
+    // window.alert("Are you sure?");
   };
 
   return (
     <>
       <Navbarlogedin />
       <div className="profile-form">
-        <h1>Create an Account as a Student</h1>
+        <h1 className="text-4xl font-medium">Create an Account as a Student</h1>
         <form onSubmit={handleSubmit}>
           {/* Profile Form Container */}
 
@@ -112,6 +155,7 @@ const ProfileForm = (userDetails) => {
                   <input
                     type="text"
                     name="dfname"
+                    className="border-2 rounded"
                     required
                     value={inputs.dfname || user.username}
                     onChange={handleChange}
@@ -125,6 +169,7 @@ const ProfileForm = (userDetails) => {
                   <input
                     type="text"
                     name="dlname"
+                    className="border-2 rounded"
                     value={inputs.dlname}
                     onChange={handleChange}
                     placeholder="Last Name"
@@ -142,6 +187,7 @@ const ProfileForm = (userDetails) => {
                   <input
                     type="email"
                     name="email"
+                    className="border-2 rounded"
                     value={inputs.email}
                     onChange={handleChange}
                     placeholder="Email"
@@ -154,6 +200,7 @@ const ProfileForm = (userDetails) => {
                   <input
                     type="number"
                     name="mobNumber"
+                    className="border-2 rounded"
                     value={inputs.mobNumber}
                     onChange={handleChange}
                     placeholder="Mobile Number"
@@ -165,10 +212,14 @@ const ProfileForm = (userDetails) => {
 
               <div className="institution cust-row flex">
                 <div className="element">
-                  <label htmlFor="institute">Institute</label>
+                  <label htmlFor="institute">
+                    Institute<span style={{ color: "red" }}>*</span>
+                  </label>
                   <select
                     name="institute"
                     id="institute"
+                    required
+                    className="border-2 rounded"
                     value={inputs.institute}
                     onChange={handleChange}
                     placeholder="Institute"
@@ -184,9 +235,13 @@ const ProfileForm = (userDetails) => {
                   </select>
                 </div>
                 <div className="element">
-                  <label htmlFor="program">Program</label>
+                  <label htmlFor="program">
+                    Program<span style={{ color: "red" }}>*</span>
+                  </label>
                   <select
                     name="program"
+                    required
+                    className="border-2 rounded"
                     value={inputs.program}
                     onChange={handleChange}
                     id="program"
@@ -212,9 +267,13 @@ const ProfileForm = (userDetails) => {
 
               <div className="branch cust-row flex">
                 <div className="element">
-                  <label htmlFor="branch">Branch</label>
+                  <label htmlFor="branch">
+                    Branch/Department<span style={{ color: "red" }}>*</span>
+                  </label>
                   <select
                     name="branch"
+                    required
+                    className="border-2 rounded"
                     value={inputs.branch}
                     onChange={handleChange}
                     id="branch"
@@ -241,6 +300,7 @@ const ProfileForm = (userDetails) => {
                   <input
                     type="text"
                     name="specialization"
+                    className="border-2 rounded"
                     placeholder="Specialization"
                     value={inputs.specialization}
                     onChange={handleChange}
@@ -257,6 +317,7 @@ const ProfileForm = (userDetails) => {
                   </label>
                   <input
                     type="text"
+                    className="border-2 rounded"
                     name="projecttitle"
                     placeholder="Project Title"
                   />
@@ -287,9 +348,53 @@ const ProfileForm = (userDetails) => {
               <div className="profilepref cust-row flex">
                 <div className="element">
                   <label htmlFor="profilepref">Profile Preferences</label>
+                  <FormControl sx={{ m: 1, width: 300 }}>
+                    <InputLabel id="demo-multiple-chip-label">
+                      Profile Preference
+                    </InputLabel>
+                    <Select
+                      labelId="demo-multiple-chip-label"
+                      id="demo-multiple-chip"
+                      multiple
+                      label="Profile Preference"
+                      value={personName}
+                      onChange={handlePrefChange}
+                      input={
+                        <OutlinedInput id="select-multiple-chip" label="Chip" />
+                      }
+                      renderValue={(selected) => (
+                        <Box
+                          sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}
+                        >
+                          {selected.map((value) => (
+                            <Chip key={value} label={value} />
+                          ))}
+                        </Box>
+                      )}
+                      MenuProps={MenuProps}
+                    >
+                      {/* {names.map((name) => (
+                        <MenuItem
+                          key={name}
+                          value={name}
+                          style={getStyles(name, personName, theme)}
+                        >
+                          {name}
+                        </MenuItem>
+                      ))} */}
+                      <MenuItem value="Data Science">Data Science</MenuItem>
+                      <MenuItem value="Software">Software</MenuItem>
+                      <MenuItem value="Banking and Finance">
+                        Banking and Finance
+                      </MenuItem>
+                      <MenuItem value="Consulting">Consulting</MenuItem>
+                      <MenuItem value="Analytics">Analytics</MenuItem>
+                    </Select>
+                  </FormControl>
                   <select
                     name="profilepref"
                     value={""}
+                    className="border-2 rounded"
                     onChange={(e) => {
                       handleChange(e);
                       setList((item) => [...item, e.target.value]);
@@ -335,7 +440,7 @@ const ProfileForm = (userDetails) => {
 
               {/* Time Preference */}
 
-              <div className="time-preference">
+              {/* <div className="time-preference">
                 <div className="element">
                   <p>General Day and Time Preferences for Sessions</p>
                   <div className="element-item">
@@ -344,11 +449,6 @@ const ProfileForm = (userDetails) => {
                   </div>
                   <div className="pref-item">
                     <ul>
-                      {/* {arrayDays !== []
-                        ? arrayDays.map((item) => {
-                            return <li>{item}</li>;
-                          })
-                        : null} */}
                       <li>
                         Monday - 12:00 to 13:00{" "}
                         <button
@@ -386,7 +486,6 @@ const ProfileForm = (userDetails) => {
                     <i className="fa-solid fa-circle-xmark"></i>
                   </button>
 
-                  {/* ------------------------- */}
                   <div className="select flex">
                     <div class="multiselect">
                       <h5>Choose the days</h5>
@@ -476,7 +575,6 @@ const ProfileForm = (userDetails) => {
                         </label>
                       </div>
                     </div>
-                    {/* -------------------- */}
                     <div className="time">
                       <h5>Choose Time</h5>
                       <div className="flex">
@@ -520,7 +618,7 @@ const ProfileForm = (userDetails) => {
                     Add
                   </button>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             {/* Col-30 */}
@@ -566,6 +664,7 @@ const ProfileForm = (userDetails) => {
                   type="file"
                   name="resume"
                   id="resume"
+                  required
                   accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                   value={inputs.resume}
                   onChange={(e) => {

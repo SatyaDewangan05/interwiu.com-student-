@@ -19,14 +19,12 @@ const Login = () => {
           <i class="fa-solid fa-circle-xmark"></i>
         </div>
         <div className="login-head">
-          <p>
-            Let’s appear for a Mock Interview and obtain Feedback on your
-            performance in realtime!
-          </p>
+          <p>Let's experience the Mock Interviews with Realtime Feedback!</p>
         </div>
         <div className="login-system">
           <div className="col vertical-line">
             <h1>Sign In as a Student</h1>
+            <p>Be an Interviewee!</p>
             <form action="http://localhost:8585/auth/google">
               <button className="signin-btn login" type="submit">
                 <img src={require("../../images/google.png")} alt="Google" />
@@ -55,6 +53,7 @@ const Login = () => {
           </div>
           <div className="col">
             <h1>Sign In as a Professional</h1>
+            <p>Be an Interviewer!</p>
             <form action="http://localhost:8585/auth/google">
               <button className="signin-btn login" type="submit">
                 <img src={require("../../images/google.png")} alt="Google" />

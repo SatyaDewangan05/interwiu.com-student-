@@ -1,18 +1,17 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import "./SearchInterviews.css";
-import { Box, Grid, Divider } from "@mui/material";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { CalendarPicker } from "@mui/x-date-pickers/CalendarPicker";
-import CloseIcon from "@mui/icons-material/Close";
+import InputLabel from "@mui/material/InputLabel";
+import InputAdornment from "@mui/material/InputAdornment";
+import { useTheme } from "@mui/material/styles";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 // import IconButton from "@material-ui/core/IconButton";
+import Interview from "./cards/Interview";
 
 import {
   Sunday,
@@ -25,6 +24,18 @@ import {
 } from "./days";
 
 import Navbarlogedin from "./Navbarlogedin";
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -51,18 +62,73 @@ const style = {
 const SearchInterviews = () => {
   // const user = userDetails.user;
 
+  const mnc = [
+    "Wal-Mart Stores",
+    "Exxon Mobil",
+    "Chevron",
+    "Berkshire Hathaway",
+    "Apple",
+    "Phillips 66",
+    "General Motors",
+    "Ford Motor",
+    "General Electric",
+    "Valero Energy",
+    "AT&T",
+    "CVS Caremark",
+    "Fannie Mae",
+    "UnitedHealth Group",
+    "McKesson",
+  ];
+
+  function getStyles(name, personName, theme) {
+    return {
+      fontWeight:
+        personName.indexOf(name) === -1
+          ? theme.typography.fontWeightRegular
+          : theme.typography.fontWeightMedium,
+    };
+  }
+
+  const theme = useTheme();
+  const [personName, setPersonName] = React.useState([]);
+
+  const handleSelectChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setPersonName(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
+  };
+
+  // const clientHeight = document.querySelector(".search-result").clientHeight;
+  // const filterHeight = document.querySelector(".search-pref").clientHeight;
+  // console.log("clientHeight: ", clientHeight, " filterHeight: ", filterHeight);
+  // var addedMargin = clientHeight - filterHeight;
+  // var footer = document.getElementById("footer").getBoundingClientRect();
+  // console.log("footerHeight: ", footer.top);
+
   var prevScrollpos = window.pageYOffset;
   window.onscroll = function () {
     var currentScrollPos = window.pageYOffset;
-    // console.log(currentScrollPos);
-    if (currentScrollPos > 208) {
-      console.log(document.querySelector(".search-pref").classList);
+    console.log(currentScrollPos);
+    if (currentScrollPos >= 165 && currentScrollPos < 736) {
+      // console.log(document.querySelector(".search-pref").classList);
+      console.log("stuck");
       document.querySelector(".search-pref").classList.add("static");
-    } else {
-      console.log("not");
+      document.querySelector(".search-pref").classList.remove("static-a");
+    } else if (currentScrollPos >= 736) {
+      console.log("working");
       document.querySelector(".search-pref").classList.remove("static");
+      document.querySelector(".search-pref").classList.add("static-a");
+      // document.querySelector(".search-pref").style.marginTop = footer.top;
+    } else {
+      // console.log("not");
+      document.querySelector(".search-pref").classList.remove("static");
+      document.querySelector(".search-pref").classList.remove("static-a");
     }
-    prevScrollpos = currentScrollPos;
+    // prevScrollpos = currentScrollPos;
   };
 
   const display = (day) => {
@@ -141,728 +207,304 @@ const SearchInterviews = () => {
     const searchResult = document.querySelector(".search-result-cont");
     searchResult.classList.remove("hide");
   };
+  const [search, setSearch] = useState("");
   return (
     <>
       <Navbarlogedin />
       <div className="searching">
-        <h2>
+        <h2
+          className="font-[500] border-2 border-black drop-shadow-md"
+          style={{ fontSize: "28px" }}
+        >
           Find an Interviewer of your choice for a Mock Interview with Feedback
           Session
         </h2>
+
         <div className="searching-cont clearfix">
           <div className="search-pref">
-            <h4>Preference</h4>
-            <div>
-              <label htmlFor="profile">Profile Preference</label>
-              <select name="profile" id="profile">
-                <option value="" disabled selected hidden>
-                  Select Profile
-                </option>
-                <option value="ds">Data Science</option>
-                <option value="software">Software</option>
-                <option value="banking">Banking and Finance</option>
-                <option value="consulting">Consulting</option>
-                <option value="analytics">Analytics</option>
-              </select>
-            </div>
-            <div className="charge-limit">
-              {/* <h4>Charge Limits </h4> */}
-              <label htmlFor="charge">Charge Limits</label>
-              <div className="below flex">
-                <input type="checkbox" name="charge" id="below" />
-                <label htmlFor="below">Below INR</label>
-                <input
-                  type="number"
-                  defaultValue={"500"}
-                  className="charge-limit-box"
-                />
-              </div>
-              <div className="above flex">
-                <input type="checkbox" name="charge" id="above" />
-                <label htmlFor="above">Above INR</label>
-                <input
-                  type="number"
-                  defaultValue={"2000"}
-                  className="charge-limit-box"
-                />
-              </div>
-            </div>
-            <div className="org">
-              <label htmlFor="org">Desired Organization of Interviewer</label>
+            <div
+              className="w-auto text-lg px-2 py-1 border-2 rounded bg-white flex justify-between"
+              id="searchbar-input"
+            >
               <input
                 type="text"
-                id="org"
-                placeholder="Name of the Organization"
+                className="mx-1 py-2 outline-none w-auto"
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                }}
+                name="search"
+                id="search"
+                placeholder="Search Interviewer by Name"
               />
-            </div>
-            <div className="time-preference">
-              <div className="element">
-                <p style={{ textAlign: "justify" }}>
-                  Do you want to specify your Scheduling Preferences for this
-                  mock interview (with feedback) session?
-                </p>
-                <div className="element-item">
-                  <input type="checkbox" name="preference" id="preference" />
-                  <label htmlFor="preference"> No Specific Preferences</label>
-                </div>
-                <div className="pref-item">
-                  <ul>
-                    <li>
-                      Monday - 12:00 to 13:00{" "}
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.target.parentElement.parentElement.remove();
-                        }}
-                        className="cust-btn trash-btn"
-                      >
-                        <i class="fa-solid fa-trash-can"></i>
-                      </button>
-                    </li>
-                    <li>
-                      Monday - 12:00 to 13:00{" "}
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.target.parentElement.parentElement.remove();
-                        }}
-                        className="cust-btn trash-btn"
-                      >
-                        <i class="fa-solid fa-trash-can"></i>
-                      </button>
-                    </li>
-                    <li>
-                      Monday - 12:00 to 13:00{" "}
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.target.parentElement.parentElement.remove();
-                        }}
-                        className="cust-btn trash-btn"
-                      >
-                        <i class="fa-solid fa-trash-can"></i>
-                      </button>
-                    </li>
-                    <li>
-                      Monday - 12:00 to 13:00{" "}
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.target.parentElement.parentElement.remove();
-                        }}
-                        className="cust-btn trash-btn"
-                      >
-                        <i class="fa-solid fa-trash-can"></i>
-                      </button>
-                    </li>
-                    <li>
-                      Monday - 12:00 to 13:00{" "}
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.target.parentElement.parentElement.remove();
-                        }}
-                        className="cust-btn trash-btn"
-                      >
-                        <i class="fa-solid fa-trash-can"></i>
-                      </button>
-                    </li>
-                    <li>
-                      Monday - 12:00 to 13:00{" "}
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.target.parentElement.parentElement.remove();
-                        }}
-                        className="cust-btn trash-btn"
-                      >
-                        <i class="fa-solid fa-trash-can"></i>
-                      </button>
-                    </li>
-                    <li>
-                      Monday - 12:00 to 13:00{" "}
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.target.parentElement.parentElement.remove();
-                        }}
-                        className="cust-btn trash-btn"
-                      >
-                        <i class="fa-solid fa-trash-can"></i>
-                      </button>
-                    </li>
-                    <li>
-                      Monday - 12:00 to 13:00{" "}
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.target.parentElement.parentElement.remove();
-                        }}
-                        className="cust-btn trash-btn"
-                      >
-                        <i class="fa-solid fa-trash-can"></i>
-                      </button>
-                    </li>
-                    <li>
-                      Monday - 12:00 to 13:00{" "}
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.target.parentElement.parentElement.remove();
-                        }}
-                        className="cust-btn trash-btn"
-                      >
-                        <i class="fa-solid fa-trash-can"></i>
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-                <button
-                  type="button"
-                  className="cust-btn search-add-time-btn"
-                  onClick={() => {
-                    const addPref = document.querySelector(".popup");
-                    addPref.classList.remove("hide");
-                  }}
-                >
-                  <span style={{ fontSize: "24px", margin: "5px 5px" }}>+</span>{" "}
-                  Add Time Preference
-                </button>
+              <div
+                class="text-2xl w-auto cursor-pointer hover:text-sky-200"
+                id="search-bar"
+              >
+                <i class="fa-solid fa-magnifying-glass"></i>
               </div>
-              <div className="popup hide">
-                <button
-                  type="button"
-                  className="cust-btn close-btn"
-                  onClick={() => {
-                    const addPref = document.querySelector(".popup");
-                    addPref.classList.add("hide");
-                  }}
+            </div>
+            <h4 className="text-center my-2 text-sky-600 text-xl">
+              Filters <i class="fa-solid fa-filter"></i>
+            </h4>
+            <div className="my-3">
+              <FormControl className="w-full">
+                <InputLabel id="profile">
+                  <em>Profile Preference</em>
+                </InputLabel>
+                <Select
+                  displayEmpty
+                  labelId="profile"
+                  value={personName}
+                  onChange={handleSelectChange}
+                  label="Profile Preference"
+                  // input={<OutlinedInput />}
+                  // MenuProps={MenuProps}
+                  inputProps={{ "aria-label": "Without label" }}
                 >
-                  <i className="fa-solid fa-circle-xmark"></i>
-                </button>
-
-                {/* ------------------------- */}
-                <div className="select flex">
-                  <div class="multiselect">
-                    <h5>Choose the days</h5>
-                    <div
-                      class="selectBox"
-                      onClick={() => {
-                        showCheckboxes();
-                      }}
+                  {/* <MenuItem disabled hidden value="">
+                    <em>Profile</em>
+                  </MenuItem> */}
+                  <MenuItem value="none">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value="ds">Data Science</MenuItem>
+                  <MenuItem value="software">Software</MenuItem>
+                  <MenuItem value="banking">Banking and Finance</MenuItem>
+                  <MenuItem value="consulting">Consulting</MenuItem>
+                  <MenuItem value="analytics">Analytics</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            <div className="my-3 border p-2 rounded">
+              <label htmlFor="charges">Charges</label>
+              <div className="flex px-1 justify-between border rounded">
+                <p className="text-xl w-40 text-center">Below</p>
+                <FormControl fullWidth sx={{ my: 1, width: "15ch" }}>
+                  <InputLabel htmlFor="below">Below</InputLabel>
+                  <OutlinedInput
+                    id="below"
+                    defaultValue={0}
+                    startAdornment={
+                      <InputAdornment position="start">&#x20B9;</InputAdornment>
+                    }
+                    label="Below"
+                  />
+                </FormControl>
+              </div>
+              <div className="flex px-1 justify-between border rounded">
+                <p className="text-xl w-40 text-center">Above</p>
+                <FormControl fullWidth sx={{ my: 1, width: "15ch" }}>
+                  <InputLabel htmlFor="above">Above</InputLabel>
+                  <OutlinedInput
+                    id="above"
+                    defaultValue={1200}
+                    startAdornment={
+                      <InputAdornment position="start">&#x20B9;</InputAdornment>
+                    }
+                    label="Below"
+                  />
+                </FormControl>
+              </div>
+            </div>
+            <div className="my-3">
+              <FormControl className="w-full">
+                <InputLabel id="company">
+                  <em>Company of the Interviewer</em>
+                </InputLabel>
+                <Select
+                  displayEmpty
+                  labelId="company"
+                  value={personName}
+                  onChange={handleSelectChange}
+                  label="Company of the Interviewer"
+                  // input={<OutlinedInput />}
+                  MenuProps={MenuProps}
+                  inputProps={{ "aria-label": "Without label" }}
+                >
+                  {/* <MenuItem disabled hidden value="">
+                    <em>Company of the Interviewer</em>
+                  </MenuItem> */}
+                  <MenuItem value="none">
+                    <em>None</em>
+                  </MenuItem>
+                  {mnc.map((name) => (
+                    <MenuItem
+                      key={name}
+                      value={name}
+                      style={getStyles(name, personName, theme)}
                     >
-                      <select>
-                        <option>Select Days</option>
-                      </select>
-                      <div class="overSelect"></div>
-                    </div>
-                    <div id="checkboxes">
-                      <label for="monday">
-                        <input
-                          type="checkbox"
-                          checked={days["monday"] || false}
-                          onChange={handleDaysChange}
-                          id="monday"
-                        />
-                        Monday
-                      </label>
-                      <label for="tuesday">
-                        <input
-                          type="checkbox"
-                          checked={days["tuesday"] || false}
-                          onChange={handleDaysChange}
-                          id="tuesday"
-                        />
-                        Tuesday
-                      </label>
-                      <label for="wednesday">
-                        <input
-                          type="checkbox"
-                          checked={days["wednesday"] || false}
-                          onChange={handleDaysChange}
-                          id="wednesday"
-                        />
-                        Wednesday
-                      </label>
-                      <label for="thursday">
-                        <input
-                          type="checkbox"
-                          checked={days["thursday"] || false}
-                          onChange={handleDaysChange}
-                          id="thursday"
-                        />
-                        Thrusday
-                      </label>
-                      <label for="friday">
-                        <input
-                          type="checkbox"
-                          checked={days["friday"] || false}
-                          onChange={handleDaysChange}
-                          id="friday"
-                        />
-                        Friday
-                      </label>
-                      <label for="saturday">
-                        <input
-                          type="checkbox"
-                          checked={days["saturday"] || false}
-                          onChange={handleDaysChange}
-                          id="saturday"
-                        />
-                        Saturday
-                      </label>
-                      <label for="sunday">
-                        <input
-                          type="checkbox"
-                          checked={days["sunday"] || false}
-                          onChange={handleDaysChange}
-                          id="sunday"
-                        />
-                        Sunday
-                      </label>
-                      <label for="custom">
-                        <input
-                          type="checkbox"
-                          checked={days["custom"] || false}
-                          onChange={handleDaysChange}
-                          id="custom"
-                        />
-                        Custom
-                      </label>
-                    </div>
-                  </div>
-                  {/* -------------------- */}
-                  <div className="time">
-                    <h5>Choose Time</h5>
-                    <div className="flex">
-                      <div>
-                        <label htmlFor="from">From</label>
-                        <input
-                          type="time"
-                          value={time["from"] || "00:00"}
-                          onChange={handleTimeChange}
-                          name="from"
-                          id="from"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="to">To</label>
-                        <input
-                          type="time"
-                          name="to"
-                          value={time["to"] || "00:00"}
-                          onChange={handleTimeChange}
-                          id="to"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => {
-                    console.log(
-                      "Days: " +
-                        JSON.stringify(days) +
-                        "Time: " +
-                        JSON.stringify(time)
-                    );
-                    const addPref = document.querySelector(".popup");
-                    addPref.classList.add("hide");
-                  }}
-                  className="cust-btn add-btn"
-                >
-                  Add
-                </button>
-              </div>
+                      {name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
             </div>
-            <button
-              type="submit"
-              className="cust-btn find-btn"
-              onClick={(e) => {
-                e.preventDefault();
-                showResult();
-              }}
-            >
-              Apply Preference
-            </button>
+            <div className="my-3">
+              <p className="text-justify text-lg text-green-800 font-medium">
+                Do you want to specify your Scheduling Preferences for this mock
+                interview (with feedback) session?
+              </p>
+              <div className="element-item">
+                <input type="checkbox" name="preference" id="preference" />
+                <label htmlFor="preference"> No Specific Preferences</label>
+              </div>
+              <div className="pref-item">
+                <ul>
+                  <li>
+                    Monday - 12:00 to 13:00{" "}
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.target.parentElement.parentElement.remove();
+                      }}
+                      className="cust-btn trash-btn"
+                    >
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </li>
+                  <li>
+                    Monday - 12:00 to 13:00{" "}
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.target.parentElement.parentElement.remove();
+                      }}
+                      className="cust-btn trash-btn"
+                    >
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </li>
+                  <li>
+                    Monday - 12:00 to 13:00{" "}
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.target.parentElement.parentElement.remove();
+                      }}
+                      className="cust-btn trash-btn"
+                    >
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </li>
+                  <li>
+                    Monday - 12:00 to 13:00{" "}
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.target.parentElement.parentElement.remove();
+                      }}
+                      className="cust-btn trash-btn"
+                    >
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </li>
+                  <li>
+                    Monday - 12:00 to 13:00{" "}
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.target.parentElement.parentElement.remove();
+                      }}
+                      className="cust-btn trash-btn"
+                    >
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </li>
+                  <li>
+                    Monday - 12:00 to 13:00{" "}
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.target.parentElement.parentElement.remove();
+                      }}
+                      className="cust-btn trash-btn"
+                    >
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </li>
+                  <li>
+                    Monday - 12:00 to 13:00{" "}
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.target.parentElement.parentElement.remove();
+                      }}
+                      className="cust-btn trash-btn"
+                    >
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </li>
+                  <li>
+                    Monday - 12:00 to 13:00{" "}
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.target.parentElement.parentElement.remove();
+                      }}
+                      className="cust-btn trash-btn"
+                    >
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </li>
+                  <li>
+                    Monday - 12:00 to 13:00{" "}
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.target.parentElement.parentElement.remove();
+                      }}
+                      className="cust-btn trash-btn"
+                    >
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <button
+                type="button"
+                className="cust-btn search-add-time-btn"
+                onClick={() => {
+                  const addPref = document.querySelector(".popup");
+                  addPref.classList.remove("hide");
+                }}
+              >
+                <span style={{ fontSize: "24px", margin: "5px 5px" }}>+</span>{" "}
+                Add Time Preference
+              </button>
+            </div>
           </div>
           <div className="search-result">
-            <h3>48 Search result</h3>
+            <h3 className="text-xl font-[500]">Search results (48)</h3>
             <div className="search-result-cont">
               {cards?.map((result) => (
-                <div className="search-result-item">
-                  <div className="search-result-item-head flex">
-                    <div>
-                      <div className="interviewer-head">
-                        <h3>{result.name}</h3>
-                        <p>{result.desg}</p>
-                      </div>
-                      <div className="details flex">
-                        <div className="detail">
-                          <p className="detail-head">Profile</p>
-                          <p className="detail-body">Data Science</p>
-                        </div>
-                        <div className="detail">
-                          <p className="detail-head">Price</p>
-                          <p className="detail-body">INR {result.price}</p>
-                        </div>
-                        <div className="detail">
-                          <p className="detail-head">Session Duration</p>
-                          <p className="detail-body">30 Min</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="search-result-item-profile">
-                      <img
-                        src={require("../../images/photo.png")}
-                        alt="Profile"
-                      />
-                      <Link to="/interviewer-dashboard">View Profile</Link>
-                    </div>
-                  </div>
-                  <div className="search-result-item-desc">
-                    <div className="time-preference">
-                      <p>Slots Available </p>
-                      <ul className="slot-list">
-                        <li>Sun (5-7 pm)</li>
-                        <li>Mon (3-4 pm)</li>
-                        <li>Tue (5-7 pm)</li>
-                        <li>Wed (3-4 pm)</li>
-                        <li>Thur(5-7 pm)</li>
-                        <li>Fri (3-4 pm)</li>
-                        <li>Sat (5-7 pm)</li>
-                      </ul>
-                    </div>
-                    <div className="search-result-item-btns flex">
-                      <Button variant="contained" onClick={handleOpen}>
-                        Request a Mock Interview with Feedback Session
-                      </Button>
-                      <Modal
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby="modal-modal-title"
-                        aria-describedby="modal-modal-description"
-                      >
-                        <Box sx={style}>
-                          <Box
-                            sx={{
-                              position: "absolute",
-                              right: 0,
-                              top: 0,
-                            }}
-                          >
-                            <CloseIcon onClick={handleClose} />
-                          </Box>
-                          <Typography
-                            id="modal-modal-title"
-                            variant="h5"
-                            sx={{
-                              fontWeight: "bold",
-                              textAlign: "center",
-                              mb: 2,
-                            }}
-                          >
-                            Request a Mock Interview with Mr. John Doe
-                          </Typography>
-
-                          <Grid container spacing={2}>
-                            <Grid xs={6}>
-                              <LocalizationProvider
-                                dateAdapter={AdapterDateFns}
-                              >
-                                <CalendarPicker
-                                  date={date}
-                                  format="dd/MM/yyyy"
-                                  onChange={(newDate) => setDate(newDate)}
-                                  views={["day"]}
-                                  disablePast={true}
-                                />
-                              </LocalizationProvider>
-                            </Grid>
-
-                            <Grid
-                              xs={6}
-                              sx={{
-                                mt: 2,
-                              }}
-                            >
-                              {display(date)}
-                            </Grid>
-                            <Grid xs={12} sx={{ textAlign: "center" }}>
-                              <Button variant="contained">Confirm Slot</Button>
-                            </Grid>
-                          </Grid>
-                        </Box>
-                      </Modal>
-                    </div>
-                  </div>
-                </div>
+                <>
+                  <Interview
+                    name={result.name}
+                    desg={result.desg}
+                    price={result.price}
+                    logo={require("../../images/amazon.png")}
+                  />
+                  <Interview
+                    name="John Doe"
+                    desg="SDE, Google, California"
+                    price="1200"
+                    logo={require("../../images/google.png")}
+                  />
+                  <Interview
+                    name="John Doe"
+                    desg="SDE, Amazon, San Francisco"
+                    price="1200"
+                    logo={require("../../images/amazon.png")}
+                  />
+                  <Interview
+                    name="John Doe"
+                    desg="SDE, Google, California"
+                    price="1200"
+                    logo={require("../../images/google.png")}
+                  />
+                </>
               ))}
-              <div className="search-result-item">
-                <div className="search-result-item-head">
-                  <div>
-                    <div className="interviewer-head">
-                      <h4>John Doe</h4>
-                      <p>SDE, Amazon, San Francisco</p>
-                    </div>
-                    <div className="details flex">
-                      <div className="detail">
-                        <p className="detail-head">Profile</p>
-                        <p className="detail-body">Data Science</p>
-                      </div>
-                      <div className="detail">
-                        <p className="detail-head">Price</p>
-                        <p className="detail-body">INR 1200</p>
-                      </div>
-                      <div className="detail">
-                        <p className="detail-head">Session Duration</p>
-                        <p className="detail-body">45 Min</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="search-result-item-profile">
-                    <img
-                      src={require("../../images/photo.png")}
-                      alt="Profile"
-                    />
-                    <button
-                      className="cust-btn view-btn"
-                      onClick={() => {
-                        navigate("/interviewer-dashboard");
-                      }}
-                    >
-                      View Profile
-                    </button>
-                  </div>
-                </div>
-                <div className="search-result-item-desc">
-                  <div className="time-preference">
-                    <p>Slots Available </p>
-                    <ul className="slot-list">
-                      <li>Sun (5-7 pm)</li>
-                      <li>Mon (3-4 pm)</li>
-                      <li>Tue (5-7 pm)</li>
-                      <li>Wed (3-4 pm)</li>
-                      <li>Thur(5-7 pm)</li>
-                      <li>Fri (3-4 pm)</li>
-                      <li>Sat (5-7 pm)</li>
-                    </ul>
-                  </div>
-                  <div className="search-result-item-btns flex">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        const requestPopup = document.querySelector(
-                          ".mock-request-popup-container"
-                        );
-                        requestPopup.classList.remove("hide");
-                      }}
-                      className="cust-btn request-btn"
-                    >
-                      Request a Mock Interview with Feedback Session
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="search-result-item">
-                <div className="search-result-item-head">
-                  <div>
-                    <div className="interviewer-head">
-                      <h4>John Doe</h4>
-                      <p>SDE, Amazon, San Francisco</p>
-                    </div>
-                    <div className="details flex">
-                      <div className="detail">
-                        <p className="detail-head">Profile</p>
-                        <p className="detail-body">Data Science</p>
-                      </div>
-                      <div className="detail">
-                        <p className="detail-head">Price</p>
-                        <p className="detail-body">INR 1200</p>
-                      </div>
-                      <div className="detail">
-                        <p className="detail-head">Session Duration</p>
-                        <p className="detail-body">45 Min</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="search-result-item-profile">
-                    <img
-                      src={require("../../images/photo.png")}
-                      alt="Profile"
-                    />
-                    <button
-                      className="cust-btn view-btn"
-                      onClick={() => {
-                        navigate("/interviewer-dashboard");
-                      }}
-                    >
-                      View Profile
-                    </button>
-                  </div>
-                </div>
-                <div className="search-result-item-desc">
-                  <div className="time-preference">
-                    <p>Slots Available </p>
-                    <ul className="slot-list">
-                      <li>Sun (5-7 pm)</li>
-                      <li>Mon (3-4 pm)</li>
-                      <li>Tue (5-7 pm)</li>
-                      <li>Wed (3-4 pm)</li>
-                      <li>Thur(5-7 pm)</li>
-                      <li>Fri (3-4 pm)</li>
-                      <li>Sat (5-7 pm)</li>
-                    </ul>
-                  </div>
-                  <div className="search-result-item-btns flex">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        const requestPopup = document.querySelector(
-                          ".mock-request-popup-container"
-                        );
-                        requestPopup.classList.remove("hide");
-                      }}
-                      className="cust-btn request-btn"
-                    >
-                      Request a Mock Interview with Feedback Session
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="search-result-item">
-                <div className="search-result-item-head">
-                  <div>
-                    <div className="interviewer-head">
-                      <h4>John Doe</h4>
-                      <p>SDE, Amazon, San Francisco</p>
-                    </div>
-                    <div className="details flex">
-                      <div className="detail">
-                        <p className="detail-head">Profile</p>
-                        <p className="detail-body">Data Science</p>
-                      </div>
-                      <div className="detail">
-                        <p className="detail-head">Price</p>
-                        <p className="detail-body">INR 1200</p>
-                      </div>
-                      <div className="detail">
-                        <p className="detail-head">Session Duration</p>
-                        <p className="detail-body">45 Min</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="search-result-item-profile">
-                    <img
-                      src={require("../../images/photo.png")}
-                      alt="Profile"
-                    />
-                    <button
-                      className="cust-btn view-btn"
-                      onClick={() => {
-                        navigate("/interviewer-dashboard");
-                      }}
-                    >
-                      View Profile
-                    </button>
-                  </div>
-                </div>
-                <div className="search-result-item-desc">
-                  <div className="time-preference">
-                    <p>Slots Available </p>
-                    <ul className="slot-list">
-                      <li>Sun (5-7 pm)</li>
-                      <li>Mon (3-4 pm)</li>
-                      <li>Tue (5-7 pm)</li>
-                      <li>Wed (3-4 pm)</li>
-                      <li>Thur(5-7 pm)</li>
-                      <li>Fri (3-4 pm)</li>
-                      <li>Sat (5-7 pm)</li>
-                    </ul>
-                  </div>
-                  <div className="search-result-item-btns flex">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        const requestPopup = document.querySelector(
-                          ".mock-request-popup-container"
-                        );
-                        requestPopup.classList.remove("hide");
-                      }}
-                      className="cust-btn request-btn"
-                    >
-                      Request a Mock Interview with Feedback Session
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="search-result-item">
-                <div className="search-result-item-head">
-                  <div>
-                    <div className="interviewer-head">
-                      <h4>John Doe</h4>
-                      <p>SDE, Amazon, San Francisco</p>
-                    </div>
-                    <div className="details flex">
-                      <div className="detail">
-                        <p className="detail-head">Profile</p>
-                        <p className="detail-body">Data Science</p>
-                      </div>
-                      <div className="detail">
-                        <p className="detail-head">Price</p>
-                        <p className="detail-body">INR 1200</p>
-                      </div>
-                      <div className="detail">
-                        <p className="detail-head">Session Duration</p>
-                        <p className="detail-body">45 Min</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="search-result-item-profile">
-                    <img
-                      src={require("../../images/photo.png")}
-                      alt="Profile"
-                    />
-                    <button
-                      className="cust-btn view-btn"
-                      onClick={() => {
-                        navigate("/interviewer-dashboard");
-                      }}
-                    >
-                      View Profile
-                    </button>
-                  </div>
-                </div>
-                <div className="search-result-item-desc">
-                  <div className="time-preference">
-                    <p>Slots Available </p>
-                    <ul className="slot-list">
-                      <li>Mon (3-4 pm)</li>
-                      <li>Tue (5-7 pm)</li>
-                      <li>Wed (3-4 pm)</li>
-                      <li>Thur(5-7 pm)</li>
-                      <li>Fri (3-4 pm)</li>
-                      <li>Sat (5-7 pm)</li>
-                      <li>Sun (5-7 pm)</li>
-                    </ul>
-                  </div>
-                  <div className="search-result-item-btns flex">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        const requestPopup = document.querySelector(
-                          ".mock-request-popup-container"
-                        );
-                        requestPopup.classList.remove("hide");
-                      }}
-                      className="cust-btn request-btn"
-                    >
-                      Request a Mock Interview with Feedback Session
-                    </button>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

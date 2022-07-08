@@ -3,16 +3,38 @@
     top: 10%;
     left: 23%;
     width: 50%;
-    }
+}
     
-    .text{
+.text{
     display: inline;
     width: 100%;
-    }
+}
     
-    .read-or-hide{
+.read-or-hide{
     color: #4297dd;
     font-weight: 500;
     cursor: pointer;
-    }
+}
     
+
+.completed-interview .sent-item-btns {
+    justify-content: center;
+}
+
+.meeting-id{
+    /* background-color: rgb(14, 123, 14);
+    color: white; */
+    color: rgb(14, 123, 14);
+    font-size: 18px;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 5px 8px;
+    border-radius: 8px;
+    position: absolute;
+    bottom: 40px;
+    left: 0px;
+}
+
+.rate-btn{
+    margin-top: 10px;
+}

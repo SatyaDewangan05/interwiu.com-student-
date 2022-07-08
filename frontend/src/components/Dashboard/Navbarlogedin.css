@@ -1,7 +1,8 @@
 .navbarlogedin {
     justify-content: space-between;
     align-items: center;
-    padding: 12px 40px;
+    padding: 8px 40px;
+    /* padding: 0 40px; */
     background-color: white;
     color: blaCK;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -24,8 +25,9 @@
 }
 
 .navbarlogedin .active {
-    color: black;
-    background-color: #62ff62;
+    color: rgb(18, 154, 18);
+    font-weight: 500;
+    font-size: 20px;
 }
 
 .navbarlogedin .active:hover {
@@ -59,14 +61,18 @@
 }
 
 .nav-item p:hover {
-    color: #1265a8;
+    color: red;
 }
 
 .notify {
+    display: inline-block;
     background-color: red;
     text-align: center;
     color: white;
-    padding: 2px 7px;
+    height: 8px;
+    width: 8px;
+    margin-left: 4px;
+    /* padding: 2px 7px; */
     border-radius: 50%;
 }
 
@@ -75,11 +81,15 @@
     z-index: 10;
 }
 
+/* #search-bar{
+    font-size: 1.5rem;
+    border
+} */
 
 .notification-dropdown {
     position: absolute;
     top: 60px;
-    right: 60px;
+    right: 40px;
     width: 300px;
     background-color: white;
     border-radius: 8px;
@@ -110,22 +120,26 @@
     background-color: rgba(0, 0, 0, 0.03);
 }
 
-
+.sidebar-profile{
+    /* flex-direction: column; */
+    height: 50px;
+    /* width: 50px; */
+}
 
 .sidebar-profile-img {
-    padding: 3px;
+    height: 30px;
+    width: 30px;
     border-radius: 50%;
-    border: 2px solid black;
     cursor: pointer;
 }
 
-.sidebar-profile-img:hover {
+/* .sidebar-profile-img:hover {
     opacity: 0.5;
-}
+} */
 
 .sidebar-profile-img img {
-    height: 40px;
-    width: 40px;
+    height: 100%;
+    width: 100%;
     border-radius: 50%;
 }
 
@@ -203,14 +217,13 @@
 
 .notifier {
     position: relative;
-    padding: 0 16px;
-    font-size: 30px;
+    /* padding: 0 16px; */
     cursor: pointer;
 }
 
 .dot {
     position: absolute;
-    top: 0;
+    top: 4px;
     right: 8px;
     font-size: 14px;
     padding: 2px;

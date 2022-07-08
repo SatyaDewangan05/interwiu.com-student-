@@ -1,13 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router";
+import Searchable from "react-searchable-dropdown";
 
 import Navbarlogedin from "./Navbarlogedin";
 
 import "./Dashboard.css";
 const Dashboard = (userDetails) => {
+  const [list, setList] = useState([
+    "Data Science",
+    "Banking and Finance",
+    "Consulting",
+  ]);
+
   const user = userDetails.user;
   const location = useLocation();
   useEffect(() => {
@@ -18,104 +25,71 @@ const Dashboard = (userDetails) => {
     <>
       <Navbarlogedin />
       <div className="dashboard">
-        <button
-          className="cust-btn edit-btn"
-          type="button"
-          onClick={() => {
-            navigate("/profile-form");
-          }}
-        >
-          <i class="fa-solid fa-pen-to-square"></i>Edit
-        </button>
-        <div className="bio">
-          <div className="dashboard-info">
-            <div className="profile-photo">
-              <img
-                src={require("../../images/photo.png")}
-                alt="Profile-photo"
-              />
-            </div>
-            <h2>{user.username}</h2>
-            <h5>
-              B.Tech <br /> Computer Science Engineering <br /> MIT, Cambridge,
-              MA 02139, United States
-            </h5>
-            <button className="cust-btn resume-btn">
-              <a
-                href={require("../../images/cs_2022.pdf")}
-                target="_black"
-                className="resume-a"
-              >
-                <i class="fa-solid fa-link"></i> Resume
-              </a>
-            </button>
-            {/* <p>Session Recording Proference: Yes</p> */}
+        <div className="my-2 py-2 border rounded relative">
+          <div
+            className="absolute top-4 left-2 text-blue-500 cursor-pointer font-medium hover:text-red-600"
+            onClick={() => {
+              navigate("/searching");
+            }}
+          >
+            <i class="fa-solid fa-angle-left"></i> Back
           </div>
-          <div className="dashboard-desc">
-            <h1 className="head">My Profile</h1>
-            {/* <p className="desc-head">Description: </p>
-            <p className="desc-item">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
-              nostrum neque ipsa voluptates. Ullam consectetur exercitationem
-              beatae eius recusandae obcaecati, quos neque! Aperiam suscipit
-              incidunt ducimus excepturi, reprehenderit eius placeat?
-            </p> */}
-            <p className="desc-head">Profile Preferences</p>
-            <ul className="desc-item">
-              <li>Data Science</li>
-              <li>Analytics</li>
-              <li>Software Development</li>
-            </ul>
-            <button
-              type="button"
-              style={{ marginLeft: "60px" }}
-              className="cust-btn add-btn"
-            >
-              Add
-            </button>
-            <p className="desc-head">
-              General Day/Time Preference for Sessions
-            </p>
-            <ul className="desc-item">
-              <li>Sat (3-5 PM)</li>
-              <li>Sun (3-5 PM)</li>
-              <li>Wed (9 AM - 5PM)</li>
-              <li>No Specific Preferences (Only when ticked)</li>
-            </ul>
-            <button
-              type="button"
-              style={{ marginLeft: "60px" }}
-              className="cust-btn add-btn"
-            >
-              Add
-            </button>
-            <div className="dashboard-btns">
-              <div className="interviewer">
-                <p className="cont">
-                  If you are looking to appear for a Mock Interview of your
-                  choice and receive Personalized Feedback
-                </p>
-                <button
-                  className="cust-btn dashboard-btn"
-                  type="button"
-                  onClick={() => {
-                    navigate("/searching");
-                  }}
-                >
-                  Find an Interviewer
-                </button>
-              </div>
-              {/* <div className="mentor">
-                <button className="cust-btn dashboard-btn">
-                  Find a Mentor
-                </button>
-                <p className="cont">
-                  If you are looking for a Mentor of your choice
-                </p>
-              </div> */}
-            </div>
+          <h2
+            className="text-4xl font-medium text-center"
+            style={{ color: "#fda50f" }}
+          >
+            My Profile
+          </h2>
+          <div
+            className="absolute top-4 right-2 text-blue-500 cursor-pointer font-medium hover:text-red-600"
+            onClick={() => {
+              navigate("/profile-form");
+            }}
+          >
+            <i class="fa-solid fa-pen-to-square"></i> Edit
           </div>
         </div>
+        <div className="relative my-4">
+          <div id="profile-cover"></div>
+          <div id="profile-picture" className="">
+            <img src={require("../../images/photo.png")} alt="profile" />
+          </div>
+        </div>
+        <div className="text-center">
+          <h3 className="text-4xl font-semibold" style={{ color: "#e84c3d" }}>
+            John Doe
+          </h3>
+          <button className="cust-btn resume-btn" type="button">
+            <a
+              href={require("../../images/cs_2022.pdf")}
+              target="_black"
+              className="resume-a"
+            >
+              <i class="fa-solid fa-link"></i> Resume
+            </a>
+          </button>
+          <div className="my-4" style={{ color: "#1265a8" }}>
+            <p>B.Tech</p>
+            <p>Computer Science Engineering</p>
+            <p>MIT, Cambridge, USA</p>
+          </div>
+        </div>
+        <div
+          id="social-links"
+          className="w-60 my-6 p-2 mx-auto text-4xl rounded flex justify-center"
+        >
+          <i class="fa-brands fa-linkedin mx-2 cursor-pointer hover:text-5xl text-blue-500"></i>
+          <i class="fa-brands fa-github mx-2 cursor-pointer hover:text-5xl "></i>
+          <i class="fa-brands fa-twitter mx-2 cursor-pointer hover:text-5xl text-blue-500"></i>
+        </div>
+        {/* <div id="profile-pref" className="mx-auto">
+          <p className="text-xl font-medium">Profile Preference</p>
+          <ul className="px-6 text-left">
+            {list?.map((item) => {
+              return <li>{item}</li>;
+            })}
+          </ul>
+        </div> */}
       </div>
     </>
   );

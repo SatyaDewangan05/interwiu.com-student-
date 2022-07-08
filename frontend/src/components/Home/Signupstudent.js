@@ -35,7 +35,7 @@ const Signupstudent = () => {
         </div>
         <div className="login-system">
           <div className="col">
-            <h1>Sign Up as a Student</h1>
+            <h1>Sign Up as Student</h1>
             <button
               className="signin-btn login"
               onClick={(e) => {

@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
 
 import "./Navbarlogedin.css";
+import Bookmark from "./popups/Bookmark";
 
 const Navbarlogedin = () => {
   let navigate = useNavigate();
@@ -12,11 +15,46 @@ const Navbarlogedin = () => {
   // useEffect(() => {
   //   console.log(window.location.pathname);
   // }, []);
+  const [search, setSearch] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openable = useRef();
+
+  useEffect(() => {
+    document.addEventListener("mousedown", (e) => {
+      if (!openable.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+      // else if (openable.current.contains(e.target)) {
+      //   console.log("works");
+      // }
+    });
+
+    // const closeDropdown = (e) => {
+    //   if (!openable.current.contains(e.target)) {
+    //     setIsOpen(false);
+    //   }
+    // };
+    // e.path.forEach((item) => {
+    // });
+
+    // console.log(e);
+
+    // if (e.path[0].classList.contains === "profile-dropdown") {
+    //   console.log(e);
+    //   console.log("inside");
+    // }
+    // document.body.addEventListener("click", closeDropdown);
+    // document
+    //   .querySelector(".sidebar-profile")
+    //   .removeEventListener("click", closeDropdown);
+  }, []);
+
+  const [active, setActive] = useState("/searching");
 
   const pathname = window.location.pathname.toLowerCase();
   const navItem = document.querySelectorAll(".nav-item a");
   if (pathname === "/searching") {
-    console.log(pathname);
     navItem.forEach((item) => {
       if (item.classList.contains("active")) {
         item.classList.remove("active");
@@ -27,7 +65,6 @@ const Navbarlogedin = () => {
     });
   }
   if (pathname === "/sent-requests") {
-    console.log(pathname);
     navItem.forEach((item) => {
       if (item.classList.contains("active")) {
         item.classList.remove("active");
@@ -38,7 +75,6 @@ const Navbarlogedin = () => {
     });
   }
   if (pathname === "/accepted-requests") {
-    console.log(pathname);
     navItem.forEach((item) => {
       if (item.classList.contains("active")) {
         item.classList.remove("active");
@@ -50,7 +86,6 @@ const Navbarlogedin = () => {
     });
   }
   if (pathname === "/upcoming-interviews") {
-    console.log(pathname);
     navItem.forEach((item) => {
       if (item.classList.contains("active")) {
         item.classList.remove("active");
@@ -61,7 +96,6 @@ const Navbarlogedin = () => {
     });
   }
   if (pathname === "/completed-interviews") {
-    console.log(pathname);
     navItem.forEach((item) => {
       if (item.classList.contains("active")) {
         item.classList.remove("active");
@@ -71,6 +105,18 @@ const Navbarlogedin = () => {
       }
     });
   }
+
+  // const changeActiveLink = (e) => {
+  //   // e.preventDefault();
+  //   const links = document.querySelectorAll(".nav-item a");
+  //   links.forEach((item) => {
+  //     if (item.classList.contains("active")) {
+  //       item.classList.remove("active");
+  //     }
+  //   });
+  //   e.target.classList.add("active");
+  //   // console.log(e.target);
+  // };
 
   // var prevScrollpos = window.pageYOffset;
   // window.onscroll = function () {
@@ -84,183 +130,180 @@ const Navbarlogedin = () => {
   //   // prevScrollpos = currentScrollPos;
   // };
   return (
-    <div className="navbarlogedin flex">
-      <div className="logo">
-        <h1>interwiu.com</h1>
-      </div>
-      <ul className="nav-list flex">
-        <li className="nav-item">
-          <Link to="/searching" className="active">
-            <p>Find an Interviewer</p>
+    <>
+      <Bookmark />
+      <div className="navbarlogedin flex">
+        <div className="logo">
+          <Link to="/">
+            <h1 className="text-2xl font-medium">interwiu.com</h1>
           </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/sent-requests">
-            <p>Sent Requests</p>
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/accepted-requests">
-            <p>
-              Accepted Requests <span className="notify">4</span>
-            </p>
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/upcoming-interviews">
-            <p>Upcoming Interviews</p>
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/completed-interviews">
-            <p>
-              Completed Interviews{" "}
-              <span
-                style={{ backgroundColor: "yellow", color: "black" }}
-                className="notify"
-              >
-                2
-              </span>
-            </p>
-          </Link>
-        </li>
-      </ul>
-      <div className="sidebar flex">
-        {/* Notification Bell */}
-
-        {location.pathname === "/profile-form" ? null : (
-          <div
-            className="notifier"
-            onClick={() => {
-              const dropdown = document.querySelector(".notification-dropdown");
-              dropdown.classList.toggle("hide");
-            }}
-          >
-            <i className="fa-solid fa-bell"></i>
-            <div className="dot">76</div>
-          </div>
-        )}
-
-        <div className="notification-dropdown hide">
-          <h4>Notification</h4>
-          <hr />
-          <div className="notification-item">
-            <h6>Notification Head</h6>
-            <p>
-              Notification Desc such as Lorem ipsum dolor sit amet consectetur
-              adipisicing elit.
-            </p>
-          </div>
-          <hr />
-          <div className="notification-item">
-            <h6>Notification Head</h6>
-            <p>
-              Notification Desc such as Lorem ipsum dolor sit amet consectetur
-              adipisicing elit.
-            </p>
-          </div>
         </div>
-
-        {/* Profile Dropdown */}
-
-        <div
-          className="sidebar-profile flex"
-          onClick={() => {
-            const dropdown = document.querySelector(".profile-dropdown");
-            dropdown.classList.toggle("hide");
-          }}
-        >
-          <div className="sidebar-profile-img flex">
-            <img src={require("../../images/photo.png")} alt="" />
-          </div>
-        </div>
-        <div className="profile-dropdown hide">
-          <div className="profile-dropdown-sec">
-            <div className=" profile-dropdown-head flex">
-              <div>
-                <img src={require("../../images/photo.png")} alt="" />
-              </div>
-              <div>
-                <h5>John Doe</h5>
-                <p>B.Tech, IIT Kharagpur</p>
-              </div>
-            </div>
-            <div>
-              <button
-                type="button"
-                className="cust-btn view-profile-btn"
-                onClick={() => {
-                  navigate("/dashboard");
-                }}
-              >
-                View Profile
-              </button>
-            </div>
-          </div>
-          <hr />
-          <div className="profile-dropdown-sec">
-            <div className="dropdown-btn">
-              <p>
-                <i class="fa-solid fa-triangle-exclamation"></i> Report an Issue
-              </p>
-            </div>
-            <div className="dropdown-btn">
-              <p>
-                <i className="fa-solid fa-gear"></i> Account Settings
-              </p>
-            </div>
-            <div className="dropdown-btn">
-              <p>
-                <i className="fa-solid fa-bookmark"></i> Bookmark
-              </p>
-            </div>
-            {/* <div
-              className="dropdown-btn"
-              onClick={() => {
-                navigate("/contact");
-              }}
-            >
-              <p>Contact Us</p>
-            </div>
-            <div
-              className="dropdown-btn"
-              onClick={() => {
-                navigate("/about");
-              }}
-            >
-              <p>About Us</p>
-            </div> */}
-          </div>
-          <hr />
-          <div className="profile-dropdown-sec">
-            <div className="dropdown-logout-btn">
-              <form action="http://localhost:8585/auth/logout">
-                <button type="submit" className="cust-btn logout-btn">
-                  <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-        <ul className="dropdown hide">
+        <ul className="nav-list flex">
           <li className="nav-item">
-            <Link to="/" className="active">
-              Home
+            <Link to="/searching">
+              <p>Find an Interviewer</p>
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/pricing">Pricing</Link>
+            <Link to="/sent-requests">
+              <p>Sent Requests</p>
+            </Link>
           </li>
-          <li>Settings</li>
-          <li className="nav-item"></li>
           <li className="nav-item">
-            <Link to="/contact">Contact Us</Link>
+            <Link to="/accepted-requests">
+              <p className="flex">
+                Accepted Requests <div className="notify"></div>
+              </p>
+            </Link>
           </li>
-          <li>Help and Support</li>
-          <li></li>
+          <li className="nav-item">
+            <Link to="/upcoming-interviews">
+              <p>Upcoming Interviews</p>
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/completed-interviews">
+              <p className="flex">
+                Completed Interviews <div className="notify"></div>
+              </p>
+            </Link>
+          </li>
         </ul>
+        <div className="sidebar flex">
+          {/* Notification Bell */}
+          {location.pathname === "/profile-form" ? null : (
+            <div
+              className="notifier rounded border px-3 py-2 m-1 hover:bg-slate-200"
+              onClick={() => {
+                const dropdown = document.querySelector(
+                  ".notification-dropdown"
+                );
+                dropdown.classList.toggle("hide");
+              }}
+            >
+              <i className="fa-solid fa-bell text-2xl"></i>
+              <div className="dot">76</div>
+            </div>
+          )}
+
+          <div className="notification-dropdown hide">
+            <h4>Notification</h4>
+            <hr />
+            <div className="notification-item">
+              <h6>Notification Head</h6>
+              <p>
+                Notification Desc such as Lorem ipsum dolor sit amet consectetur
+                adipisicing elit.
+              </p>
+            </div>
+            <hr />
+            <div className="notification-item">
+              <h6>Notification Head</h6>
+              <p>
+                Notification Desc such as Lorem ipsum dolor sit amet consectetur
+                adipisicing elit.
+              </p>
+            </div>
+          </div>
+
+          {/* Profile Dropdown */}
+
+          <div
+            className="sidebar-profile px-2 rounded border cursor-pointer hover:bg-slate-200 flex"
+            onClick={() => {
+              setIsOpen(!isOpen);
+              // const dropdown = document.querySelector(".profile-dropdown");
+              // dropdown.classList.toggle("hide");
+            }}
+          >
+            <div className="sidebar-profile-img mx-1 flex">
+              <img src={require("../../images/photo.png")} alt="" />
+            </div>
+            <div
+              className="text-sm mx-1 flex"
+              style={{ flexDirection: "column" }}
+            >
+              <p>Me</p>
+              <i class="fa-solid fa-caret-down"></i>
+            </div>
+          </div>
+          <div
+            ref={openable}
+            className={"profile-dropdown " + (isOpen ? "" : "hide")}
+          >
+            <div className="profile-dropdown-sec">
+              <div className=" profile-dropdown-head flex">
+                <div>
+                  <img src={require("../../images/photo.png")} alt="" />
+                </div>
+                <div>
+                  <h5>John Doe</h5>
+                  <p>B.Tech, IIT Kharagpur</p>
+                </div>
+              </div>
+              <div>
+                <button
+                  type="button"
+                  className="cust-btn view-profile-btn"
+                  onClick={() => {
+                    navigate("/dashboard");
+                  }}
+                >
+                  View Profile
+                </button>
+              </div>
+            </div>
+            <hr />
+            <div className="profile-dropdown-sec">
+              <div
+                className="dropdown-btn"
+                onClick={() => {
+                  document.querySelector(".bookmark").style.visibility =
+                    "visible";
+                }}
+              >
+                <p>
+                  <i class="fa-solid fa-bookmark"></i> Bookmarks
+                </p>
+              </div>
+              <div className="dropdown-btn">
+                <p>
+                  <i class="fa-solid fa-triangle-exclamation"></i> Reschedule a
+                  Mock Interview
+                </p>
+              </div>
+              <div className="dropdown-btn">
+                <p>
+                  <i class="fa-solid fa-triangle-exclamation"></i> Cancel a Mock
+                  Interview
+                </p>
+              </div>
+              <div className="dropdown-btn">
+                <p>
+                  <i class="fa-solid fa-triangle-exclamation"></i> Report an
+                  Issue
+                </p>
+              </div>
+              <div className="dropdown-btn">
+                <p>
+                  <i class="fa-solid fa-gear"></i> Account Settings
+                </p>
+              </div>
+            </div>
+            <hr />
+            <div className="profile-dropdown-sec">
+              <div className="dropdown-logout-btn">
+                <form action="http://localhost:8585/auth/logout">
+                  <button type="submit" className="cust-btn logout-btn">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

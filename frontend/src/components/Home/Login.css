@@ -40,7 +40,7 @@
     color: #008A45;
     width: 100%;
     font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 14px;
+    font-size: 1.2rem;
     font-weight: 500;
     line-height: 16px;
     letter-spacing: 0px;
@@ -71,9 +71,16 @@
 .login-system h1 {
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 700;
-    padding: 5px 0 20px;
-    margin-bottom: 40px;
+    padding: 5px 0;
     text-align: center;
+    margin: 0;
+}
+
+.login-system p{
+    text-align: center;
+    margin-bottom: 60px;
+    font-size: 1.2rem;
+
 }
 
 .signin-btn {
